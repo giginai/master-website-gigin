@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 
 const Header = () => {
   return (
-    <header className="relative z-10 px-6 py-4">
-      <nav className="max-w-7xl mx-auto flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between glass-morphism rounded-2xl px-8 py-4 shadow-lg">
         <div className="flex items-center">
           <h1 className="text-2xl font-bold text-white">Gigin</h1>
         </div>
