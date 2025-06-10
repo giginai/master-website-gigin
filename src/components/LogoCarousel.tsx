@@ -47,7 +47,7 @@ const LogoCarousel = () => {
           ref={scrollerRef}
           className="scroller overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]"
         >
-          <div className="scroller-inner flex gap-8 animate-scroll">
+          <div className="scroller-inner flex gap-8 animate-scroll hover:[animation-play-state:paused]">
             {logos.map((logo) => (
               <div 
                 key={logo.id} 
@@ -63,25 +63,6 @@ const LogoCarousel = () => {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-        
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-        
-        .scroller:hover .animate-scroll {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 };
