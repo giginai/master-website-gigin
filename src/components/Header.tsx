@@ -11,7 +11,7 @@ import { ChevronDown } from "lucide-react";
 const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
-      <nav className="max-w-7xl mx-auto flex items-center justify-between glass-morphism rounded-2xl px-8 py-4 shadow-lg">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between glass-morphism rounded-2xl px-8 py-4 shadow-lg bg-black/20 backdrop-blur-lg border border-white/10">
         <div className="flex items-center">
           <img 
             src="/lovable-uploads/0a41f02f-6d14-4ba4-9553-29cc465c0d1b.png" 

@@ -85,9 +85,9 @@ const FeaturesSection = () => {
                     </p>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="flex gap-8">
                     {feature.stats.map((stat, index) => (
-                      <div key={index} className="text-center">
+                      <div key={index} className="text-left">
                         <div className="text-3xl md:text-4xl font-bold text-pink-500 mb-1">
                           {stat.value}
                         </div>
