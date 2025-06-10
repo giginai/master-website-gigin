@@ -1,5 +1,12 @@
 
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 
 const Header = () => {
   return (
@@ -13,23 +20,39 @@ const Header = () => {
           />
         </div>
         
-        <div className="hidden md:flex items-center space-x-8">
-          <a href="#" className="text-pink-400 font-medium hover:text-pink-300 transition-colors">
+        <div className="hidden md:flex items-center space-x-2">
+          <a href="#" className="text-pink-400 font-medium hover:text-pink-300 transition-colors px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-pink-400/20">
             Home
           </a>
-          <a href="#" className="text-white/80 hover:text-white transition-colors">
+          <a href="#" className="text-white/80 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
             About Us
           </a>
-          <a href="#" className="text-white/80 hover:text-white transition-colors flex items-center">
-            Solutions
-            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <a href="#" className="text-white/80 hover:text-white transition-colors">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="text-white/80 hover:text-white transition-colors flex items-center px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
+                Solutions
+                <ChevronDown className="w-4 h-4 ml-1" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-white/95 backdrop-blur-lg border border-white/20 shadow-xl rounded-xl p-2 min-w-[200px]">
+              <DropdownMenuItem className="hover:bg-pink-50 rounded-lg px-4 py-3 cursor-pointer">
+                <span className="text-gray-800 font-medium">AI Talent Sourcing</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-pink-50 rounded-lg px-4 py-3 cursor-pointer">
+                <span className="text-gray-800 font-medium">Smart Hiring</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-pink-50 rounded-lg px-4 py-3 cursor-pointer">
+                <span className="text-gray-800 font-medium">Talent Verification</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-pink-50 rounded-lg px-4 py-3 cursor-pointer">
+                <span className="text-gray-800 font-medium">HR Analytics</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <a href="#" className="text-white/80 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
             Why Gigin?
           </a>
-          <a href="#" className="text-white/80 hover:text-white transition-colors">
+          <a href="#" className="text-white/80 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
             Blogs
           </a>
         </div>
@@ -38,7 +61,7 @@ const Header = () => {
           <Button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg font-medium">
             Find a Job
           </Button>
-          <Button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg font-medium">
+          <Button variant="outline" className="border-white/20 text-white/80 hover:text-white hover:bg-white/10 px-6 py-2 rounded-lg font-medium">
             Contact us
           </Button>
         </div>
