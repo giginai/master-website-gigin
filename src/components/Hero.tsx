@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <div className="relative z-10 px-6 pt-24 pb-20 min-h-screen flex items-center">
+    <div className="relative z-10 px-6 pt-32 pb-20 min-h-screen flex items-center">
       {/* Black blur overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
       
