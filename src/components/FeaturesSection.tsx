@@ -1,0 +1,122 @@
+
+import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+const FeaturesSection = () => {
+  const [activeTab, setActiveTab] = useState("sourcing");
+
+  const features = [
+    {
+      id: "sourcing",
+      title: "Intelligent Talent Sourcing",
+      description: "AI-driven sourcing scans millions of profiles, identifying high-intent candidates with precision. Smart recommendations ensure recruiters reach the right talent faster.",
+      stats: [
+        { value: "50%", label: "Faster Candidate Discovery" },
+        { value: "2M+", label: "Pre-Screened Job Seekers" }
+      ],
+      image: "/lovable-uploads/b8f3a332-f59e-4dff-9644-bc2397c4e30d.png"
+    },
+    {
+      id: "screening",
+      title: "Smart Matching & Screening",
+      description: "AI-powered screening evaluates skills, experience, and job fit that ranks top candidates instantly ensuring right candidate applies to the job.",
+      stats: [
+        { value: "60%", label: "Reduction in screening time" },
+        { value: "80%", label: "Improved candidate-job alignment" }
+      ],
+      image: "/lovable-uploads/ec8c7937-e805-4733-b171-f703516014ea.png"
+    },
+    {
+      id: "verification",
+      title: "Agentified Background Verification",
+      description: "AI background verification ensures accurate identity, employment, and 20+ other checks. This reduces fraud risks, accelerating your onboarding process.",
+      stats: [
+        { value: "90%", label: "Faster Background Verification" },
+        { value: "40%", label: "Lower Compliance Risks" }
+      ],
+      image: "/lovable-uploads/23869083-65b7-438b-bfe6-4aab11bb9527.png"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Powerful Features for Modern Hiring
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Transform your recruitment process with AI-powered solutions that streamline every step from sourcing to verification
+          </p>
+        </div>
+
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-3 bg-gray-100 p-2 rounded-2xl mb-12">
+            <TabsTrigger 
+              value="sourcing" 
+              className="rounded-xl py-4 text-lg font-medium data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-300"
+            >
+              Talent Sourcing
+            </TabsTrigger>
+            <TabsTrigger 
+              value="screening" 
+              className="rounded-xl py-4 text-lg font-medium data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-300"
+            >
+              Smart Screening
+            </TabsTrigger>
+            <TabsTrigger 
+              value="verification" 
+              className="rounded-xl py-4 text-lg font-medium data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-300"
+            >
+              Verification
+            </TabsTrigger>
+          </TabsList>
+
+          {features.map((feature) => (
+            <TabsContent key={feature.id} value={feature.id} className="mt-0">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="space-y-8">
+                  <div>
+                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                      {feature.title}
+                    </h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-8">
+                    {feature.stats.map((stat, index) => (
+                      <div key={index} className="text-center">
+                        <div className="text-4xl md:text-5xl font-bold text-pink-500 mb-2">
+                          {stat.value}
+                        </div>
+                        <div className="text-gray-600 font-medium">
+                          {stat.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+                    <img 
+                      src={feature.image} 
+                      alt={feature.title}
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-500/10 to-blue-500/10 -z-10 blur-xl scale-105"></div>
+                </div>
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
+      </div>
+    </section>
+  );
+};
+
+export default FeaturesSection;

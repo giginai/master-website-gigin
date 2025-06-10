@@ -1,6 +1,7 @@
 
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import FeaturesSection from "@/components/FeaturesSection";
 
 const Index = () => {
   return (
@@ -28,6 +29,11 @@ const Index = () => {
 
       <Header />
       <Hero />
+      
+      {/* Features Section with white background */}
+      <div className="relative z-10">
+        <FeaturesSection />
+      </div>
     </div>
   );
 };
