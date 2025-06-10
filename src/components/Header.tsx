@@ -6,7 +6,11 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
       <nav className="max-w-7xl mx-auto flex items-center justify-between glass-morphism rounded-2xl px-8 py-4 shadow-lg">
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold text-white">Gigin</h1>
+          <img 
+            src="/lovable-uploads/0a41f02f-6d14-4ba4-9553-29cc465c0d1b.png" 
+            alt="Gigin Logo" 
+            className="h-8 w-auto"
+          />
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
@@ -34,7 +38,7 @@ const Header = () => {
           <Button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg font-medium">
             Find a Job
           </Button>
-          <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 px-6 py-2 rounded-lg font-medium">
+          <Button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg font-medium">
             Contact us
           </Button>
         </div>
