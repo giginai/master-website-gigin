@@ -51,22 +51,22 @@ const FeaturesSection = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 bg-gray-100 p-2 rounded-2xl mb-12">
+          <TabsList className="grid w-full grid-cols-3 bg-gray-100 p-1 rounded-xl mb-12 h-auto">
             <TabsTrigger 
               value="sourcing" 
-              className="rounded-xl py-4 text-lg font-medium data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-300"
+              className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1"
             >
               Talent Sourcing
             </TabsTrigger>
             <TabsTrigger 
               value="screening" 
-              className="rounded-xl py-4 text-lg font-medium data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-300"
+              className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1"
             >
               Smart Screening
             </TabsTrigger>
             <TabsTrigger 
               value="verification" 
-              className="rounded-xl py-4 text-lg font-medium data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-300"
+              className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1"
             >
               Verification
             </TabsTrigger>
@@ -107,8 +107,6 @@ const FeaturesSection = () => {
                       className="w-full h-auto object-contain"
                     />
                   </div>
-                  {/* Subtle glow effect */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-500/10 to-blue-500/10 -z-10 blur-xl scale-105"></div>
                 </div>
               </div>
             </TabsContent>
