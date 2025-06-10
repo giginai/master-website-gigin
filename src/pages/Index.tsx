@@ -1,6 +1,7 @@
 
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import LogoCarousel from "@/components/LogoCarousel";
 import FeaturesSection from "@/components/FeaturesSection";
 
 const Index = () => {
@@ -29,6 +30,11 @@ const Index = () => {
 
       <Header />
       <Hero />
+      
+      {/* Logo Carousel */}
+      <div className="relative z-10">
+        <LogoCarousel />
+      </div>
       
       {/* Features Section with white background */}
       <div className="relative z-10">

@@ -9,30 +9,30 @@ const FeaturesSection = () => {
     {
       id: "sourcing",
       title: "Intelligent Talent Sourcing",
-      description: "AI-driven sourcing scans millions of profiles, identifying high-intent candidates with precision. Smart recommendations ensure recruiters reach the right talent faster.",
+      description: "AI-driven sourcing scans millions of profiles, identifying high-intent candidates with precision.",
       stats: [
-        { value: "50%", label: "Faster Candidate Discovery" },
-        { value: "2M+", label: "Pre-Screened Job Seekers" }
+        { value: "50%", label: "Faster Discovery" },
+        { value: "2M+", label: "Pre-Screened Profiles" }
       ],
       image: "/lovable-uploads/b8f3a332-f59e-4dff-9644-bc2397c4e30d.png"
     },
     {
       id: "screening",
       title: "Smart Matching & Screening",
-      description: "AI-powered screening evaluates skills, experience, and job fit that ranks top candidates instantly ensuring right candidate applies to the job.",
+      description: "AI-powered screening evaluates skills and experience, ranking top candidates instantly.",
       stats: [
-        { value: "60%", label: "Reduction in screening time" },
-        { value: "80%", label: "Improved candidate-job alignment" }
+        { value: "60%", label: "Faster Screening" },
+        { value: "80%", label: "Better Alignment" }
       ],
       image: "/lovable-uploads/ec8c7937-e805-4733-b171-f703516014ea.png"
     },
     {
       id: "verification",
       title: "Agentified Background Verification",
-      description: "AI background verification ensures accurate identity, employment, and 20+ other checks. This reduces fraud risks, accelerating your onboarding process.",
+      description: "AI background verification ensures accurate identity and employment checks, reducing fraud risks.",
       stats: [
-        { value: "90%", label: "Faster Background Verification" },
-        { value: "40%", label: "Lower Compliance Risks" }
+        { value: "90%", label: "Faster Verification" },
+        { value: "40%", label: "Lower Risks" }
       ],
       image: "/lovable-uploads/23869083-65b7-438b-bfe6-4aab11bb9527.png"
     }
@@ -46,7 +46,7 @@ const FeaturesSection = () => {
             Powerful Features for Modern Hiring
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Transform your recruitment process with AI-powered solutions that streamline every step from sourcing to verification
+            Transform your recruitment process with AI-powered solutions
           </p>
         </div>
 
@@ -75,9 +75,9 @@ const FeaturesSection = () => {
           {features.map((feature) => (
             <TabsContent key={feature.id} value={feature.id} className="mt-0">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
+                <div className="space-y-6">
                   <div>
-                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                       {feature.title}
                     </h3>
                     <p className="text-lg text-gray-600 leading-relaxed">
@@ -85,13 +85,13 @@ const FeaturesSection = () => {
                     </p>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-8">
+                  <div className="grid grid-cols-2 gap-6">
                     {feature.stats.map((stat, index) => (
                       <div key={index} className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-pink-500 mb-2">
+                        <div className="text-3xl md:text-4xl font-bold text-pink-500 mb-1">
                           {stat.value}
                         </div>
-                        <div className="text-gray-600 font-medium">
+                        <div className="text-gray-600 font-medium text-sm">
                           {stat.label}
                         </div>
                       </div>
@@ -100,7 +100,7 @@ const FeaturesSection = () => {
                 </div>
 
                 <div className="relative">
-                  <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-50 to-gray-100 p-6">
                     <img 
                       src={feature.image} 
                       alt={feature.title}
