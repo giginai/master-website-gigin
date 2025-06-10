@@ -21,7 +21,7 @@ const Header = () => {
         </div>
         
         <div className="hidden md:flex items-center space-x-2">
-          <a href="#" className="text-pink-400 font-medium hover:text-pink-300 transition-colors px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-pink-400/20">
+          <a href="#" className="text-white font-medium hover:text-pink-300 transition-colors px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-pink-400/20">
             Home
           </a>
           <a href="#" className="text-white/80 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
@@ -61,7 +61,7 @@ const Header = () => {
           <Button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg font-medium">
             Find a Job
           </Button>
-          <Button variant="outline" className="border-white/20 text-white/80 hover:text-white hover:bg-white/10 px-6 py-2 rounded-lg font-medium">
+          <Button variant="outline" className="border-white/30 bg-white/5 text-white/80 hover:text-white hover:bg-white/10 px-6 py-2 rounded-lg font-medium">
             Contact us
           </Button>
         </div>
