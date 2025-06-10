@@ -32,19 +32,19 @@ const Hero = () => {
           </Button>
         </div>
 
-        {/* Hero Image - Cropped to half with hover animations */}
-        <div className="relative max-w-5xl mx-auto">
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl group cursor-pointer">
-            <div className="relative h-80 md:h-96 lg:h-[400px] overflow-hidden">
+        {/* Hero Image - Seamless with hover animations */}
+        <div className="relative max-w-6xl mx-auto">
+          <div className="relative group cursor-pointer">
+            <div className="relative h-96 md:h-[450px] lg:h-[500px] overflow-hidden rounded-3xl">
               <img 
                 src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png" 
                 alt="Gigin Dashboard Interface" 
-                className="w-full h-full object-cover object-top transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110"
+                className="w-full h-full object-cover object-top transition-all duration-700 ease-out group-hover:scale-105 group-hover:brightness-110"
               />
               {/* Glow overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-pink-500/20 via-transparent to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"></div>
               {/* Enhanced glow border effect */}
-              <div className="absolute inset-0 rounded-3xl ring-0 group-hover:ring-2 group-hover:ring-pink-400/50 group-hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-700 ease-out"></div>
+              <div className="absolute inset-0 rounded-3xl ring-0 group-hover:ring-2 group-hover:ring-pink-400/50 group-hover:shadow-[0_0_40px_rgba(236,72,153,0.4)] transition-all duration-700 ease-out"></div>
             </div>
           </div>
         </div>
