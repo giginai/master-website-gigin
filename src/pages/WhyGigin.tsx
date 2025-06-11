@@ -89,13 +89,14 @@ const WhyGigin = () => {
             Get Started
           </Button>
 
-          {/* Hero Dashboard Image - No gap at bottom */}
+          {/* Hero Dashboard Image - Cropped 50% vertically */}
           <div className="relative max-w-6xl mx-auto">
-            <div className="relative overflow-hidden rounded-t-3xl group">
+            <div className="relative overflow-hidden rounded-t-3xl group h-64 md:h-80 lg:h-96">
               <img 
                 src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png" 
                 alt="Gigin AI-Driven Hiring Platform" 
-                className="w-full h-auto object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                style={{ objectPosition: 'center top' }}
               />
             </div>
           </div>
@@ -119,21 +120,23 @@ const WhyGigin = () => {
             </p>
           </div>
 
-          {/* Accordion Section with improved styling */}
+          {/* Accordion Section with single dropdown icon */}
           <Accordion type="single" collapsible className="w-full max-w-6xl mx-auto">
             {accordionItems.map((item, index) => (
               <AccordionItem key={item.id} value={item.id} className="border border-gray-200 rounded-2xl mb-6 bg-white shadow-lg hover:shadow-xl transition-all duration-300">
-                <AccordionTrigger className="hover:no-underline group py-8 px-8 [&[data-state=open]>div>svg]:rotate-180">
-                  <div className="flex items-center space-x-6 w-full">
-                    <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                      {index + 1}
+                <AccordionTrigger className="hover:no-underline group py-8 px-8 [&>svg]:hidden">
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center space-x-6">
+                      <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        {index + 1}
+                      </div>
+                      <h3 className="text-left text-xl md:text-2xl font-bold text-gray-900 group-hover:text-pink-600 transition-colors">
+                        {item.title}
+                      </h3>
                     </div>
-                    <h3 className="text-left text-xl md:text-2xl font-bold text-gray-900 group-hover:text-pink-600 transition-colors flex-1">
-                      {item.title}
-                    </h3>
                     <div className="w-8 h-8 flex items-center justify-center">
                       <svg 
-                        className="h-5 w-5 text-gray-500 group-hover:text-pink-600 transition-all duration-300" 
+                        className="h-5 w-5 text-gray-500 group-hover:text-pink-600 transition-all duration-300 group-data-[state=open]:rotate-180" 
                         fill="none" 
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
@@ -202,7 +205,7 @@ const WhyGigin = () => {
         </div>
       </section>
 
-      {/* CTA Section with darker gradient and no bounding box */}
+      {/* CTA Section with darker gradient and cropped image */}
       <section className="relative z-10 py-20 bg-gradient-to-br from-gray-900 via-black to-gray-800">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
@@ -221,13 +224,16 @@ const WhyGigin = () => {
             Experience Gigin Today
           </Button>
 
-          {/* CTA Dashboard Image without bounding box */}
+          {/* CTA Dashboard Image cropped 50% vertically */}
           <div className="relative max-w-6xl mx-auto mt-12">
-            <img 
-              src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png"
-              alt="Gigin Platform Dashboard"
-              className="w-full h-auto object-contain mx-auto"
-            />
+            <div className="h-64 md:h-80 lg:h-96 overflow-hidden">
+              <img 
+                src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png"
+                alt="Gigin Platform Dashboard"
+                className="w-full h-full object-cover object-top"
+                style={{ objectPosition: 'center top' }}
+              />
+            </div>
           </div>
         </div>
       </section>
