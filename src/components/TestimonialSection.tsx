@@ -22,29 +22,50 @@ const TestimonialSection = () => {
       quote: "Outstanding platform for modern recruitment needs. The candidate experience is exceptional and the results speak for themselves.",
       author: "Amit Kumar",
       role: "VP of Human Resources"
+    },
+    {
+      quote: "The best hiring platform we've used. The interface is intuitive and the results are consistently impressive.",
+      author: "Neha Gupta",
+      role: "Recruitment Manager"
+    },
+    {
+      quote: "Gigin's AI technology has revolutionized how we approach talent acquisition. Highly recommended for any growing company.",
+      author: "Vikram Singh",
+      role: "Head of Talent"
+    },
+    {
+      quote: "Exceptional service and support. The platform delivers on its promises and has significantly improved our hiring efficiency.",
+      author: "Anita Desai",
+      role: "HR Director"
     }
   ];
 
   return (
     <section className="py-20 bg-gray-50 relative overflow-hidden">
-      {/* Glass morphism background elements */}
-      <div className="absolute top-10 left-10 w-32 h-32 glass-morphism rounded-full opacity-20"></div>
-      <div className="absolute top-32 right-20 w-24 h-24 glass-morphism rounded-full opacity-15"></div>
-      <div className="absolute bottom-20 left-1/4 w-40 h-40 glass-morphism rounded-full opacity-10"></div>
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/lovable-uploads/f0acdf04-0015-4664-af62-d43a84908fcd.png)'
+        }}
+      ></div>
       
-      <div className="max-w-7xl mx-auto px-6 text-center">
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/70"></div>
+      
+      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         <div className="mb-4">
-          <div className="inline-flex items-center glass-morphism text-gray-800 rounded-full px-4 py-2 border border-gray-200/30">
-            <span>✦</span>
-            <span className="font-medium mx-2">Testimonial</span>
-            <span>✦</span>
+          <div className="inline-flex items-center glass-morphism border border-white/20 rounded-full px-4 py-2">
+            <span className="text-white">✦</span>
+            <span className="text-white font-medium mx-2">Testimonial</span>
+            <span className="text-white">✦</span>
           </div>
         </div>
         
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
           Recruiters Who Trust Gigin
         </h2>
-        <p className="text-xl text-gray-600 mb-16">
+        <p className="text-xl text-white/80 mb-16">
           Our clients speak on behalf of us!
         </p>
 
@@ -54,22 +75,33 @@ const TestimonialSection = () => {
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index}>
-                  <div className="glass-morphism rounded-3xl p-8 md:p-12 border border-white/20 backdrop-blur-xl">
-                    <blockquote className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-                      "{testimonial.quote}"
-                    </blockquote>
-                    <cite className="text-gray-900 font-semibold text-lg">
-                      — {testimonial.author}
-                    </cite>
-                    <p className="text-gray-600 text-sm mt-1">
-                      {testimonial.role}
-                    </p>
+                  <div className="glass-morphism rounded-3xl p-8 md:p-12 border border-white/20 backdrop-blur-xl shadow-2xl bg-white/10">
+                    <div className="bg-white/5 rounded-2xl p-6 border border-white/10 shadow-lg">
+                      <blockquote className="text-lg md:text-xl text-white/90 leading-relaxed mb-6 italic">
+                        "{testimonial.quote}"
+                      </blockquote>
+                      <div className="flex items-center justify-center space-x-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-full flex items-center justify-center border border-white/10">
+                          <span className="text-white font-bold text-lg">
+                            {testimonial.author.split(' ').map(name => name[0]).join('')}
+                          </span>
+                        </div>
+                        <div className="text-left">
+                          <cite className="text-white font-semibold text-lg not-italic">
+                            {testimonial.author}
+                          </cite>
+                          <p className="text-white/70 text-sm">
+                            {testimonial.role}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="glass-morphism border-white/20" />
-            <CarouselNext className="glass-morphism border-white/20" />
+            <CarouselPrevious className="glass-morphism border-white/20 text-white hover:bg-white/10" />
+            <CarouselNext className="glass-morphism border-white/20 text-white hover:bg-white/10" />
           </Carousel>
         </div>
       </div>

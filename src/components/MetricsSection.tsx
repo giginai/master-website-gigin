@@ -1,10 +1,10 @@
 
 const MetricsSection = () => {
   const metrics = [
-    { value: "2M+", label: "Active Candidates", color: "from-pink-900/80 to-red-900/80" },
-    { value: "100k+", label: "Trusted Recruiters", color: "from-blue-900/80 to-purple-900/80" },
-    { value: "1M+", label: "Job Applications Processed", color: "from-green-900/80 to-teal-900/80" },
-    { value: "40%", label: "Faster Verifications", color: "from-purple-900/80 to-indigo-900/80" }
+    { value: "2M+", label: "Active Candidates", color: "from-pink-500/20 to-red-500/20" },
+    { value: "100k+", label: "Trusted Recruiters", color: "from-blue-500/20 to-purple-500/20" },
+    { value: "1M+", label: "Job Applications Processed", color: "from-green-500/20 to-teal-500/20" },
+    { value: "40%", label: "Faster Verifications", color: "from-purple-500/20 to-indigo-500/20" }
   ];
 
   return (
@@ -38,9 +38,13 @@ const MetricsSection = () => {
           {metrics.map((metric, index) => (
             <div 
               key={index}
-              className={`glass-morphism bg-gradient-to-br ${metric.color} rounded-2xl p-6 text-white transform hover:scale-105 transition-transform duration-300 border border-white/10 backdrop-blur-xl`}
+              className={`glass-morphism bg-gradient-to-br ${metric.color} rounded-2xl p-6 text-white transform hover:scale-105 transition-transform duration-300 border border-white/10 backdrop-blur-xl text-center`}
             >
-              <div className="text-3xl md:text-4xl font-bold mb-2">
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-pink-400 drop-shadow-lg" 
+                   style={{
+                     textShadow: '0 0 20px rgba(236, 72, 153, 0.8), 0 0 40px rgba(236, 72, 153, 0.4)',
+                     filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.6))'
+                   }}>
                 {metric.value}
               </div>
               <div className="text-white/90 font-medium">
