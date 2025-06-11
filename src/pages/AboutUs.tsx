@@ -35,8 +35,8 @@ const AboutUs = () => {
           backgroundImage: 'url(/lovable-uploads/4ecd3353-db67-4541-aa16-d14ac3ab34fd.png)'
         }}
       >
-        {/* Dark overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        {/* Reduced overlay opacity to make background image more visible */}
+        <div className="absolute inset-0 bg-black/20"></div>
       </div>
 
       <Header currentPage="about-us" />
@@ -44,10 +44,10 @@ const AboutUs = () => {
       {/* Hero Section */}
       <section className="relative z-10 pt-32 pb-0">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 mb-8">
-            <span className="text-white text-sm">✦</span>
-            <span className="text-white font-semibold mx-3 text-sm">About Us</span>
-            <span className="text-white text-sm">✦</span>
+          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
+            <span className="text-white">✦</span>
+            <span className="text-white font-medium mx-2">About Us</span>
+            <span className="text-white">✦</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-8">
             On A Mission To Better<br />
@@ -109,10 +109,10 @@ const AboutUs = () => {
       <section className="relative z-10 py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-gray-200 text-gray-800 border border-gray-300 rounded-full px-6 py-3 mb-6">
-              <span className="text-sm">✦</span>
-              <span className="font-semibold mx-3 text-sm">Team members</span>
-              <span className="text-sm">✦</span>
+            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+              <span className="text-gray-800">✦</span>
+              <span className="text-gray-800 font-medium mx-2">Team members</span>
+              <span className="text-gray-800">✦</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
               Meet Our<br />
@@ -172,10 +172,10 @@ const AboutUs = () => {
       <section className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-gray-200 text-gray-800 border border-gray-300 rounded-full px-6 py-3 mb-6">
-              <span className="text-sm">✦</span>
-              <span className="font-semibold mx-3 text-sm">Goals</span>
-              <span className="text-sm">✦</span>
+            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+              <span className="text-gray-800">✦</span>
+              <span className="text-gray-800 font-medium mx-2">Goals</span>
+              <span className="text-gray-800">✦</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
               Gigin's Core Values
@@ -195,7 +195,7 @@ const AboutUs = () => {
                   onClick={() => setActiveValueTab(value.id)}
                   className={`px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-500 transform hover:scale-105 border-2 ${
                     activeValueTab === value.id
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-700 text-white shadow-2xl shadow-blue-600/30 border-blue-600 scale-105'
+                      ? 'bg-gradient-to-r from-pink-500 to-pink-600 text-white shadow-2xl shadow-pink-500/30 border-pink-500 scale-105'
                       : 'bg-white text-gray-700 hover:bg-gray-50 hover:shadow-lg border-gray-200 hover:border-gray-300'
                   }`}
                 >
@@ -223,9 +223,9 @@ const AboutUs = () => {
                   }}
                 >
                   <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-12 text-center shadow-2xl border border-gray-200 max-w-4xl mx-auto h-full flex flex-col justify-center">
-                    <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
+                    <div className="w-20 h-20 bg-gradient-to-r from-pink-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                        <div className="w-4 h-4 bg-gradient-to-r from-blue-600 to-purple-700 rounded-full"></div>
+                        <div className="w-4 h-4 bg-gradient-to-r from-pink-500 to-pink-600 rounded-full"></div>
                       </div>
                     </div>
                     <h3 className="text-3xl font-bold text-gray-900 mb-6">{value.title}</h3>
