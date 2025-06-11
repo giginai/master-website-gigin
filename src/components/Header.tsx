@@ -1,4 +1,5 @@
 
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -55,10 +56,10 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent 
-              className="p-0 border-0 bg-transparent shadow-none fixed left-1/2 transform -translate-x-1/2 top-24 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2"
-              sideOffset={2}
+              className="p-0 border-0 bg-transparent shadow-none fixed left-1/2 transform -translate-x-1/2 top-[88px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-top-1 data-[state=open]:slide-in-from-top-1"
+              sideOffset={0}
             >
-              <div className="bg-white/90 backdrop-blur-[10px] border border-gray-200/30 rounded-2xl shadow-2xl min-w-[800px] overflow-hidden">
+              <div className="bg-white/95 backdrop-blur-[12px] border border-gray-200/40 rounded-2xl shadow-2xl drop-shadow-2xl min-w-[800px] overflow-hidden" style={{boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'}}>
                 <div className="flex">
                   {/* Banner Section */}
                   <div className="w-1/3 relative bg-gradient-to-br from-pink-500/20 to-purple-600/20">
@@ -159,3 +160,4 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
 };
 
 export default Header;
+
