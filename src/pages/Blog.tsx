@@ -11,7 +11,7 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const articlesPerPage = 6;
+  const articlesPerPage = 12;
 
   const blogPosts = [
     {
@@ -21,8 +21,7 @@ const Blog = () => {
       author: "Sarah Chen",
       date: "2024-01-15",
       category: "AI & Technology",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
-      readTime: "5 min read"
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 2,
@@ -31,8 +30,7 @@ const Blog = () => {
       author: "Marcus Johnson",
       date: "2024-01-12",
       category: "Hiring Best Practices",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
-      readTime: "7 min read"
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 3,
@@ -41,8 +39,7 @@ const Blog = () => {
       author: "Emily Rodriguez",
       date: "2024-01-10",
       category: "Industry Insights",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
-      readTime: "6 min read"
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 4,
@@ -51,8 +48,7 @@ const Blog = () => {
       author: "David Park",
       date: "2024-01-08",
       category: "Company News",
-      image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80",
-      readTime: "3 min read"
+      image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 5,
@@ -61,8 +57,7 @@ const Blog = () => {
       author: "Dr. Lisa Wang",
       date: "2024-01-05",
       category: "Hiring Best Practices",
-      image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80",
-      readTime: "8 min read"
+      image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 6,
@@ -71,8 +66,7 @@ const Blog = () => {
       author: "Alex Thompson",
       date: "2024-01-03",
       category: "AI & Technology",
-      image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=800&q=80",
-      readTime: "10 min read"
+      image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 7,
@@ -81,8 +75,7 @@ const Blog = () => {
       author: "Rachel Green",
       date: "2024-01-01",
       category: "Industry Insights",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
-      readTime: "6 min read"
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 8,
@@ -91,8 +84,7 @@ const Blog = () => {
       author: "Michael Brown",
       date: "2023-12-28",
       category: "Company News",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
-      readTime: "4 min read"
+      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 9,
@@ -101,8 +93,34 @@ const Blog = () => {
       author: "Jennifer Lee",
       date: "2023-12-25",
       category: "Hiring Best Practices",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
-      readTime: "7 min read"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 10,
+      title: "AI-Powered Resume Screening: Reducing Bias in Recruitment",
+      excerpt: "Discover how artificial intelligence is helping companies make more objective hiring decisions while reducing unconscious bias.",
+      author: "Chris Wong",
+      date: "2023-12-20",
+      category: "AI & Technology",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 11,
+      title: "The Art of Technical Interviewing",
+      excerpt: "Master the techniques for conducting effective technical interviews that accurately assess candidates' skills and potential.",
+      author: "Sam Patel",
+      date: "2023-12-18",
+      category: "Hiring Best Practices",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 12,
+      title: "Global Talent Pool: Expanding Your Search Worldwide",
+      excerpt: "Learn strategies for tapping into international talent markets and building successful remote teams across time zones.",
+      author: "Maria Silva",
+      date: "2023-12-15",
+      category: "Industry Insights",
+      image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80"
     }
   ];
 
@@ -222,18 +240,15 @@ const Blog = () => {
                     {post.excerpt}
                   </CardDescription>
                   
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex items-center">
-                        <User className="w-4 h-4 mr-1" />
-                        {post.author}
-                      </div>
-                      <div className="flex items-center">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {new Date(post.date).toLocaleDateString()}
-                      </div>
+                  <div className="flex items-center space-x-4 text-sm text-gray-500">
+                    <div className="flex items-center">
+                      <User className="w-4 h-4 mr-1" />
+                      {post.author}
                     </div>
-                    <span className="text-pink-500 font-medium">{post.readTime}</span>
+                    <div className="flex items-center">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      {new Date(post.date).toLocaleDateString()}
+                    </div>
                   </div>
                 </CardHeader>
                 
@@ -299,7 +314,7 @@ const Blog = () => {
       </section>
 
       {/* Newsletter Subscription */}
-      <section className="py-16 bg-gradient-to-r from-pink-500 to-purple-600">
+      <section className="py-16 bg-gradient-to-r from-gray-900 via-black to-gray-800">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Stay Updated with Our Latest Insights
@@ -313,7 +328,7 @@ const Blog = () => {
               placeholder="Enter your email"
               className="flex-1 bg-white"
             />
-            <Button className="bg-white text-pink-500 hover:bg-gray-100 font-medium">
+            <Button className="bg-white text-gray-800 hover:bg-gray-100 font-medium">
               Subscribe
             </Button>
           </div>
