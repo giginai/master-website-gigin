@@ -2,65 +2,72 @@
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Search, Bot, CheckCircle, Users, Zap, Database, Clock, Target, BarChart3, Shield, Star, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { Search, Bot, CheckCircle, Users, Zap, Database, Clock, Target, BarChart3, Shield, Star, ArrowRight, ChevronLeft, ChevronRight, Award, Verified } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const HiringSolutions = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentTab, setCurrentTab] = useState(0);
 
   const jobMarketFeatures = [
     {
       title: "AI-Powered Candidate Sourcing",
       description: "Find the right candidates from millions of profiles using advanced AI matching algorithms",
-      icon: Search
+      icon: "🎯"
     },
     {
       title: "Real-time Job Posting",
       description: "Post jobs instantly across multiple platforms and get qualified candidates faster",
-      icon: Zap
+      icon: "⚡"
     },
     {
       title: "Smart Filtering",
       description: "Advanced filters to narrow down candidates based on skills, experience, and location",
-      icon: Target
+      icon: "🔍"
     },
     {
       title: "Candidate Analytics",
       description: "Get detailed insights and analytics on candidate performance and engagement",
-      icon: BarChart3
+      icon: "📊"
     }
   ];
 
   const atsFeatures = [
     {
       title: "Automated Screening",
-      description: "AI-powered resume screening and candidate ranking to save time and improve quality",
-      icon: Bot
+      description: "AI-powered resume screening and candidate ranking to save time and improve quality. Our advanced algorithms analyze resumes instantly, identifying top candidates and reducing manual review time by 80%.",
+      image: "photo-1605810230434-7631ac76ec81",
+      trustIndicators: ["95% Accuracy", "80% Time Saved", "500+ Companies Trust"]
     },
     {
       title: "Interview Scheduling",
-      description: "Seamless interview scheduling with calendar integration and automated reminders",
-      icon: Clock
+      description: "Seamless interview scheduling with calendar integration and automated reminders. Smart scheduling eliminates back-and-forth emails and automatically handles timezone conversions for global teams.",
+      image: "photo-1519389950473-47ba0277781c",
+      trustIndicators: ["24/7 Availability", "Zero Conflicts", "Global Timezone Support"]
     },
     {
       title: "Collaborative Hiring",
-      description: "Team-based hiring with role-based permissions and feedback collection",
-      icon: Users
+      description: "Team-based hiring with role-based permissions and feedback collection. Enable your entire team to participate in the hiring process with structured feedback and decision-making workflows.",
+      image: "photo-1581091226825-a6a2a5aee158",
+      trustIndicators: ["Multi-Team Support", "Secure Access", "Real-time Collaboration"]
     },
     {
       title: "Custom Workflows",
-      description: "Create custom hiring workflows that match your company's unique process",
-      icon: Target
+      description: "Create custom hiring workflows that match your company's unique process. Design approval chains, automated actions, and custom stages that reflect your organization's hiring methodology.",
+      image: "photo-1486312338219-ce68d2c6f44d",
+      trustIndicators: ["100% Customizable", "No-Code Setup", "Enterprise Ready"]
     },
     {
       title: "Integration Ready",
-      description: "Seamlessly integrate with your existing HRMS and other business tools",
-      icon: Database
+      description: "Seamlessly integrate with your existing HRMS and other business tools. Connect with popular platforms like Slack, Teams, and major HRMS systems through our robust API and pre-built integrations.",
+      image: "photo-1498050108023-c5249f4df085",
+      trustIndicators: ["50+ Integrations", "API First", "Enterprise Security"]
     },
     {
       title: "Compliance Management",
-      description: "Built-in compliance features to ensure your hiring process meets all regulations",
-      icon: Shield
+      description: "Built-in compliance features to ensure your hiring process meets all regulations. Automatically handle GDPR, EEOC requirements, and maintain detailed audit trails for complete compliance assurance.",
+      image: "photo-1483058712412-4245e9b90334",
+      trustIndicators: ["GDPR Compliant", "EEOC Ready", "Full Audit Trail"]
     }
   ];
 
@@ -92,27 +99,36 @@ const HiringSolutions = () => {
       title: "Intelligent Candidate Matching",
       description: "Our AI agents analyze job requirements and candidate profiles to find perfect matches automatically",
       image: "photo-1605810230434-7631ac76ec81",
-      stats: "95% Match Accuracy"
+      trustMarkers: ["ISO 27001 Certified", "99.9% Uptime"]
     },
     {
       title: "Automated Outreach",
       description: "AI-powered personalized messaging to engage candidates at scale with human-like communication",
       image: "photo-1519389950473-47ba0277781c",
-      stats: "3x Higher Response Rate"
+      trustMarkers: ["GDPR Compliant", "Enterprise Grade"]
     },
     {
       title: "Predictive Analytics",
       description: "Predict candidate success and retention rates using advanced machine learning algorithms",
       image: "photo-1581091226825-a6a2a5aee158",
-      stats: "85% Retention Prediction"
+      trustMarkers: ["ML Powered", "Data Secure"]
     },
     {
       title: "Continuous Learning",
       description: "AI agents that learn from your hiring decisions to improve recommendations over time",
       image: "photo-1486312338219-ce68d2c6f44d",
-      stats: "Improves 20% Monthly"
+      trustMarkers: ["Self-Improving", "Trusted by 1000+"]
     }
   ];
+
+  // Auto-switch tabs every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTab((prev) => (prev + 1) % atsFeatures.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % aiAgentCards.length);
@@ -161,7 +177,7 @@ const HiringSolutions = () => {
           <div className="relative max-w-6xl mx-auto">
             <div className="relative overflow-hidden rounded-t-3xl group h-64 md:h-80 lg:h-96">
               <img 
-                src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png" 
+                src="/lovable-uploads/76201f77-0c9d-47d8-a4a4-1dfa326a4a5e.png" 
                 alt="Gigin Hiring Platform Dashboard" 
                 className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 style={{ objectPosition: 'center top' }}
@@ -190,40 +206,37 @@ const HiringSolutions = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {jobMarketFeatures.map((feature, index) => {
-              const IconComponent = feature.icon;
-              return (
-                <Card key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
-                  <CardHeader className="text-center p-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent className="w-8 h-8 text-white" />
-                    </div>
-                    <CardTitle className="text-lg font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors">
-                      {feature.title}
-                    </CardTitle>
-                    <CardDescription className="text-gray-600 leading-relaxed">
-                      {feature.description}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              );
-            })}
+            {jobMarketFeatures.map((feature, index) => (
+              <Card key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
+                <CardHeader className="text-center p-6">
+                  <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <span className="text-2xl">{feature.icon}</span>
+                  </div>
+                  <CardTitle className="text-lg font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors">
+                    {feature.title}
+                  </CardTitle>
+                  <CardDescription className="text-gray-600 leading-relaxed">
+                    {feature.description}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
           </div>
 
           {/* Job Marketplace Stats */}
-          <div className="bg-gradient-to-br from-pink-500 to-purple-600 rounded-3xl p-8 text-center text-white">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div>
-                <div className="text-4xl font-bold mb-2">2M+</div>
-                <div className="text-lg opacity-90">Active Candidates</div>
+                <div className="text-4xl font-bold mb-2 text-gray-900">2M+</div>
+                <div className="text-lg text-gray-600">Active Candidates</div>
               </div>
               <div>
-                <div className="text-4xl font-bold mb-2">100K+</div>
-                <div className="text-lg opacity-90">Jobs Posted</div>
+                <div className="text-4xl font-bold mb-2 text-gray-900">100K+</div>
+                <div className="text-lg text-gray-600">Jobs Posted</div>
               </div>
               <div>
-                <div className="text-4xl font-bold mb-2">95%</div>
-                <div className="text-lg opacity-90">Match Accuracy</div>
+                <div className="text-4xl font-bold mb-2 text-gray-900">95%</div>
+                <div className="text-lg text-gray-600">Match Accuracy</div>
               </div>
             </div>
           </div>
@@ -248,25 +261,53 @@ const HiringSolutions = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {atsFeatures.map((feature, index) => {
-              const IconComponent = feature.icon;
-              return (
-                <Card key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
-                  <CardHeader className="p-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent className="w-6 h-6 text-white" />
-                    </div>
-                    <CardTitle className="text-xl font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors">
-                      {feature.title}
-                    </CardTitle>
-                    <CardDescription className="text-gray-600 leading-relaxed">
-                      {feature.description}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              );
-            })}
+          {/* Interactive Tabs */}
+          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+            {/* Tab Navigation */}
+            <div className="flex overflow-x-auto border-b border-gray-200">
+              {atsFeatures.map((feature, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTab(index)}
+                  className={`flex-1 min-w-[200px] p-4 text-sm font-medium transition-all duration-300 ${
+                    currentTab === index
+                      ? 'bg-pink-500 text-white border-b-2 border-pink-500'
+                      : 'text-gray-600 hover:text-pink-600 hover:bg-pink-50'
+                  }`}
+                >
+                  {feature.title}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab Content */}
+            <div className="p-8">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                    {atsFeatures[currentTab].title}
+                  </h3>
+                  <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                    {atsFeatures[currentTab].description}
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    {atsFeatures[currentTab].trustIndicators.map((indicator, idx) => (
+                      <div key={idx} className="flex items-center bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        {indicator}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="relative">
+                  <img 
+                    src={`https://images.unsplash.com/${atsFeatures[currentTab].image}?auto=format&fit=crop&w=800&q=80`}
+                    alt={atsFeatures[currentTab].title}
+                    className="w-full h-80 object-cover rounded-2xl shadow-lg"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -332,15 +373,15 @@ const HiringSolutions = () => {
           </div>
 
           {/* Carousel */}
-          <div className="relative">
+          <div className="relative max-w-5xl mx-auto">
             <div className="overflow-hidden rounded-3xl">
               <div 
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {aiAgentCards.map((card, index) => (
-                  <div key={index} className="w-full flex-shrink-0">
-                    <div className="bg-white rounded-3xl shadow-2xl overflow-hidden mx-4">
+                  <div key={index} className="w-full flex-shrink-0 px-4">
+                    <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
                       <div className="grid lg:grid-cols-2 gap-0">
                         <div className="p-12 flex flex-col justify-center">
                           <h3 className="text-3xl font-bold text-gray-900 mb-6">
@@ -349,13 +390,13 @@ const HiringSolutions = () => {
                           <p className="text-lg text-gray-600 leading-relaxed mb-8">
                             {card.description}
                           </p>
-                          <div className="flex items-center space-x-4">
-                            <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-2 rounded-lg font-bold">
-                              {card.stats}
-                            </div>
-                            <Button className="bg-transparent border border-pink-500 text-pink-600 hover:bg-pink-500 hover:text-white px-6 py-2 rounded-lg">
-                              Learn More
-                            </Button>
+                          <div className="flex flex-wrap gap-3">
+                            {card.trustMarkers.map((marker, idx) => (
+                              <div key={idx} className="flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-lg font-medium">
+                                <Award className="w-4 h-4 mr-2" />
+                                {marker}
+                              </div>
+                            ))}
                           </div>
                         </div>
                         <div className="relative">
@@ -375,13 +416,13 @@ const HiringSolutions = () => {
             {/* Carousel Controls */}
             <button 
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="absolute -left-6 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group z-10"
             >
               <ChevronLeft className="w-6 h-6 text-gray-600 group-hover:text-pink-600" />
             </button>
             <button 
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="absolute -right-6 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group z-10"
             >
               <ChevronRight className="w-6 h-6 text-gray-600 group-hover:text-pink-600" />
             </button>
@@ -417,12 +458,9 @@ const HiringSolutions = () => {
           <p className="text-xl text-white/90 max-w-4xl mx-auto mb-8">
             Join thousands of companies that trust Gigin to find, screen, and hire the best candidates faster than ever before.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex justify-center mb-12">
             <Button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300">
-              Start Free Trial
-            </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-lg font-medium transition-all duration-300">
-              Schedule Demo
+              Sign Up Now
             </Button>
           </div>
 
@@ -430,7 +468,7 @@ const HiringSolutions = () => {
           <div className="relative max-w-6xl mx-auto">
             <div className="h-64 md:h-80 lg:h-96 overflow-hidden rounded-t-3xl">
               <img 
-                src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png"
+                src="/lovable-uploads/76201f77-0c9d-47d8-a4a4-1dfa326a4a5e.png"
                 alt="Gigin Platform Dashboard"
                 className="w-full h-full object-cover object-top"
                 style={{ objectPosition: 'center top' }}

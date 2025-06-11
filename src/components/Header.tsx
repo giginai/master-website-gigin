@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -6,7 +5,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown, Users, Shield, Search, Bot, Building2, CheckCircle, Zap, Database } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 interface HeaderProps {
@@ -15,6 +14,8 @@ interface HeaderProps {
 
 const Header = ({ currentPage = "home" }: HeaderProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const location = useLocation();
+  const isHiringSolutionsPage = location.pathname === "/hiring-solutions";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
@@ -53,8 +54,8 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
           <DropdownMenu onOpenChange={setIsDropdownOpen}>
             <DropdownMenuTrigger asChild>
               <button className={`font-medium transition-colors flex items-center px-4 py-2 rounded-lg ${
-                isDropdownOpen 
-                  ? "text-white bg-white/20 backdrop-blur-sm"
+                isDropdownOpen || isHiringSolutionsPage
+                  ? "text-pink-500 bg-white border border-pink-400/20"
                   : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
               }`}>
                 Solutions
@@ -67,7 +68,6 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
             >
               <div className="bg-white backdrop-blur-[12px] border border-gray-200/40 rounded-2xl shadow-2xl min-w-[800px] overflow-visible" style={{boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)'}}>
                 <div className="flex">
-                  {/* Banner Section */}
                   <div className="w-1/3 relative bg-gradient-to-br from-pink-500/20 to-purple-600/20">
                     <div className="absolute inset-0 bg-black/40"></div>
                     <img 
@@ -81,13 +81,11 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                     </div>
                   </div>
                   
-                  {/* Solutions Content */}
                   <div className="w-2/3 p-8">
                     <div className="grid grid-cols-2 gap-8">
-                      {/* Hiring Solutions */}
                       <div>
-                        <h4 className="text-xs font-medium text-gray-400 mb-4 flex items-center uppercase tracking-wide">
-                          <Users className="w-3 h-3 mr-2 text-gray-400" />
+                        <h4 className="text-xs font-medium text-gray-500 mb-4 flex items-center uppercase tracking-wide">
+                          <Users className="w-3 h-3 mr-2 text-gray-500" />
                           Hiring Solutions
                         </h4>
                         <div className="space-y-3">
@@ -110,10 +108,9 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                         </div>
                       </div>
                       
-                      {/* Verification Solutions */}
                       <div>
-                        <h4 className="text-xs font-medium text-gray-400 mb-4 flex items-center uppercase tracking-wide">
-                          <Shield className="w-3 h-3 mr-2 text-gray-400" />
+                        <h4 className="text-xs font-medium text-gray-500 mb-4 flex items-center uppercase tracking-wide">
+                          <Shield className="w-3 h-3 mr-2 text-gray-500" />
                           Verification Solutions
                         </h4>
                         <div className="space-y-3">
