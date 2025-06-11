@@ -2,8 +2,30 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useState } from "react";
 
 const AboutUs = () => {
+  const [activeValueTab, setActiveValueTab] = useState("excellence");
+
+  const coreValues = [
+    {
+      id: "excellence",
+      title: "Customer-Driven Excellence",
+      description: "We prioritize solving real hiring challenges with AI-driven efficiency. Every decision is guided by innovation, customer needs, and measurable results."
+    },
+    {
+      id: "teams",
+      title: "Strong Teams, Stronger Outcomes", 
+      description: "Collaboration, leadership, and data-driven insights power our hiring ecosystem. We build accountable teams that drive impact at scale."
+    },
+    {
+      id: "trust",
+      title: "Trust, Growth & Impact",
+      description: "Transparency and integrity define how we work with businesses and job seekers. Trust and continuous learning fuel long-term success."
+    }
+  ];
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background image */}
@@ -22,10 +44,10 @@ const AboutUs = () => {
       {/* Hero Section */}
       <section className="relative z-10 pt-32 pb-0">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
-            <span className="text-white">✦</span>
+          <div className="inline-flex items-center bg-black/80 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-gray-300">
+            <span className="text-gray-300">✦</span>
             <span className="text-white font-medium mx-2">About Us</span>
-            <span className="text-white">✦</span>
+            <span className="text-gray-300">✦</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-8">
             On A Mission To Better<br />
@@ -87,7 +109,7 @@ const AboutUs = () => {
       <section className="relative z-10 py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center bg-black text-gray-300 px-6 py-3 rounded-full text-sm font-medium mb-6 border border-gray-400">
               ✦ Team members ✦
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
@@ -148,7 +170,7 @@ const AboutUs = () => {
       <section className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center bg-black text-gray-300 px-6 py-3 rounded-full text-sm font-medium mb-6 border border-gray-400">
               ✦ Goals ✦
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
@@ -159,31 +181,39 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Customer-Driven Excellence */}
-            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Customer-Driven Excellence</h3>
-              <p className="text-gray-600 leading-relaxed">
-                We prioritize solving real hiring challenges with AI-driven efficiency. Every decision is guided by innovation, customer needs, and measurable results.
-              </p>
-            </div>
+          <Tabs value={activeValueTab} onValueChange={setActiveValueTab} className="w-full">
+            <TabsList className="grid w-full grid-cols-3 bg-gray-100 p-1 rounded-xl mb-12 h-auto">
+              <TabsTrigger 
+                value="excellence" 
+                className="rounded-lg py-4 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1"
+              >
+                Customer Excellence
+              </TabsTrigger>
+              <TabsTrigger 
+                value="teams" 
+                className="rounded-lg py-4 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1"
+              >
+                Strong Teams
+              </TabsTrigger>
+              <TabsTrigger 
+                value="trust" 
+                className="rounded-lg py-4 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1"
+              >
+                Trust & Growth
+              </TabsTrigger>
+            </TabsList>
 
-            {/* Strong Teams, Stronger Outcomes */}
-            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Strong Teams, Stronger Outcomes</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Collaboration, leadership, and data-driven insights power our hiring ecosystem. We build accountable teams that drive impact at scale.
-              </p>
-            </div>
-
-            {/* Trust, Growth & Impact */}
-            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Trust, Growth & Impact</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Transparency and integrity define how we work with businesses and job seekers. Trust and continuous learning fuel long-term success.
-              </p>
-            </div>
-          </div>
+            {coreValues.map((value) => (
+              <TabsContent key={value.id} value={value.id} className="mt-0">
+                <div className="bg-white rounded-2xl p-12 text-center shadow-lg border border-gray-100 max-w-4xl mx-auto">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-8">{value.title}</h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    {value.description}
+                  </p>
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
       </section>
 
