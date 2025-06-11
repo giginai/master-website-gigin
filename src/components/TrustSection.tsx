@@ -48,7 +48,7 @@ const TrustSection = () => {
               key={index}
               className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 group"
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl mb-4">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">

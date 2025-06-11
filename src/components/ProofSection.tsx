@@ -15,30 +15,32 @@ const ProofSection = () => {
             Trust Built On Results
           </h2>
           
-          {/* Silhouettes Visual */}
+          {/* Updated Visual with uploaded image */}
           <div className="relative max-w-4xl mx-auto mb-16">
-            <div className="bg-gradient-to-r from-blue-400 to-purple-600 rounded-3xl p-12 relative overflow-hidden">
-              <div className="absolute inset-0 bg-black/20"></div>
-              <div className="relative z-10 flex justify-center items-end space-x-4 h-32">
-                {/* Silhouette figures */}
-                {[...Array(7)].map((_, i) => (
-                  <div 
-                    key={i}
-                    className={`bg-black/60 rounded-t-full ${
-                      i === 3 ? 'w-8 h-24' : i === 2 || i === 4 ? 'w-6 h-20' : 'w-5 h-16'
-                    }`}
-                  ></div>
-                ))}
-              </div>
+            <div className="rounded-3xl p-12 relative overflow-hidden">
+              <img 
+                src="/lovable-uploads/d9a0276e-c9e1-4ccd-b449-78ed1128fa37.png"
+                alt="Diverse professionals representing trust"
+                className="w-full h-64 object-cover rounded-3xl"
+              />
             </div>
           </div>
         </div>
 
-        {/* Stats Grid */}
+        {/* Stats Grid with hover animations and glowing effects */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
-            <div key={index} className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
-              <div className="text-3xl md:text-4xl font-bold text-pink-500 mb-2">
+            <div 
+              key={index} 
+              className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+            >
+              <div 
+                className="text-3xl md:text-4xl font-bold mb-2 text-pink-500 group-hover:drop-shadow-lg transition-all duration-300"
+                style={{
+                  textShadow: '0 0 20px rgba(236, 72, 153, 0.6), 0 0 40px rgba(236, 72, 153, 0.3)',
+                  filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.4))'
+                }}
+              >
                 {stat.value}
               </div>
               <div className="text-gray-700 font-medium">
