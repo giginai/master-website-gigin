@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -54,8 +55,8 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent 
-              className="p-0 border-0 bg-transparent shadow-none fixed left-1/2 transform -translate-x-1/2 top-20"
-              sideOffset={8}
+              className="p-0 border-0 bg-transparent shadow-none fixed left-1/2 transform -translate-x-1/2 top-24 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2"
+              sideOffset={2}
             >
               <div className="bg-white/90 backdrop-blur-[10px] border border-gray-200/30 rounded-2xl shadow-2xl min-w-[800px] overflow-hidden">
                 <div className="flex">
