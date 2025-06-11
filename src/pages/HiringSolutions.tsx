@@ -36,7 +36,7 @@ const HiringSolutions = () => {
     {
       title: "Automated Screening",
       description: "AI-powered resume screening and candidate ranking to save time and improve quality. Our advanced algorithms analyze resumes instantly, identifying top candidates and reducing manual review time by 80%.",
-      image: "photo-1605810230434-7631ac81",
+      image: "photo-1488590528505-98d2b5aba04b",
       trustIndicators: ["95% Accuracy", "80% Time Saved", "500+ Companies Trust"]
     },
     {
@@ -75,7 +75,7 @@ const HiringSolutions = () => {
     {
       title: "Mass Recruitment Campaigns",
       description: "Launch large-scale recruitment drives with automated candidate sourcing and screening",
-      image: "photo-1605810230434-7631ac81"
+      image: "photo-1518770660439-4636190af475"
     },
     {
       title: "Campus Hiring Programs",
@@ -98,7 +98,7 @@ const HiringSolutions = () => {
     {
       title: "Intelligent Candidate Matching",
       description: "Our AI agents analyze job requirements and candidate profiles to find perfect matches automatically",
-      image: "photo-1605810230434-7631ac81",
+      image: "photo-1461749280684-dccba630e2f6",
       trustMarkers: ["ISO 27001 Certified", "99.9% Uptime"]
     },
     {
@@ -169,15 +169,15 @@ const HiringSolutions = () => {
             screens, and hires top talent faster than traditional methods while<br />
             maintaining the highest quality standards.
           </p>
-          <Button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium mb-12 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300">
+          <Button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium mb-8 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300">
             Start Hiring Smarter
           </Button>
 
           {/* Hero Dashboard Image */}
-          <div className="relative max-w-5xl mx-auto">
+          <div className="relative max-w-4xl mx-auto">
             <div className="relative overflow-hidden rounded-t-3xl group">
               <img 
-                src="/lovable-uploads/76201f77-0c9d-47d8-a4a4-1dfa326a4a5e.png" 
+                src="/lovable-uploads/31c4796a-7366-4dc3-8833-cc1ae604f052.png" 
                 alt="Gigin Hiring Platform Dashboard" 
                 className="w-full h-auto object-contain transition-transform duration-700 ease-out group-hover:scale-105"
               />
@@ -208,8 +208,8 @@ const HiringSolutions = () => {
             {jobMarketFeatures.map((feature, index) => (
               <Card key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
                 <CardHeader className="text-center p-6">
-                  <div className="w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-4xl">{feature.icon}</span>
+                  <div className="flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-6xl">{feature.icon}</span>
                   </div>
                   <CardTitle className="text-lg font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors">
                     {feature.title}
@@ -261,7 +261,7 @@ const HiringSolutions = () => {
           </div>
 
           {/* Interactive Tabs */}
-          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-none">
+          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
             {/* Tab Navigation */}
             <div className="flex overflow-x-auto border-b border-gray-200">
               {atsFeatures.map((feature, index) => (
@@ -372,33 +372,33 @@ const HiringSolutions = () => {
           </div>
 
           {/* Carousel */}
-          <div className="relative max-w-4xl mx-auto px-16">
+          <div className="relative max-w-3xl mx-auto px-20">
             <div className="overflow-hidden rounded-3xl">
               <div 
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {aiAgentCards.map((card, index) => (
-                  <div key={index} className="w-full flex-shrink-0 px-2">
-                    <div className="bg-white rounded-3xl shadow-2xl overflow-hidden mx-4">
-                      <div className="grid lg:grid-cols-2 gap-0">
-                        <div className="p-8 flex flex-col justify-center">
-                          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <div key={index} className="w-full flex-shrink-0">
+                    <div className="bg-white rounded-3xl shadow-2xl overflow-hidden mx-2">
+                      <div className="grid lg:grid-cols-2 gap-0 h-auto min-h-[400px]">
+                        <div className="p-6 lg:p-8 flex flex-col justify-center">
+                          <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-4">
                             {card.title}
                           </h3>
-                          <p className="text-base text-gray-600 leading-relaxed mb-6">
+                          <p className="text-sm lg:text-base text-gray-600 leading-relaxed mb-6 flex-grow">
                             {card.description}
                           </p>
                           <div className="flex flex-wrap gap-2">
                             {card.trustMarkers.map((marker, idx) => (
-                              <div key={idx} className="flex items-center bg-blue-100 text-blue-800 px-3 py-1 rounded-lg text-sm font-medium">
+                              <div key={idx} className="flex items-center bg-blue-100 text-blue-800 px-3 py-1 rounded-lg text-xs lg:text-sm font-medium">
                                 <Award className="w-3 h-3 mr-1" />
                                 {marker}
                               </div>
                             ))}
                           </div>
                         </div>
-                        <div className="relative">
+                        <div className="relative min-h-[200px] lg:min-h-[400px]">
                           <img 
                             src={`https://images.unsplash.com/${card.image}?auto=format&fit=crop&w=800&q=80`}
                             alt={card.title}
@@ -464,10 +464,10 @@ const HiringSolutions = () => {
           </div>
 
           {/* CTA Dashboard Image */}
-          <div className="relative max-w-5xl mx-auto">
+          <div className="relative max-w-4xl mx-auto">
             <div className="overflow-hidden rounded-t-3xl">
               <img 
-                src="/lovable-uploads/76201f77-0c9d-47d8-a4a4-1dfa326a4a5e.png"
+                src="/lovable-uploads/31c4796a-7366-4dc3-8833-cc1ae604f052.png"
                 alt="Gigin Platform Dashboard"
                 className="w-full h-auto object-contain"
               />
