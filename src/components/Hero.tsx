@@ -43,14 +43,14 @@ const Hero = () => {
           </Button>
         </div>
 
-        {/* Hero Image - Wider and seamless */}
+        {/* Hero Image - Wider and seamless with hover animation */}
         <div className="relative w-full">
           <div className="relative">
-            <div className="relative h-96 md:h-[450px] lg:h-[500px] overflow-hidden rounded-t-3xl">
+            <div className="relative h-96 md:h-[450px] lg:h-[500px] overflow-hidden rounded-t-3xl group">
               <img 
                 src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png" 
                 alt="Gigin Dashboard Interface" 
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
               />
             </div>
           </div>
