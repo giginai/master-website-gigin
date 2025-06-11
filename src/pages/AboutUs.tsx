@@ -20,24 +20,26 @@ const AboutUs = () => {
       <Header currentPage="about-us" />
       
       {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20">
+      <section className="relative z-10 pt-32 pb-0">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            ✦ About Us ✦
+          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
+            <span className="text-white">✦</span>
+            <span className="text-white font-medium mx-2">About Us</span>
+            <span className="text-white">✦</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-8">
             On A Mission To Better<br />
             Billion Lives
           </h1>
-          
-          {/* Team Image */}
-          <div className="relative max-w-4xl mx-auto mb-16">
-            <img 
-              src="/lovable-uploads/87b15fdb-bc3f-4754-a553-2f3e9cf9b7fe.png"
-              alt="Gigin Team - Diverse professionals representing our mission"
-              className="w-full h-auto object-contain rounded-2xl"
-            />
-          </div>
+        </div>
+        
+        {/* Team Image - Full width, no gaps */}
+        <div className="w-full">
+          <img 
+            src="/lovable-uploads/87b15fdb-bc3f-4754-a553-2f3e9cf9b7fe.png"
+            alt="Gigin Team - Diverse professionals representing our mission"
+            className="w-full h-auto object-cover"
+          />
         </div>
       </section>
 
@@ -46,7 +48,7 @@ const AboutUs = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Our Mission */}
-            <div className="text-center p-8">
+            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
               <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <div className="w-6 h-6 bg-white rounded-full"></div>
               </div>
@@ -57,7 +59,7 @@ const AboutUs = () => {
             </div>
 
             {/* Our Vision */}
-            <div className="text-center p-8">
+            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
               <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <div className="w-6 h-6 bg-white rounded-full"></div>
               </div>
@@ -68,7 +70,7 @@ const AboutUs = () => {
             </div>
 
             {/* Our Goals */}
-            <div className="text-center p-8">
+            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
               <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <div className="w-6 h-6 bg-white rounded-full"></div>
               </div>
@@ -159,7 +161,7 @@ const AboutUs = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Customer-Driven Excellence */}
-            <div className="text-center p-8">
+            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Customer-Driven Excellence</h3>
               <p className="text-gray-600 leading-relaxed">
                 We prioritize solving real hiring challenges with AI-driven efficiency. Every decision is guided by innovation, customer needs, and measurable results.
@@ -167,7 +169,7 @@ const AboutUs = () => {
             </div>
 
             {/* Strong Teams, Stronger Outcomes */}
-            <div className="text-center p-8">
+            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Strong Teams, Stronger Outcomes</h3>
               <p className="text-gray-600 leading-relaxed">
                 Collaboration, leadership, and data-driven insights power our hiring ecosystem. We build accountable teams that drive impact at scale.
@@ -175,10 +177,10 @@ const AboutUs = () => {
             </div>
 
             {/* Trust, Growth & Impact */}
-            <div className="text-center p-8">
+            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Trust, Growth & Impact</h3>
               <p className="text-gray-600 leading-relaxed">
-                Transparency and integrity define how we work with businesses and job seekers. Continuous learning and action-oriented execution fuel long-term success.
+                Transparency and integrity define how we work with businesses and job seekers. Trust and continuous learning fuel long-term success.
               </p>
             </div>
           </div>
