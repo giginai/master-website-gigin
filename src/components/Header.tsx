@@ -62,7 +62,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent 
-              className="p-0 border-0 bg-transparent shadow-none fixed left-1/2 transform -translate-x-1/2 top-[70px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-top-1 data-[state=open]:slide-in-from-top-1"
+              className="p-0 border-0 bg-transparent shadow-none fixed left-1/2 transform -translate-x-1/2 top-[10px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-top-1 data-[state=open]:slide-in-from-top-1"
               sideOffset={-2}
             >
               <div className="bg-white backdrop-blur-[12px] border border-gray-200/40 rounded-2xl shadow-2xl min-w-[800px] overflow-visible" style={{boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)'}}>
