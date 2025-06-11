@@ -1,4 +1,5 @@
 
+
 const ProofSection = () => {
   const stats = [
     { value: "60%", label: "Faster Hiring" },
@@ -15,29 +16,29 @@ const ProofSection = () => {
             Trust Built On Results
           </h2>
           
-          {/* Updated Visual with uploaded image */}
+          {/* Updated Visual with new uploaded image */}
           <div className="relative max-w-4xl mx-auto mb-4">
             <div className="rounded-3xl p-8 relative overflow-hidden">
               <img 
-                src="/lovable-uploads/2274d65d-fe67-4d86-85f2-8259cc48e8aa.png"
-                alt="Dashboard interface showing verification and hiring features"
+                src="/lovable-uploads/12cd2a9a-72db-4c6f-b47e-acd848785f95.png"
+                alt="Diverse professionals representing trust and success"
                 className="w-full h-64 object-cover rounded-3xl"
               />
             </div>
           </div>
         </div>
 
-        {/* Stats Grid - Plain style without cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        {/* Stats Grid - Plain style with consistent spacing */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-5xl mx-auto">
           {stats.map((stat, index) => (
             <div 
               key={index} 
               className="text-center hover:scale-105 transition-all duration-300"
             >
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-pink-500">
+              <div className="text-3xl md:text-4xl font-bold mb-3 text-pink-500">
                 {stat.value}
               </div>
-              <div className="text-gray-700 font-medium">
+              <div className="text-gray-700 font-medium whitespace-nowrap">
                 {stat.label}
               </div>
             </div>
@@ -49,3 +50,4 @@ const ProofSection = () => {
 };
 
 export default ProofSection;
+
