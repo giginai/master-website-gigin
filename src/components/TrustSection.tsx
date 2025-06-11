@@ -46,7 +46,7 @@ const TrustSection = () => {
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 group"
+              className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 group text-center"
             >
               <div className="text-4xl mb-4">
                 {feature.icon}

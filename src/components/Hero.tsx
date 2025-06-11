@@ -43,16 +43,15 @@ const Hero = () => {
           </Button>
         </div>
 
-        {/* Hero Image - Wider and seamless with hover animation */}
-        <div className="relative w-full">
-          <div className="relative">
-            <div className="relative h-96 md:h-[450px] lg:h-[500px] overflow-hidden rounded-t-3xl group">
-              <img 
-                src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png" 
-                alt="Gigin Dashboard Interface" 
-                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-            </div>
+        {/* Hero Image - Cropped 50% vertically with no gap */}
+        <div className="relative max-w-6xl mx-auto">
+          <div className="relative overflow-hidden rounded-t-3xl group h-64 md:h-80 lg:h-96">
+            <img 
+              src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png" 
+              alt="Gigin Dashboard Interface" 
+              className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+              style={{ objectPosition: 'center top' }}
+            />
           </div>
         </div>
       </div>
