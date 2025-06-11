@@ -3,10 +3,9 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Users, Shield, Search, Bot, Building2, CheckCircle, Zap, Database } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface HeaderProps {
@@ -55,19 +54,81 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                 <ChevronDown className="w-4 h-4 ml-1 text-gray-200" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white/95 backdrop-blur-lg border border-white/20 shadow-xl rounded-xl p-2 min-w-[200px]">
-              <DropdownMenuItem className="hover:bg-pink-50 rounded-lg px-4 py-3 cursor-pointer">
-                <span className="text-gray-800 font-medium">AI Talent Sourcing</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-pink-50 rounded-lg px-4 py-3 cursor-pointer">
-                <span className="text-gray-800 font-medium">Smart Hiring</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-pink-50 rounded-lg px-4 py-3 cursor-pointer">
-                <span className="text-gray-800 font-medium">Talent Verification</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-pink-50 rounded-lg px-4 py-3 cursor-pointer">
-                <span className="text-gray-800 font-medium">HR Analytics</span>
-              </DropdownMenuItem>
+            <DropdownMenuContent 
+              className="p-0 border-0 bg-transparent shadow-none"
+              sideOffset={8}
+              align="center"
+            >
+              <div className="bg-black/60 backdrop-blur-[10px] border border-white/10 rounded-2xl shadow-2xl min-w-[800px] overflow-hidden">
+                <div className="flex">
+                  {/* Banner Section */}
+                  <div className="w-1/3 relative bg-gradient-to-br from-pink-500/20 to-purple-600/20">
+                    <div className="absolute inset-0 bg-black/40"></div>
+                    <img 
+                      src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop"
+                      alt="Solutions Banner"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+                      <h3 className="text-2xl font-bold text-white mb-2">AI-Powered Solutions</h3>
+                      <p className="text-gray-200 text-sm">Transform your hiring and verification processes</p>
+                    </div>
+                  </div>
+                  
+                  {/* Solutions Content */}
+                  <div className="w-2/3 p-8">
+                    <div className="grid grid-cols-2 gap-8">
+                      {/* Hiring Solutions */}
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-4 flex items-center">
+                          <Users className="w-5 h-5 mr-2 text-pink-400" />
+                          Hiring Solutions
+                        </h4>
+                        <div className="space-y-3">
+                          <a href="#" className="flex items-center p-3 rounded-lg hover:bg-white/10 transition-colors group">
+                            <Search className="w-4 h-4 mr-3 text-gray-300 group-hover:text-pink-400" />
+                            <span className="text-gray-200 group-hover:text-white font-medium">Job Market Place</span>
+                          </a>
+                          <a href="#" className="flex items-center p-3 rounded-lg hover:bg-white/10 transition-colors group">
+                            <Bot className="w-4 h-4 mr-3 text-gray-300 group-hover:text-pink-400" />
+                            <span className="text-gray-200 group-hover:text-white font-medium">AI Assisted ATS</span>
+                          </a>
+                          <a href="#" className="flex items-center p-3 rounded-lg hover:bg-white/10 transition-colors group">
+                            <CheckCircle className="w-4 h-4 mr-3 text-gray-300 group-hover:text-pink-400" />
+                            <span className="text-gray-200 group-hover:text-white font-medium">Guaranteed Hiring Program</span>
+                          </a>
+                          <a href="#" className="flex items-center p-3 rounded-lg hover:bg-white/10 transition-colors group">
+                            <Users className="w-4 h-4 mr-3 text-gray-300 group-hover:text-pink-400" />
+                            <span className="text-gray-200 group-hover:text-white font-medium">AI Recruiter Agent</span>
+                          </a>
+                        </div>
+                      </div>
+                      
+                      {/* Verification Solutions */}
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-4 flex items-center">
+                          <Shield className="w-5 h-5 mr-2 text-pink-400" />
+                          Verification Solutions
+                        </h4>
+                        <div className="space-y-3">
+                          <a href="#" className="flex items-center p-3 rounded-lg hover:bg-white/10 transition-colors group">
+                            <Shield className="w-4 h-4 mr-3 text-gray-300 group-hover:text-pink-400" />
+                            <span className="text-gray-200 group-hover:text-white font-medium">AI-Powered BGV</span>
+                          </a>
+                          <a href="#" className="flex items-center p-3 rounded-lg hover:bg-white/10 transition-colors group">
+                            <Zap className="w-4 h-4 mr-3 text-gray-300 group-hover:text-pink-400" />
+                            <span className="text-gray-200 group-hover:text-white font-medium">Tailored to Outcomes</span>
+                          </a>
+                          <a href="#" className="flex items-center p-3 rounded-lg hover:bg-white/10 transition-colors group">
+                            <Database className="w-4 h-4 mr-3 text-gray-300 group-hover:text-pink-400" />
+                            <span className="text-gray-200 group-hover:text-white font-medium">Easy Integration with HRMS</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </DropdownMenuContent>
           </DropdownMenu>
           <Link 
