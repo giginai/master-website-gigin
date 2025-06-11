@@ -8,6 +8,7 @@ import MetricsSection from "@/components/MetricsSection";
 import TrustSection from "@/components/TrustSection";
 import ProofSection from "@/components/ProofSection";
 import NewsSection from "@/components/NewsSection";
+import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
@@ -55,6 +56,7 @@ const Index = () => {
         <MetricsSection />
         <ProofSection />
         <NewsSection />
+        <FAQSection />
         <CTASection />
         <Footer />
       </div>
