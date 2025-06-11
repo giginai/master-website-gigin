@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -35,7 +36,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
             to="/" 
             className={`font-medium transition-colors px-4 py-2 rounded-lg ${
               currentPage === "home" 
-                ? "text-pink-500 bg-white border border-pink-400/20" 
+                ? "text-pink-500 bg-white/80 border border-pink-400/20" 
                 : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
             }`}
           >
@@ -45,7 +46,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
             to="/about-us" 
             className={`font-medium transition-colors px-4 py-2 rounded-lg ${
               currentPage === "about-us" 
-                ? "text-pink-500 bg-white border border-pink-400/20" 
+                ? "text-pink-500 bg-white/80 border border-pink-400/20" 
                 : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
             }`}
           >
@@ -55,7 +56,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
             <DropdownMenuTrigger asChild>
               <button className={`font-medium transition-colors flex items-center px-4 py-2 rounded-lg ${
                 isDropdownOpen || isHiringSolutionsPage
-                  ? "text-pink-500 bg-white border border-pink-400/20"
+                  ? "text-pink-500 bg-white/80 border border-pink-400/20"
                   : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
               }`}>
                 Solutions
@@ -138,7 +139,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
             to="/why-gigin" 
             className={`font-medium transition-colors px-4 py-2 rounded-lg ${
               currentPage === "why-gigin" 
-                ? "text-pink-500 bg-white border border-pink-400/20" 
+                ? "text-pink-500 bg-white/80 border border-pink-400/20" 
                 : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
             }`}
           >

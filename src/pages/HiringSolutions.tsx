@@ -36,7 +36,7 @@ const HiringSolutions = () => {
     {
       title: "Automated Screening",
       description: "AI-powered resume screening and candidate ranking to save time and improve quality. Our advanced algorithms analyze resumes instantly, identifying top candidates and reducing manual review time by 80%.",
-      image: "photo-1488590528505-98d2b5aba04b",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
       trustIndicators: ["95% Accuracy", "80% Time Saved", "500+ Companies Trust"]
     },
     {
@@ -75,7 +75,7 @@ const HiringSolutions = () => {
     {
       title: "Mass Recruitment Campaigns",
       description: "Launch large-scale recruitment drives with automated candidate sourcing and screening",
-      image: "photo-1518770660439-4636190af475"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Campus Hiring Programs",
@@ -97,35 +97,35 @@ const HiringSolutions = () => {
   const aiAgentCards = [
     {
       title: "Intelligent Candidate Matching",
-      description: "Our AI agents analyze job requirements and candidate profiles to find perfect matches automatically",
-      image: "photo-1461749280684-dccba630e2f6",
+      description: "Our AI agents analyze job requirements and candidate profiles to find perfect matches automatically. Using advanced machine learning algorithms, we ensure the highest quality matches while reducing time-to-hire significantly.",
+      image: "https://images.unsplash.com/photo-1573165231977-3f0e27806045?auto=format&fit=crop&w=800&q=80",
       trustMarkers: ["ISO 27001 Certified", "99.9% Uptime"]
     },
     {
       title: "Automated Outreach",
-      description: "AI-powered personalized messaging to engage candidates at scale with human-like communication",
+      description: "AI-powered personalized messaging to engage candidates at scale with human-like communication. Our system crafts personalized messages based on candidate profiles and preferences, improving response rates dramatically.",
       image: "photo-1519389950473-47ba0277781c",
       trustMarkers: ["GDPR Compliant", "Enterprise Grade"]
     },
     {
       title: "Predictive Analytics",
-      description: "Predict candidate success and retention rates using advanced machine learning algorithms",
+      description: "Predict candidate success and retention rates using advanced machine learning algorithms. Our models analyze historical data and performance indicators to forecast long-term employee success and cultural fit.",
       image: "photo-1581091226825-a6a2a5aee158",
       trustMarkers: ["ML Powered", "Data Secure"]
     },
     {
       title: "Continuous Learning",
-      description: "AI agents that learn from your hiring decisions to improve recommendations over time",
+      description: "AI agents that learn from your hiring decisions to improve recommendations over time. The system continuously refines its understanding of your preferences and requirements to provide increasingly accurate matches.",
       image: "photo-1486312338219-ce68d2c6f44d",
       trustMarkers: ["Self-Improving", "Trusted by 1000+"]
     }
   ];
 
-  // Auto-switch tabs every 3 seconds
+  // Auto-switch tabs every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTab((prev) => (prev + 1) % atsFeatures.length);
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -169,12 +169,12 @@ const HiringSolutions = () => {
             screens, and hires top talent faster than traditional methods while<br />
             maintaining the highest quality standards.
           </p>
-          <Button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium mb-8 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300">
+          <Button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium mb-12 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300">
             Start Hiring Smarter
           </Button>
 
           {/* Hero Dashboard Image */}
-          <div className="relative max-w-4xl mx-auto">
+          <div className="relative max-w-3xl mx-auto">
             <div className="relative overflow-hidden rounded-t-3xl group">
               <img 
                 src="/lovable-uploads/31c4796a-7366-4dc3-8833-cc1ae604f052.png" 
@@ -209,7 +209,7 @@ const HiringSolutions = () => {
               <Card key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
                 <CardHeader className="text-center p-6">
                   <div className="flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-6xl">{feature.icon}</span>
+                    <span className="text-8xl filter drop-shadow-lg">{feature.icon}</span>
                   </div>
                   <CardTitle className="text-lg font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors">
                     {feature.title}
@@ -263,12 +263,12 @@ const HiringSolutions = () => {
           {/* Interactive Tabs */}
           <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
             {/* Tab Navigation */}
-            <div className="flex overflow-x-auto border-b border-gray-200">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 border-b border-gray-200">
               {atsFeatures.map((feature, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentTab(index)}
-                  className={`flex-1 min-w-[150px] p-4 text-sm font-medium transition-all duration-300 ${
+                  className={`p-4 text-xs lg:text-sm font-medium transition-all duration-300 ${
                     currentTab === index
                       ? 'bg-pink-500 text-white border-b-2 border-pink-500'
                       : 'text-gray-600 hover:text-pink-600 hover:bg-pink-50'
@@ -300,7 +300,7 @@ const HiringSolutions = () => {
                 </div>
                 <div className="relative">
                   <img 
-                    src={`https://images.unsplash.com/${atsFeatures[currentTab].image}?auto=format&fit=crop&w=800&q=80`}
+                    src={atsFeatures[currentTab].image.startsWith('http') ? atsFeatures[currentTab].image : `https://images.unsplash.com/${atsFeatures[currentTab].image}?auto=format&fit=crop&w=800&q=80`}
                     alt={atsFeatures[currentTab].title}
                     className="w-full h-80 object-cover rounded-2xl shadow-lg"
                   />
@@ -333,7 +333,7 @@ const HiringSolutions = () => {
               <Card key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group overflow-hidden">
                 <div className="relative h-48">
                   <img 
-                    src={`https://images.unsplash.com/${card.image}?auto=format&fit=crop&w=800&q=80`}
+                    src={card.image.startsWith('http') ? card.image : `https://images.unsplash.com/${card.image}?auto=format&fit=crop&w=800&q=80`}
                     alt={card.title}
                     className="w-full h-full object-cover"
                   />
@@ -372,7 +372,7 @@ const HiringSolutions = () => {
           </div>
 
           {/* Carousel */}
-          <div className="relative max-w-3xl mx-auto px-20">
+          <div className="relative max-w-4xl mx-auto px-16">
             <div className="overflow-hidden rounded-3xl">
               <div 
                 className="flex transition-transform duration-500 ease-in-out"
@@ -381,7 +381,7 @@ const HiringSolutions = () => {
                 {aiAgentCards.map((card, index) => (
                   <div key={index} className="w-full flex-shrink-0">
                     <div className="bg-white rounded-3xl shadow-2xl overflow-hidden mx-2">
-                      <div className="grid lg:grid-cols-2 gap-0 h-auto min-h-[400px]">
+                      <div className="grid lg:grid-cols-2 gap-0 min-h-[450px]">
                         <div className="p-6 lg:p-8 flex flex-col justify-center">
                           <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-4">
                             {card.title}
@@ -398,9 +398,9 @@ const HiringSolutions = () => {
                             ))}
                           </div>
                         </div>
-                        <div className="relative min-h-[200px] lg:min-h-[400px]">
+                        <div className="relative min-h-[200px] lg:min-h-[450px]">
                           <img 
-                            src={`https://images.unsplash.com/${card.image}?auto=format&fit=crop&w=800&q=80`}
+                            src={card.image.startsWith('http') ? card.image : `https://images.unsplash.com/${card.image}?auto=format&fit=crop&w=800&q=80`}
                             alt={card.title}
                             className="w-full h-full object-cover"
                           />
@@ -464,7 +464,7 @@ const HiringSolutions = () => {
           </div>
 
           {/* CTA Dashboard Image */}
-          <div className="relative max-w-4xl mx-auto">
+          <div className="relative max-w-3xl mx-auto">
             <div className="overflow-hidden rounded-t-3xl">
               <img 
                 src="/lovable-uploads/31c4796a-7366-4dc3-8833-cc1ae604f052.png"
