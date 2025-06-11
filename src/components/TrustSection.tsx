@@ -1,0 +1,66 @@
+
+const TrustSection = () => {
+  const features = [
+    {
+      title: "One Stop Solution",
+      description: "One seamless workflow for sourcing, hiring & background verification.",
+      icon: "🎯"
+    },
+    {
+      title: "Empower with AI", 
+      description: "AI-powered insights to support and enhance human decisions.",
+      icon: "🤖"
+    },
+    {
+      title: "Fast & Reliable",
+      description: "Faster hiring with built-in trust & compliance.",
+      icon: "⚡"
+    },
+    {
+      title: "Candidate-Centric Hiring",
+      description: "Personalized candidate experiences at scale.",
+      icon: "👥"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <div className="mb-4">
+            <span className="inline-flex items-center bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
+              🟢 Trust
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Why Do Recruiters Trust Gigin?
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            More than automation—our AI-powered hiring & verification enhances decision-making, ensuring speed, trust, and human-first intelligence.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {features.map((feature, index) => (
+            <div 
+              key={index}
+              className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 group"
+            >
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default TrustSection;

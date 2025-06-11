@@ -3,6 +3,13 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import LogoCarousel from "@/components/LogoCarousel";
 import FeaturesSection from "@/components/FeaturesSection";
+import TestimonialSection from "@/components/TestimonialSection";
+import MetricsSection from "@/components/MetricsSection";
+import TrustSection from "@/components/TrustSection";
+import ProofSection from "@/components/ProofSection";
+import NewsSection from "@/components/NewsSection";
+import CTASection from "@/components/CTASection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -39,6 +46,17 @@ const Index = () => {
       {/* Features Section with white background */}
       <div className="relative z-10">
         <FeaturesSection />
+      </div>
+
+      {/* New Sections */}
+      <div className="relative z-10">
+        <TestimonialSection />
+        <MetricsSection />
+        <TrustSection />
+        <ProofSection />
+        <NewsSection />
+        <CTASection />
+        <Footer />
       </div>
     </div>
   );
