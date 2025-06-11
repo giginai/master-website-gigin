@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -156,7 +155,7 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <Header currentPage="blog" />
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-gray-900 via-black to-gray-800">
@@ -328,7 +327,7 @@ const Blog = () => {
               placeholder="Enter your email"
               className="flex-1 bg-white"
             />
-            <Button className="bg-white text-gray-800 hover:bg-gray-100 font-medium">
+            <Button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg font-medium">
               Subscribe
             </Button>
           </div>
