@@ -4,22 +4,22 @@ const NewsSection = () => {
     {
       title: "Why Gig Talent is Essential for Indian Startups",
       author: "Gigin Team",
-      image: "/lovable-uploads/56fc52e0-a841-4b17-a8ac-e498fe418fbd.png"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Pros And Cons Of Incentive-Based Pay in India's Gig Economy", 
       author: "Gigin Team",
-      image: "/lovable-uploads/6ad32495-912d-4b47-bc5b-6904cc4ff79b.png"
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Tech Solutions to Fight The Job Scams For The Informal",
       author: "Gigin Team", 
-      image: "/lovable-uploads/71021659-977e-472c-9b8e-227ca8a6bff4.png"
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Interview With Mahesh Kumar – Sharing Insights On Gig Economy",
       author: "Gigin Team",
-      image: "/lovable-uploads/baa91ac4-bacf-43fb-81e7-7fd1796bd338.png"
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
     }
   ];
 

@@ -222,7 +222,7 @@ const HiringSolutions = () => {
               <Card key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
                 <CardHeader className="text-center p-6">
                   <div className="flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-8xl filter drop-shadow-lg">{feature.icon}</span>
+                    <span className="text-7xl filter drop-shadow-lg">{feature.icon}</span>
                   </div>
                   <CardTitle className="text-lg font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors">
                     {feature.title}
@@ -289,14 +289,13 @@ const HiringSolutions = () => {
                 >
                   {feature.title}
                   {currentTab === index && (
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-pink-300">
-                      <Progress 
-                        value={progress} 
-                        className="h-1 bg-transparent"
+                    <div className="absolute bottom-0 right-0 w-1 h-full bg-pink-400">
+                      <div 
+                        className="bg-white transition-all duration-100 ease-linear"
                         style={{ 
-                          '--progress-background': 'rgb(236 72 153)',
-                          background: 'transparent'
-                        } as React.CSSProperties}
+                          height: `${progress}%`,
+                          width: '100%'
+                        }}
                       />
                     </div>
                   )}
@@ -505,3 +504,5 @@ const HiringSolutions = () => {
 };
 
 export default HiringSolutions;
+
+</edits_to_apply>
