@@ -9,7 +9,11 @@ import {
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+interface HeaderProps {
+  currentPage?: string;
+}
+
+const Header = ({ currentPage = "home" }: HeaderProps) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
       <nav className="max-w-7xl mx-auto flex items-center justify-between rounded-2xl px-8 py-4 shadow-xl bg-black/60 backdrop-blur-[10px] border border-white/10">
@@ -24,10 +28,24 @@ const Header = () => {
         </div>
         
         <div className="hidden md:flex items-center space-x-2">
-          <Link to="/" className="text-white font-medium hover:text-pink-300 transition-colors px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-pink-400/20">
+          <Link 
+            to="/" 
+            className={`font-medium transition-colors px-4 py-2 rounded-lg ${
+              currentPage === "home" 
+                ? "text-white bg-white/10 backdrop-blur-sm border border-pink-400/20" 
+                : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
+            }`}
+          >
             Home
           </Link>
-          <Link to="/about-us" className="text-gray-200 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
+          <Link 
+            to="/about-us" 
+            className={`font-medium transition-colors px-4 py-2 rounded-lg ${
+              currentPage === "about-us" 
+                ? "text-white bg-white/10 backdrop-blur-sm border border-pink-400/20" 
+                : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
+            }`}
+          >
             About Us
           </Link>
           <DropdownMenu>

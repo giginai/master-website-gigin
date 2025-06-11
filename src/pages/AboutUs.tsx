@@ -17,7 +17,7 @@ const AboutUs = () => {
         <div className="absolute inset-0 bg-black/30"></div>
       </div>
 
-      <Header />
+      <Header currentPage="about-us" />
       
       {/* Hero Section */}
       <section className="relative z-10 pt-32 pb-20">
@@ -33,7 +33,7 @@ const AboutUs = () => {
           {/* Team Image */}
           <div className="relative max-w-4xl mx-auto mb-16">
             <img 
-              src="/lovable-uploads/37688044-5bb1-4b4d-a13f-f0443466b568.png"
+              src="/lovable-uploads/87b15fdb-bc3f-4754-a553-2f3e9cf9b7fe.png"
               alt="Gigin Team - Diverse professionals representing our mission"
               className="w-full h-auto object-contain rounded-2xl"
             />
