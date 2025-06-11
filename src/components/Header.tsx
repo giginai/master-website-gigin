@@ -70,9 +70,16 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <a href="#" className="text-gray-200 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
+          <Link 
+            to="/why-gigin" 
+            className={`font-medium transition-colors px-4 py-2 rounded-lg ${
+              currentPage === "why-gigin" 
+                ? "text-white bg-white/10 backdrop-blur-sm border border-pink-400/20" 
+                : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
+            }`}
+          >
             Why Gigin?
-          </a>
+          </Link>
           <a href="#" className="text-gray-200 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
             Blogs
           </a>
