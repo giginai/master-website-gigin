@@ -1,13 +1,14 @@
-
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { Search, Bot, CheckCircle, Users, Zap, Database, Clock, Target, BarChart3, Shield, Star, ArrowRight, ChevronLeft, ChevronRight, Award, Verified } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const HiringSolutions = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentTab, setCurrentTab] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const jobMarketFeatures = [
     {
@@ -121,14 +122,26 @@ const HiringSolutions = () => {
     }
   ];
 
-  // Auto-switch tabs every 5 seconds
+  // Auto-switch tabs every 5 seconds with progress bar
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTab((prev) => (prev + 1) % atsFeatures.length);
-    }, 5000);
+    const progressInterval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          setCurrentTab((prevTab) => (prevTab + 1) % atsFeatures.length);
+          return 0;
+        }
+        return prev + 2; // Increment by 2% every 100ms for smooth animation
+      });
+    }, 100);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(progressInterval);
   }, []);
+
+  // Reset progress when tab is manually changed
+  const handleTabChange = (index: number) => {
+    setCurrentTab(index);
+    setProgress(0);
+  };
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % aiAgentCards.length);
@@ -267,14 +280,26 @@ const HiringSolutions = () => {
               {atsFeatures.map((feature, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentTab(index)}
-                  className={`p-4 text-xs lg:text-sm font-medium transition-all duration-300 ${
+                  onClick={() => handleTabChange(index)}
+                  className={`relative p-4 text-xs lg:text-sm font-medium transition-all duration-300 ${
                     currentTab === index
                       ? 'bg-pink-500 text-white border-b-2 border-pink-500'
                       : 'text-gray-600 hover:text-pink-600 hover:bg-pink-50'
                   }`}
                 >
                   {feature.title}
+                  {currentTab === index && (
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-pink-300">
+                      <Progress 
+                        value={progress} 
+                        className="h-1 bg-transparent"
+                        style={{ 
+                          '--progress-background': 'rgb(236 72 153)',
+                          background: 'transparent'
+                        } as React.CSSProperties}
+                      />
+                    </div>
+                  )}
                 </button>
               ))}
             </div>
@@ -480,3 +505,5 @@ const HiringSolutions = () => {
 };
 
 export default HiringSolutions;
+
+</edits_to_apply>
