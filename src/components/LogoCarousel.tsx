@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from "react";
 
 const LogoCarousel = () => {
@@ -35,11 +34,11 @@ const LogoCarousel = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="pt-16 pb-8 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h3 className="text-2xl font-semibold text-gray-600 mb-2">
-            Trusted by Leading Companies
+          <h3 className="text-xl font-semibold text-gray-600 mb-2">
+            Trusted by 100+ Leading Companies
           </h3>
         </div>
         
