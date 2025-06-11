@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronDown } from "lucide-react";
 
 const WhyGigin = () => {
   const accordionItems = [
@@ -70,7 +69,7 @@ const WhyGigin = () => {
       <Header currentPage="why-gigin" />
       
       {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20">
+      <section className="relative z-10 pt-32 pb-0">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
             <span className="text-white">✦</span>
@@ -90,13 +89,13 @@ const WhyGigin = () => {
             Get Started
           </Button>
 
-          {/* Hero Dashboard Image */}
+          {/* Hero Dashboard Image - No gap at bottom */}
           <div className="relative max-w-6xl mx-auto">
-            <div className="relative h-96 md:h-[450px] lg:h-[500px] overflow-hidden rounded-t-3xl group">
+            <div className="relative overflow-hidden rounded-t-3xl group">
               <img 
                 src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png" 
                 alt="Gigin AI-Driven Hiring Platform" 
-                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                className="w-full h-auto object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
               />
             </div>
           </div>
@@ -120,26 +119,35 @@ const WhyGigin = () => {
             </p>
           </div>
 
-          {/* Accordion Section */}
+          {/* Accordion Section with improved styling */}
           <Accordion type="single" collapsible className="w-full max-w-6xl mx-auto">
             {accordionItems.map((item, index) => (
-              <AccordionItem key={item.id} value={item.id} className="border-b border-gray-200 mb-6">
-                <AccordionTrigger className="hover:no-underline group py-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+              <AccordionItem key={item.id} value={item.id} className="border border-gray-200 rounded-2xl mb-6 bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+                <AccordionTrigger className="hover:no-underline group py-8 px-8 [&[data-state=open]>div>svg]:rotate-180">
+                  <div className="flex items-center space-x-6 w-full">
+                    <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
                       {index + 1}
                     </div>
-                    <h3 className="text-left text-xl font-bold text-gray-900 group-hover:text-pink-600 transition-colors">
+                    <h3 className="text-left text-xl md:text-2xl font-bold text-gray-900 group-hover:text-pink-600 transition-colors flex-1">
                       {item.title}
                     </h3>
+                    <div className="w-8 h-8 flex items-center justify-center">
+                      <svg 
+                        className="h-5 w-5 text-gray-500 group-hover:text-pink-600 transition-all duration-300" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
                   </div>
-                  <ChevronDown className="h-5 w-5 text-gray-500 group-hover:text-pink-600 transition-colors" />
                 </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div>
-                      <h4 className="text-2xl font-bold text-gray-900 mb-4">{item.content}</h4>
-                      <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                <AccordionContent className="px-8 pb-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-4">
+                    <div className="space-y-4">
+                      <h4 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">{item.content}</h4>
+                      <p className="text-gray-600 leading-relaxed text-lg">{item.description}</p>
                     </div>
                     <div className="relative">
                       <img 
@@ -194,8 +202,8 @@ const WhyGigin = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative z-10 py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-pink-900">
+      {/* CTA Section with darker gradient and no bounding box */}
+      <section className="relative z-10 py-20 bg-gradient-to-br from-gray-900 via-black to-gray-800">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
             <span className="text-white">✦</span>
@@ -213,15 +221,13 @@ const WhyGigin = () => {
             Experience Gigin Today
           </Button>
 
-          {/* CTA Dashboard Image */}
+          {/* CTA Dashboard Image without bounding box */}
           <div className="relative max-w-6xl mx-auto mt-12">
-            <div className="relative">
-              <img 
-                src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png"
-                alt="Gigin Platform Dashboard"
-                className="w-full max-w-5xl h-auto object-contain rounded-2xl shadow-2xl mx-auto"
-              />
-            </div>
+            <img 
+              src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png"
+              alt="Gigin Platform Dashboard"
+              className="w-full h-auto object-contain mx-auto"
+            />
           </div>
         </div>
       </section>
