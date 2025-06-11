@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from "react";
 
 const LogoCarousel = () => {
@@ -51,7 +50,7 @@ const LogoCarousel = () => {
             {logos.map((logo) => (
               <div 
                 key={logo.id} 
-                className="flex items-center justify-center min-w-[320px] h-44 p-8 flex-shrink-0"
+                className="flex items-center justify-center min-w-[280px] h-36 p-8 flex-shrink-0"
               >
                 <img 
                   src={logo.src} 
