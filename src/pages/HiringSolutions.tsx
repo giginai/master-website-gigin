@@ -283,18 +283,17 @@ const HiringSolutions = () => {
                   onClick={() => handleTabChange(index)}
                   className={`relative p-4 text-xs lg:text-sm font-medium transition-all duration-300 ${
                     currentTab === index
-                      ? 'bg-pink-500 text-white border-b-2 border-pink-500'
+                      ? 'bg-pink-500 text-white'
                       : 'text-gray-600 hover:text-pink-600 hover:bg-pink-50'
                   }`}
                 >
                   {feature.title}
                   {currentTab === index && (
-                    <div className="absolute bottom-0 right-0 w-1 h-full bg-pink-400">
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-pink-400">
                       <div 
-                        className="bg-white transition-all duration-100 ease-linear"
+                        className="bg-white h-full transition-all duration-100 ease-linear"
                         style={{ 
-                          height: `${progress}%`,
-                          width: '100%'
+                          width: `${progress}%`
                         }}
                       />
                     </div>
