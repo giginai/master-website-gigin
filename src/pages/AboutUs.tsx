@@ -2,7 +2,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 
 const AboutUs = () => {
@@ -44,10 +44,10 @@ const AboutUs = () => {
       {/* Hero Section */}
       <section className="relative z-10 pt-32 pb-0">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center bg-black/80 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-gray-300">
-            <span className="text-gray-300">✦</span>
+          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
+            <span className="text-white">✦</span>
             <span className="text-white font-medium mx-2">About Us</span>
-            <span className="text-gray-300">✦</span>
+            <span className="text-white">✦</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-8">
             On A Mission To Better<br />
@@ -70,8 +70,8 @@ const AboutUs = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Our Mission */}
-            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-              <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
+              <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <div className="w-6 h-6 bg-white rounded-full"></div>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
@@ -81,8 +81,8 @@ const AboutUs = () => {
             </div>
 
             {/* Our Vision */}
-            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-              <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
+              <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <div className="w-6 h-6 bg-white rounded-full"></div>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
@@ -92,8 +92,8 @@ const AboutUs = () => {
             </div>
 
             {/* Our Goals */}
-            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-              <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
+              <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <div className="w-6 h-6 bg-white rounded-full"></div>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Goals</h3>
@@ -109,8 +109,10 @@ const AboutUs = () => {
       <section className="relative z-10 py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-black text-gray-300 px-6 py-3 rounded-full text-sm font-medium mb-6 border border-gray-400">
-              ✦ Team members ✦
+            <div className="inline-flex items-center bg-gray-100 text-gray-700 border border-gray-200 rounded-full px-4 py-2 mb-6">
+              <span>✦</span>
+              <span className="font-medium mx-2">Team members</span>
+              <span>✦</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
               Meet Our<br />
@@ -170,8 +172,10 @@ const AboutUs = () => {
       <section className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-black text-gray-300 px-6 py-3 rounded-full text-sm font-medium mb-6 border border-gray-400">
-              ✦ Goals ✦
+            <div className="inline-flex items-center bg-gray-100 text-gray-700 border border-gray-200 rounded-full px-4 py-2 mb-6">
+              <span>✦</span>
+              <span className="font-medium mx-2">Goals</span>
+              <span>✦</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
               Gigin's Core Values
@@ -181,39 +185,53 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <Tabs value={activeValueTab} onValueChange={setActiveValueTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 bg-gray-100 p-1 rounded-xl mb-12 h-auto">
-              <TabsTrigger 
-                value="excellence" 
-                className="rounded-lg py-4 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1"
-              >
-                Customer Excellence
-              </TabsTrigger>
-              <TabsTrigger 
-                value="teams" 
-                className="rounded-lg py-4 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1"
-              >
-                Strong Teams
-              </TabsTrigger>
-              <TabsTrigger 
-                value="trust" 
-                className="rounded-lg py-4 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1"
-              >
-                Trust & Growth
-              </TabsTrigger>
-            </TabsList>
+          {/* New Interactive Tab Design */}
+          <div className="w-full">
+            {/* Tab Navigation */}
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              {coreValues.map((value) => (
+                <button
+                  key={value.id}
+                  onClick={() => setActiveValueTab(value.id)}
+                  className={`px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 ${
+                    activeValueTab === value.id
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md'
+                  }`}
+                >
+                  {value.id === 'excellence' && 'Customer Excellence'}
+                  {value.id === 'teams' && 'Strong Teams'}
+                  {value.id === 'trust' && 'Trust & Growth'}
+                </button>
+              ))}
+            </div>
 
-            {coreValues.map((value) => (
-              <TabsContent key={value.id} value={value.id} className="mt-0">
-                <div className="bg-white rounded-2xl p-12 text-center shadow-lg border border-gray-100 max-w-4xl mx-auto">
-                  <h3 className="text-3xl font-bold text-gray-900 mb-8">{value.title}</h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    {value.description}
-                  </p>
+            {/* Tab Content */}
+            <div className="relative min-h-[300px]">
+              {coreValues.map((value) => (
+                <div
+                  key={value.id}
+                  className={`absolute inset-0 transition-all duration-500 ${
+                    activeValueTab === value.id
+                      ? 'opacity-100 transform translate-y-0'
+                      : 'opacity-0 transform translate-y-8 pointer-events-none'
+                  }`}
+                >
+                  <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-12 text-center shadow-xl border border-gray-100 max-w-4xl mx-auto">
+                    <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-8">
+                      <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+                      </div>
+                    </div>
+                    <h3 className="text-3xl font-bold text-gray-900 mb-6">{value.title}</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      {value.description}
+                    </p>
+                  </div>
                 </div>
-              </TabsContent>
-            ))}
-          </Tabs>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
