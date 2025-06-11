@@ -4,8 +4,16 @@ import { Button } from "@/components/ui/button";
 const Hero = () => {
   return (
     <div className="relative z-10 px-6 pt-32 pb-20 min-h-screen flex items-center">
+      {/* Hero-specific background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/lovable-uploads/f0acdf04-0015-4664-af62-d43a84908fcd.png)'
+        }}
+      ></div>
+      
       {/* Black blur overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-6">
