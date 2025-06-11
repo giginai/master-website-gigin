@@ -3,12 +3,17 @@ import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-purple-400 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-48 h-48 bg-blue-400 rounded-full filter blur-3xl"></div>
-      </div>
+    <section className="py-20 relative overflow-hidden">
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/lovable-uploads/f0acdf04-0015-4664-af62-d43a84908fcd.png)'
+        }}
+      ></div>
+      
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/70"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">

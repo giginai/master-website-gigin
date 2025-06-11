@@ -28,9 +28,11 @@ const TrustSection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="mb-4">
-            <span className="inline-flex items-center bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
-              🟢 Trust
-            </span>
+            <div className="inline-flex items-center bg-green-100 text-green-800 rounded-full px-4 py-2">
+              <span>✦</span>
+              <span className="font-medium mx-2">Trust</span>
+              <span>✦</span>
+            </div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Why Do Recruiters Trust Gigin?

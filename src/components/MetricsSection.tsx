@@ -8,19 +8,26 @@ const MetricsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-blue-400 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-48 h-48 bg-purple-400 rounded-full filter blur-3xl"></div>
-      </div>
+    <section className="py-20 relative overflow-hidden">
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/lovable-uploads/f0acdf04-0015-4664-af62-d43a84908fcd.png)'
+        }}
+      ></div>
+      
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/70"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <div className="mb-4">
-            <span className="inline-flex items-center bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
-              🟢 Metrics
-            </span>
+            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+              <span className="text-white">✦</span>
+              <span className="text-white font-medium mx-2">Metrics</span>
+              <span className="text-white">✦</span>
+            </div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             How Does Gigin Make Your<br />Life Better?
