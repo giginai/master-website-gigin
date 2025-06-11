@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <div className="relative z-10 px-6 pt-32 pb-20 min-h-screen flex items-center">
+    <div className="relative z-10 px-6 pt-32 pb-0 min-h-screen flex items-center">
       {/* Hero-specific background image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -43,10 +43,10 @@ const Hero = () => {
           </Button>
         </div>
 
-        {/* Hero Image - Without glow effects */}
-        <div className="relative max-w-6xl mx-auto">
+        {/* Hero Image - Wider and seamless */}
+        <div className="relative w-full">
           <div className="relative">
-            <div className="relative h-96 md:h-[450px] lg:h-[500px] overflow-hidden rounded-3xl">
+            <div className="relative h-96 md:h-[450px] lg:h-[500px] overflow-hidden rounded-t-3xl">
               <img 
                 src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png" 
                 alt="Gigin Dashboard Interface" 

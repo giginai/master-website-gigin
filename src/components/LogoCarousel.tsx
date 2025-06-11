@@ -47,11 +47,11 @@ const LogoCarousel = () => {
           ref={scrollerRef}
           className="scroller overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]"
         >
-          <div className="scroller-inner flex gap-12 animate-scroll hover:[animation-play-state:paused]">
+          <div className="scroller-inner flex gap-16 animate-scroll hover:[animation-play-state:paused]">
             {logos.map((logo) => (
               <div 
                 key={logo.id} 
-                className="flex items-center justify-center min-w-[220px] h-28 p-6 flex-shrink-0"
+                className="flex items-center justify-center min-w-[280px] h-36 p-8 flex-shrink-0"
               >
                 <img 
                   src={logo.src} 

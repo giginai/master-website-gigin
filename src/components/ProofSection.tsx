@@ -16,23 +16,23 @@ const ProofSection = () => {
           </h2>
           
           {/* Updated Visual with uploaded image */}
-          <div className="relative max-w-4xl mx-auto mb-8">
+          <div className="relative max-w-4xl mx-auto mb-4">
             <div className="rounded-3xl p-8 relative overflow-hidden">
               <img 
-                src="/lovable-uploads/d9a0276e-c9e1-4ccd-b449-78ed1128fa37.png"
-                alt="Diverse professionals representing trust"
+                src="/lovable-uploads/2274d65d-fe67-4d86-85f2-8259cc48e8aa.png"
+                alt="Dashboard interface showing verification and hiring features"
                 className="w-full h-64 object-cover rounded-3xl"
               />
             </div>
           </div>
         </div>
 
-        {/* Stats Grid with hover animations */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Stats Grid - Plain style without cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+              className="text-center hover:scale-105 transition-all duration-300"
             >
               <div className="text-3xl md:text-4xl font-bold mb-2 text-pink-500">
                 {stat.value}
