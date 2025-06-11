@@ -51,8 +51,8 @@ const Index = () => {
       {/* New Sections */}
       <div className="relative z-10">
         <TestimonialSection />
-        <MetricsSection />
         <TrustSection />
+        <MetricsSection />
         <ProofSection />
         <NewsSection />
         <CTASection />
