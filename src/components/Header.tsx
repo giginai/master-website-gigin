@@ -7,26 +7,29 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
       <nav className="max-w-7xl mx-auto flex items-center justify-between rounded-2xl px-8 py-4 shadow-xl bg-black/60 backdrop-blur-[10px] border border-white/10">
         <div className="flex items-center">
-          <img 
-            src="/lovable-uploads/0a41f02f-6d14-4ba4-9553-29cc465c0d1b.png" 
-            alt="Gigin Logo" 
-            className="h-8 w-auto"
-          />
+          <Link to="/">
+            <img 
+              src="/lovable-uploads/0a41f02f-6d14-4ba4-9553-29cc465c0d1b.png" 
+              alt="Gigin Logo" 
+              className="h-8 w-auto"
+            />
+          </Link>
         </div>
         
         <div className="hidden md:flex items-center space-x-2">
-          <a href="#" className="text-white font-medium hover:text-pink-300 transition-colors px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-pink-400/20">
+          <Link to="/" className="text-white font-medium hover:text-pink-300 transition-colors px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-pink-400/20">
             Home
-          </a>
-          <a href="#" className="text-gray-200 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
+          </Link>
+          <Link to="/about-us" className="text-gray-200 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
             About Us
-          </a>
+          </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="text-gray-200 hover:text-white transition-colors flex items-center px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
