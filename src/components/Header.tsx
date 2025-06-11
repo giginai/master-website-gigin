@@ -145,9 +145,16 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
           >
             Why Gigin?
           </Link>
-          <a href="#" className="text-gray-200 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/10 hover:backdrop-blur-sm">
+          <Link 
+            to="/blog" 
+            className={`font-medium transition-colors px-4 py-2 rounded-lg ${
+              currentPage === "blogs" 
+                ? "text-white bg-white/10 border border-pink-400/20" 
+                : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
+            }`}
+          >
             Blogs
-          </a>
+          </Link>
         </div>
 
         <div className="flex items-center space-x-4">
