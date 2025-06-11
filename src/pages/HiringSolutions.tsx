@@ -504,5 +504,3 @@ const HiringSolutions = () => {
 };
 
 export default HiringSolutions;
-
-</edits_to_apply>
