@@ -28,46 +28,15 @@ const CTASection = () => {
           </Button>
         </div>
 
-        {/* App Mockup */}
+        {/* Dashboard Image */}
         <div className="relative max-w-6xl mx-auto">
-          <div className="flex justify-center items-end space-x-8">
-            {/* Mobile mockup */}
+          <div className="flex justify-center">
             <div className="relative">
-              <div className="w-64 h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-2 shadow-2xl">
-                <div className="w-full h-full bg-white rounded-2xl overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/d3b7e973-7b38-4327-a321-970ea9af74fa.png"
-                    alt="Mobile App Interface"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Desktop mockup */}
-            <div className="relative">
-              <div className="w-96 h-64 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-3 shadow-2xl">
-                <div className="w-full h-full bg-white rounded-xl overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/d8e99f47-c4db-469d-96ee-4f111c32f5fe.png"
-                    alt="Desktop App Interface"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Tablet mockup */}
-            <div className="relative">
-              <div className="w-72 h-80 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-2 shadow-2xl">
-                <div className="w-full h-full bg-white rounded-2xl overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/e05ceff6-fc47-4e20-a343-00fa60c3f2ac.png"
-                    alt="Tablet App Interface"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+              <img 
+                src="/lovable-uploads/d76849a1-064a-4fa3-aec2-50cf0ab617bc.png"
+                alt="Gigin ATS Dashboard and Mobile App Interface"
+                className="w-full max-w-5xl h-auto object-contain rounded-2xl shadow-2xl"
+              />
             </div>
           </div>
         </div>
