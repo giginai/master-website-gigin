@@ -1,59 +1,42 @@
-import Header from "@/components/Header";
+
+import { useParams, Link } from "react-router-dom";
+import { ArrowLeft, Calendar, User, ArrowRight, Search, RefreshCw, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
-import { Search, Calendar, User, ArrowRight, AlertCircle, RefreshCw } from "lucide-react";
-import { useState, useMemo, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Header from "@/components/Header";
 import { useWordPressPosts, useWordPressCategories } from "@/hooks/useWordPressBlog";
 import { BlogGridSkeleton } from "@/components/ui/loading-skeleton";
+import { useState } from "react";
 
-const Blog = () => {
+const BlogCategory = () => {
+  const { categorySlug } = useParams<{ categorySlug: string }>();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
 
-  // WordPress API integration
   const { categories, rawCategories, isLoading: categoriesLoading } = useWordPressCategories();
   
+  // Find the category name from slug
+  const currentCategory = rawCategories?.find(cat => cat.slug === categorySlug);
+  const categoryName = currentCategory?.name || categorySlug;
+
   const { 
     posts, 
     isLoading: postsLoading, 
     error: postsError,
     isFetching,
     total,
-    totalPages,
-    prefetchNextPage
+    totalPages
   } = useWordPressPosts({
     page: currentPage,
     search: searchTerm,
-    category: selectedCategory
+    category: currentCategory?.id?.toString()
   });
-
-  // Filter posts locally for better UX (WordPress API might not have all filters)
-  const filteredPosts = useMemo(() => {
-    if (!posts) return [];
-    
-    return posts.filter(post => {
-      const matchesSearch = searchTerm === "" || 
-        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-      
-      const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
-      
-      return matchesSearch && matchesCategory;
-    });
-  }, [posts, searchTerm, selectedCategory]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-    setCurrentPage(1);
   };
 
   const getCategoryColor = (category: string) => {
@@ -61,17 +44,11 @@ const Blog = () => {
       "AI & Technology": "bg-blue-100 text-blue-800",
       "Hiring Best Practices": "bg-green-100 text-green-800",
       "Industry Insights": "bg-purple-100 text-purple-800",
-      "Company News": "bg-orange-100 text-orange-800"
+      "Company News": "bg-orange-100 text-orange-800",
+      "Background Verification": "bg-red-100 text-red-800"
     };
     return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
   };
-
-  // Prefetch next page when user reaches current page
-  useEffect(() => {
-    if (currentPage > 1) {
-      prefetchNextPage();
-    }
-  }, [currentPage, prefetchNextPage]);
 
   // Error component
   const ErrorState = ({ error, onRetry }: { error: any, onRetry: () => void }) => (
@@ -90,88 +67,77 @@ const Blog = () => {
     </div>
   );
 
+  if (categoriesLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Header currentPage="blog" />
+        <div className="pt-32 pb-16">
+          <div className="max-w-7xl mx-auto px-6">
+            <BlogGridSkeleton />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header currentPage="blog" />
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-gray-900 via-black to-gray-800">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Insights & Updates
-          </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Stay updated with the latest trends in recruitment, AI technology, and industry insights from the Gigin team.
-          </p>
+        <div className="max-w-7xl mx-auto px-6">
+          <Link to="/blog" className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to All Posts
+          </Link>
+          
+          <div className="text-center">
+            <div className="mb-4">
+              <span className={`px-4 py-2 rounded-full text-sm font-medium ${getCategoryColor(categoryName || '')}`}>
+                {categoryName}
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              {categoryName} Articles
+            </h1>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              Explore our latest insights and updates in {categoryName?.toLowerCase()}.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Search and Filters */}
+      {/* Content Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6">
+          {/* Search */}
           <div className="flex flex-col md:flex-row gap-6 items-center justify-between mb-8">
-            {/* Search */}
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <Input
                 type="text"
-                placeholder="Search articles..."
+                placeholder={`Search ${categoryName} articles...`}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
               />
             </div>
 
-            {/* Category Filters */}
-            <div className="flex flex-wrap gap-2">
-              {categoriesLoading ? (
-                <div className="flex gap-2">
-                  {Array.from({ length: 4 }).map((_, i) => (
-                    <div key={i} className="bg-gray-200 animate-pulse rounded-lg h-8 w-24" />
-                  ))}
+            {/* Results Count */}
+            <div className="flex items-center gap-4">
+              {!postsLoading && (
+                <p className="text-gray-600">
+                  {posts.length} of {total} articles
+                </p>
+              )}
+              {isFetching && (
+                <div className="flex items-center text-sm text-gray-500">
+                  <RefreshCw className="w-4 h-4 mr-1 animate-spin" />
+                  Updating...
                 </div>
-              ) : (
-                <>
-                  <button
-                    onClick={() => handleCategoryChange("all")}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                      selectedCategory === "all"
-                        ? "bg-pink-500 text-white shadow-lg"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
-                  >
-                    All Categories
-                  </button>
-                  {rawCategories?.map((category) => (
-                    <Link
-                      key={category.id}
-                      to={`/blog/category/${category.slug}`}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-gray-200`}
-                    >
-                      {category.name}
-                    </Link>
-                  ))}
-                </>
               )}
             </div>
-          </div>
-
-          {/* Results Count */}
-          <div className="mb-8 flex items-center justify-between">
-            <p className="text-gray-600">
-              {!postsLoading && (
-                <>
-                  Showing {filteredPosts.length} of {total} articles
-                  {selectedCategory !== "all" && ` in ${selectedCategory}`}
-                </>
-              )}
-            </p>
-            {isFetching && (
-              <div className="flex items-center text-sm text-gray-500">
-                <RefreshCw className="w-4 h-4 mr-1 animate-spin" />
-                Updating...
-              </div>
-            )}
           </div>
 
           {/* Loading State */}
@@ -188,7 +154,7 @@ const Blog = () => {
           {/* Blog Grid */}
           {!postsLoading && !postsError && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {filteredPosts.map((post) => {
+              {posts.map((post) => {
                 const categorySlugForUrl = rawCategories?.find(cat => cat.name === post.category)?.slug || post.category.toLowerCase().replace(/\s+/g, '-');
                 
                 return (
@@ -245,13 +211,13 @@ const Blog = () => {
           )}
 
           {/* No Results */}
-          {!postsLoading && !postsError && filteredPosts.length === 0 && (
+          {!postsLoading && !postsError && posts.length === 0 && (
             <div className="text-center py-12">
               <div className="text-gray-400 mb-4">
                 <Search className="w-12 h-12 mx-auto" />
               </div>
               <h3 className="text-xl font-semibold text-gray-600 mb-2">No articles found</h3>
-              <p className="text-gray-500">Try adjusting your search terms or filters.</p>
+              <p className="text-gray-500">Try adjusting your search terms.</p>
             </div>
           )}
 
@@ -269,7 +235,6 @@ const Blog = () => {
                   
                   {[...Array(totalPages)].map((_, index) => {
                     const page = index + 1;
-                    // Show only a range of pages to avoid too many pagination buttons
                     if (totalPages > 7 && (page < currentPage - 2 || page > currentPage + 2) && page !== 1 && page !== totalPages) {
                       return null;
                     }
@@ -298,30 +263,8 @@ const Blog = () => {
           )}
         </div>
       </section>
-
-      {/* Newsletter Subscription */}
-      <section className="py-16 bg-gradient-to-r from-gray-900 via-black to-gray-800">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Stay Updated with Our Latest Insights
-          </h2>
-          <p className="text-xl text-white/90 mb-8">
-            Get the latest recruitment trends, AI insights, and company updates delivered to your inbox.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <Input 
-              type="email" 
-              placeholder="Enter your email"
-              className="flex-1 bg-white"
-            />
-            <Button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg font-medium">
-              Subscribe
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
 
-export default Blog;
+export default BlogCategory;

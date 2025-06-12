@@ -3,11 +3,19 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Calendar, User, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
-import { useWordPressPost } from "@/hooks/useWordPressBlog";
+import { useWordPressPost, useWordPressCategories } from "@/hooks/useWordPressBlog";
 
 const BlogPostDetail = () => {
   const { category, slug } = useParams<{ category: string; slug: string }>();
   const { post, isLoading, error } = useWordPressPost(slug || '');
+  const { rawCategories } = useWordPressCategories();
+
+  // Decode the category from URL
+  const decodedCategory = category ? decodeURIComponent(category) : '';
+  
+  // Find category name from slug
+  const categoryData = rawCategories?.find(cat => cat.slug === decodedCategory);
+  const categoryName = categoryData?.name || decodedCategory;
 
   if (isLoading) {
     return (
@@ -55,7 +63,8 @@ const BlogPostDetail = () => {
       "AI & Technology": "bg-blue-100 text-blue-800",
       "Hiring Best Practices": "bg-green-100 text-green-800",
       "Industry Insights": "bg-purple-100 text-purple-800",
-      "Company News": "bg-orange-100 text-orange-800"
+      "Company News": "bg-orange-100 text-orange-800",
+      "Background Verification": "bg-red-100 text-red-800"
     };
     return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
   };
@@ -67,10 +76,23 @@ const BlogPostDetail = () => {
       <article className="pt-32 pb-16">
         <div className="max-w-4xl mx-auto px-6">
           {/* Back Button */}
-          <Link to="/blog" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8 transition-colors">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Blog
-          </Link>
+          <div className="flex items-center gap-4 mb-8">
+            <Link to="/blog" className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Blog
+            </Link>
+            {categoryData && (
+              <>
+                <span className="text-gray-300">|</span>
+                <Link 
+                  to={`/blog/category/${categoryData.slug}`}
+                  className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  {categoryData.name}
+                </Link>
+              </>
+            )}
+          </div>
 
           {/* Category Badge */}
           <div className="mb-6">
