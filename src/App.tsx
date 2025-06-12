@@ -9,6 +9,7 @@ import AboutUs from "./pages/AboutUs";
 import WhyGigin from "./pages/WhyGigin";
 import HiringSolutions from "./pages/HiringSolutions";
 import Blog from "./pages/Blog";
+import BlogPostDetail from "./pages/BlogPostDetail";
 import Verification from "./pages/Verification";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/why-gigin" element={<WhyGigin />} />
           <Route path="/hiring-solutions" element={<HiringSolutions />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:category/:slug" element={<BlogPostDetail />} />
           <Route path="/verification" element={<Verification />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

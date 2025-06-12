@@ -78,6 +78,19 @@ export const wordpressApi = {
     return response.data;
   },
 
+  async getPostBySlug(slug: string): Promise<WordPressPost | null> {
+    try {
+      const response = await fetchFromWordPress<WordPressPost[]>('/posts', {
+        slug: slug,
+        per_page: 1
+      });
+      return response.data.length > 0 ? response.data[0] : null;
+    } catch (error) {
+      console.error('Error fetching post by slug:', error);
+      return null;
+    }
+  },
+
   async getCategories(): Promise<WordPressCategory[]> {
     const response = await fetchFromWordPress<WordPressCategory[]>('/categories', {
       per_page: 100, // Get all categories
@@ -116,6 +129,8 @@ export const transformWordPressPost = (post: WordPressPost): BlogPost => {
     author,
     date: post.date,
     category,
-    image: featuredImage
+    image: featuredImage,
+    slug: post.slug,
+    content: post.content.rendered
   };
 };

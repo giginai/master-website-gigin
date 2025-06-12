@@ -1,4 +1,3 @@
-
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { wordpressApi, transformWordPressPost } from '@/services/wordpressApi';
 import { BlogPost, WordPressCategory } from '@/types/wordpress';
@@ -8,7 +7,7 @@ import { useMemo } from 'react';
 export const QUERY_KEYS = {
   posts: (params?: any) => ['wordpress', 'posts', params],
   categories: () => ['wordpress', 'categories'],
-  post: (id: number) => ['wordpress', 'post', id]
+  post: (slugOrId: string | number) => ['wordpress', 'post', slugOrId]
 } as const;
 
 export const useWordPressPosts = (params: {
@@ -68,6 +67,27 @@ export const useWordPressPosts = (params: {
     total: postsResponse?.total || 0,
     totalPages: postsResponse?.totalPages || 0,
     prefetchNextPage
+  };
+};
+
+export const useWordPressPost = (slug: string) => {
+  const { data: post, isLoading, error } = useQuery({
+    queryKey: QUERY_KEYS.post(slug),
+    queryFn: async () => {
+      const wordpressPost = await wordpressApi.getPostBySlug(slug);
+      return wordpressPost ? transformWordPressPost(wordpressPost) : null;
+    },
+    enabled: !!slug,
+    staleTime: 10 * 60 * 1000, // 10 minutes
+    gcTime: 30 * 60 * 1000, // 30 minutes
+    refetchOnWindowFocus: false,
+    retry: 2
+  });
+
+  return {
+    post,
+    isLoading,
+    error
   };
 };
 

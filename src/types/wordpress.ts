@@ -1,4 +1,3 @@
-
 export interface WordPressPost {
   id: number;
   date: string;
@@ -101,6 +100,8 @@ export interface BlogPost {
   date: string;
   category: string;
   image: string;
+  slug: string;
+  content: string;
 }
 
 export interface WordPressApiResponse<T> {

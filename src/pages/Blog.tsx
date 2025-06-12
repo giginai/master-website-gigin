@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Search, Calendar, User, ArrowRight, AlertCircle, RefreshCw } from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useWordPressPosts, useWordPressCategories } from "@/hooks/useWordPressBlog";
 import { BlogGridSkeleton } from "@/components/ui/loading-skeleton";
 
@@ -220,10 +220,12 @@ const Blog = () => {
                   </CardHeader>
                   
                   <CardContent className="px-6 pb-6">
-                    <Button variant="outline" className="w-full group-hover:bg-pink-500 group-hover:text-white group-hover:border-pink-500 transition-all duration-300">
-                      Read More
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
+                    <Link to={`/blog/${encodeURIComponent(post.category)}/${post.slug}`}>
+                      <Button variant="outline" className="w-full group-hover:bg-pink-500 group-hover:text-white group-hover:border-pink-500 transition-all duration-300">
+                        Read More
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               ))}
