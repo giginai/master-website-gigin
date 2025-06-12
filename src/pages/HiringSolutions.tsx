@@ -157,7 +157,7 @@ const HiringSolutions = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url(/lovable-uploads/f0acdf04-0015-4664-af62-d43a84908fcd.png)'
+          backgroundImage: 'url(/lovable-uploads/7a20c29e-c288-49cc-aaa7-43dd8f9d3a00.png)'
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>

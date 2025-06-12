@@ -92,19 +92,19 @@ const VerificationCarousel = () => {
       };
     } else if (Math.abs(normalizedDiff) === 1) {
       return {
-        transform: `scale(0.8) translateX(${normalizedDiff * 400}px) translateZ(-100px)`,
+        transform: `scale(0.8) translateX(${normalizedDiff * 450}px) translateZ(-100px)`,
         zIndex: 5,
         opacity: 0.7,
       };
     } else if (Math.abs(normalizedDiff) === 2) {
       return {
-        transform: `scale(0.6) translateX(${normalizedDiff * 600}px) translateZ(-200px)`,
+        transform: `scale(0.6) translateX(${normalizedDiff * 650}px) translateZ(-200px)`,
         zIndex: 2,
         opacity: 0.4,
       };
     } else {
       return {
-        transform: `scale(0.4) translateX(${normalizedDiff * 750}px) translateZ(-300px)`,
+        transform: `scale(0.4) translateX(${normalizedDiff * 800}px) translateZ(-300px)`,
         zIndex: 1,
         opacity: 0.2,
       };
@@ -112,9 +112,9 @@ const VerificationCarousel = () => {
   };
 
   return (
-    <div className="py-16 bg-white overflow-hidden">
+    <div className="py-12 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Tailored Background Verification Solutions
           </h2>
@@ -124,14 +124,14 @@ const VerificationCarousel = () => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative h-[500px] mb-6" style={{ perspective: '1000px' }}>
+        <div className="relative h-[500px] mb-4" style={{ perspective: '1000px' }}>
           <div className="absolute inset-0 flex items-center justify-center">
             {verificationData.map((card, index) => {
               const Icon = card.icon;
               return (
                 <Card
                   key={card.id}
-                  className={`absolute w-96 h-96 cursor-pointer transition-all duration-700 ease-in-out border-0 shadow-2xl ${
+                  className={`absolute w-[420px] h-96 cursor-pointer transition-all duration-700 ease-in-out border-0 shadow-2xl ${
                     index === currentIndex ? 'shadow-pink-200/50' : 'shadow-gray-200/50'
                   }`}
                   style={getCardStyle(index)}
