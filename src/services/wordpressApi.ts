@@ -1,8 +1,7 @@
-
 import { WordPressPost, WordPressCategory, BlogPost, WordPressApiResponse } from '@/types/wordpress';
 
 // Replace with your WordPress site URL
-const WORDPRESS_BASE_URL = 'https://your-wordpress-site.com/wp-json/wp/v2';
+const WORDPRESS_BASE_URL = 'https://gigin.ai/wp-json/wp/v2';
 
 class WordPressApiError extends Error {
   constructor(message: string, public status?: number) {
