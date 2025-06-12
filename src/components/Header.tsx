@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -114,18 +115,18 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                           Verification Solutions
                         </h4>
                         <div className="space-y-3">
-                          <a href="#" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
+                          <Link to="/verification" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
                             <Shield className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
                             <span className="text-gray-700 group-hover:text-pink-600 font-medium">AI-Powered BGV</span>
-                          </a>
-                          <a href="#" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
+                          </Link>
+                          <Link to="/verification" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
                             <Zap className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
                             <span className="text-gray-700 group-hover:text-pink-600 font-medium">Tailored to Outcomes</span>
-                          </a>
-                          <a href="#" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
+                          </Link>
+                          <Link to="/verification" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
                             <Database className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
                             <span className="text-gray-700 group-hover:text-pink-600 font-medium">Easy Integration with HRMS</span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
