@@ -2,8 +2,9 @@ import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
-import { Search, Calendar, User, ArrowRight, AlertCircle, RefreshCw } from "lucide-react";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/ui/pagination";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Search, Calendar, User, ArrowRight, AlertCircle, RefreshCw, ChevronDown } from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useWordPressPosts, useWordPressCategories } from "@/hooks/useWordPressBlog";
@@ -64,6 +65,33 @@ const Blog = () => {
       "Company News": "bg-orange-100 text-orange-800"
     };
     return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
+  };
+
+  // Split categories into visible and dropdown
+  const visibleCategories = rawCategories?.slice(0, 5) || [];
+  const dropdownCategories = rawCategories?.slice(5) || [];
+
+  // Generate pagination items with ellipsis
+  const getPaginationItems = () => {
+    const items = [];
+    const delta = 2; // Number of pages to show around current page
+    
+    for (let i = 1; i <= totalPages; i++) {
+      if (
+        i === 1 || // Always show first page
+        i === totalPages || // Always show last page
+        (i >= currentPage - delta && i <= currentPage + delta) // Show pages around current
+      ) {
+        items.push(i);
+      } else if (
+        i === currentPage - delta - 1 || // Show ellipsis before current range
+        i === currentPage + delta + 1 // Show ellipsis after current range
+      ) {
+        items.push('ellipsis');
+      }
+    }
+    
+    return items;
   };
 
   // Prefetch next page when user reaches current page
@@ -142,15 +170,44 @@ const Blog = () => {
                   >
                     All Categories
                   </button>
-                  {rawCategories?.map((category) => (
+                  
+                  {/* Visible Categories */}
+                  {visibleCategories.map((category) => (
                     <Link
                       key={category.id}
                       to={`/blog/category/${category.slug}`}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-gray-200`}
+                      className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
                     >
                       {category.name}
                     </Link>
                   ))}
+                  
+                  {/* Dropdown for Additional Categories */}
+                  {dropdownCategories.length > 0 && (
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button 
+                          variant="outline" 
+                          className="px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 border-none"
+                        >
+                          More Categories
+                          <ChevronDown className="w-4 h-4 ml-1" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end" className="w-48 bg-white border shadow-lg">
+                        {dropdownCategories.map((category) => (
+                          <DropdownMenuItem key={category.id} asChild>
+                            <Link
+                              to={`/blog/category/${category.slug}`}
+                              className="w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                            >
+                              {category.name}
+                            </Link>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  )}
                 </>
               )}
             </div>
@@ -255,7 +312,7 @@ const Blog = () => {
             </div>
           )}
 
-          {/* Pagination */}
+          {/* Pagination with Ellipsis */}
           {!postsLoading && totalPages > 1 && (
             <div className="flex justify-center">
               <Pagination>
@@ -267,20 +324,23 @@ const Blog = () => {
                     />
                   </PaginationItem>
                   
-                  {[...Array(totalPages)].map((_, index) => {
-                    const page = index + 1;
-                    // Show only a range of pages to avoid too many pagination buttons
-                    if (totalPages > 7 && (page < currentPage - 2 || page > currentPage + 2) && page !== 1 && page !== totalPages) {
-                      return null;
+                  {getPaginationItems().map((item, index) => {
+                    if (item === 'ellipsis') {
+                      return (
+                        <PaginationItem key={`ellipsis-${index}`}>
+                          <PaginationEllipsis />
+                        </PaginationItem>
+                      );
                     }
+                    
                     return (
-                      <PaginationItem key={page}>
+                      <PaginationItem key={item}>
                         <PaginationLink
-                          onClick={() => handlePageChange(page)}
-                          isActive={currentPage === page}
+                          onClick={() => handlePageChange(item as number)}
+                          isActive={currentPage === item}
                           className="cursor-pointer"
                         >
-                          {page}
+                          {item}
                         </PaginationLink>
                       </PaginationItem>
                     );
