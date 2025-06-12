@@ -17,6 +17,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
   const isHiringSolutionsPage = location.pathname === "/hiring-solutions";
+  const isVerificationPage = location.pathname === "/verification";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
@@ -55,7 +56,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
           <DropdownMenu onOpenChange={setIsDropdownOpen}>
             <DropdownMenuTrigger asChild>
               <button className={`font-medium transition-colors flex items-center px-4 py-2 rounded-lg ${
-                isDropdownOpen || isHiringSolutionsPage
+                isDropdownOpen || isHiringSolutionsPage || isVerificationPage
                   ? "text-white bg-white/10 border border-pink-400/20"
                   : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
               }`}>
