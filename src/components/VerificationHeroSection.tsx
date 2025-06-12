@@ -37,13 +37,13 @@ const VerificationHeroSection = () => {
             Get Started
           </Button>
           
-          {/* Hero Dashboard Image */}
+          {/* Hero Dashboard Image with hover animation */}
           <div className="relative max-w-4xl mx-auto mb-8">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
               <img 
                 src="/lovable-uploads/44f3826a-9ec1-4397-bcaf-340a68a507ee.png" 
                 alt="Verification Dashboard" 
-                className="w-full h-auto"
+                className="w-full h-auto transition-transform duration-700 ease-out group-hover:scale-105"
               />
             </div>
           </div>

@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Shield, CheckCircle, Users, FileCheck, Eye, Search, Building, Globe } from "lucide-react";
 
 const verificationData = [
@@ -65,25 +64,17 @@ const verificationData = [
 
 const VerificationCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          setCurrentIndex((current) => (current + 1) % verificationData.length);
-          return 0;
-        }
-        return prev + 2;
-      });
-    }, 100);
+      setCurrentIndex((current) => (current + 1) % verificationData.length);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
   const handleCardClick = (index: number) => {
     setCurrentIndex(index);
-    setProgress(0);
   };
 
   const getCardStyle = (index: number) => {
@@ -101,26 +92,24 @@ const VerificationCarousel = () => {
       };
     } else if (Math.abs(normalizedDiff) === 1) {
       return {
-        transform: `scale(0.8) translateX(${normalizedDiff * 320}px) translateZ(-100px)`,
+        transform: `scale(0.8) translateX(${normalizedDiff * 400}px) translateZ(-100px)`,
         zIndex: 5,
         opacity: 0.7,
       };
     } else if (Math.abs(normalizedDiff) === 2) {
       return {
-        transform: `scale(0.6) translateX(${normalizedDiff * 480}px) translateZ(-200px)`,
+        transform: `scale(0.6) translateX(${normalizedDiff * 600}px) translateZ(-200px)`,
         zIndex: 2,
         opacity: 0.4,
       };
     } else {
       return {
-        transform: `scale(0.4) translateX(${normalizedDiff * 600}px) translateZ(-300px)`,
+        transform: `scale(0.4) translateX(${normalizedDiff * 750}px) translateZ(-300px)`,
         zIndex: 1,
         opacity: 0.2,
       };
     }
   };
-
-  const currentCard = verificationData[currentIndex];
 
   return (
     <div className="py-16 bg-white overflow-hidden">
@@ -135,14 +124,14 @@ const VerificationCarousel = () => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative h-[500px] mb-8" style={{ perspective: '1000px' }}>
+        <div className="relative h-[500px] mb-6" style={{ perspective: '1000px' }}>
           <div className="absolute inset-0 flex items-center justify-center">
             {verificationData.map((card, index) => {
               const Icon = card.icon;
               return (
                 <Card
                   key={card.id}
-                  className={`absolute w-80 h-96 cursor-pointer transition-all duration-700 ease-in-out border-0 shadow-2xl ${
+                  className={`absolute w-96 h-96 cursor-pointer transition-all duration-700 ease-in-out border-0 shadow-2xl ${
                     index === currentIndex ? 'shadow-pink-200/50' : 'shadow-gray-200/50'
                   }`}
                   style={getCardStyle(index)}
@@ -177,28 +166,13 @@ const VerificationCarousel = () => {
           </div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="max-w-md mx-auto mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">
-              {currentIndex + 1} of {verificationData.length}
-            </span>
-            <span className="text-sm text-gray-500">
-              {currentCard.title}
-            </span>
-          </div>
-          <Progress value={progress} className="h-2 bg-gray-200">
-            <div className="h-full bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-100"></div>
-          </Progress>
-        </div>
-
-        {/* Card Indicators */}
-        <div className="flex justify-center space-x-2">
+        {/* Card Indicators - smaller and closer to cards */}
+        <div className="flex justify-center space-x-1">
           {verificationData.map((_, index) => (
             <button
               key={index}
               onClick={() => handleCardClick(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 index === currentIndex 
                   ? 'bg-pink-500 scale-125' 
                   : 'bg-gray-300 hover:bg-gray-400'
