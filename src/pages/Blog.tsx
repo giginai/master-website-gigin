@@ -1,9 +1,11 @@
+
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/ui/pagination";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Search, Calendar, User, ArrowRight, AlertCircle, RefreshCw, ChevronDown } from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -67,7 +69,7 @@ const Blog = () => {
     return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
   };
 
-  // Split categories into visible and dropdown
+  // Split categories into visible and dropdown (show 5 categories, rest in dropdown)
   const visibleCategories = rawCategories?.slice(0, 5) || [];
   const dropdownCategories = rawCategories?.slice(5) || [];
 
@@ -84,10 +86,12 @@ const Blog = () => {
       ) {
         items.push(i);
       } else if (
-        i === currentPage - delta - 1 || // Show ellipsis before current range
-        i === currentPage + delta + 1 // Show ellipsis after current range
+        (i === currentPage - delta - 1 && currentPage - delta - 1 > 1) || // Show ellipsis before current range
+        (i === currentPage + delta + 1 && currentPage + delta + 1 < totalPages) // Show ellipsis after current range
       ) {
-        items.push('ellipsis');
+        if (items[items.length - 1] !== 'ellipsis') {
+          items.push('ellipsis');
+        }
       }
     }
     
@@ -137,35 +141,37 @@ const Blog = () => {
       {/* Search and Filters */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row gap-6 items-center justify-between mb-8">
-            {/* Search */}
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          {/* Search Bar */}
+          <div className="mb-8">
+            <div className="relative max-w-2xl mx-auto">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6" />
               <Input
                 type="text"
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                className="pl-12 pr-6 py-4 w-full border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent text-lg placeholder:text-gray-400"
               />
             </div>
+          </div>
 
-            {/* Category Filters */}
-            <div className="flex flex-wrap gap-2">
+          {/* Category Filters */}
+          <div className="mb-8">
+            <div className="flex flex-wrap gap-3 justify-center">
               {categoriesLoading ? (
-                <div className="flex gap-2">
-                  {Array.from({ length: 4 }).map((_, i) => (
-                    <div key={i} className="bg-gray-200 animate-pulse rounded-lg h-8 w-24" />
+                <div className="flex gap-3">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <div key={i} className="bg-gray-200 animate-pulse rounded-lg h-10 w-32" />
                   ))}
                 </div>
               ) : (
                 <>
                   <button
                     onClick={() => handleCategoryChange("all")}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                    className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                       selectedCategory === "all"
-                        ? "bg-pink-500 text-white shadow-lg"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        ? "bg-pink-500 text-white shadow-lg transform scale-105"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
                     }`}
                   >
                     All Categories
@@ -176,7 +182,7 @@ const Blog = () => {
                     <Link
                       key={category.id}
                       to={`/blog/category/${category.slug}`}
-                      className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
+                      className="px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
                     >
                       {category.name}
                     </Link>
@@ -188,23 +194,25 @@ const Blog = () => {
                       <DropdownMenuTrigger asChild>
                         <Button 
                           variant="outline" 
-                          className="px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 border-none"
+                          className="px-6 py-3 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105 border-none rounded-xl"
                         >
                           More Categories
-                          <ChevronDown className="w-4 h-4 ml-1" />
+                          <ChevronDown className="w-4 h-4 ml-2" />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" className="w-48 bg-white border shadow-lg">
-                        {dropdownCategories.map((category) => (
-                          <DropdownMenuItem key={category.id} asChild>
-                            <Link
-                              to={`/blog/category/${category.slug}`}
-                              className="w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
-                            >
-                              {category.name}
-                            </Link>
-                          </DropdownMenuItem>
-                        ))}
+                      <DropdownMenuContent align="end" className="w-56 bg-white border shadow-lg rounded-lg">
+                        <ScrollArea className="h-64">
+                          {dropdownCategories.map((category) => (
+                            <DropdownMenuItem key={category.id} asChild>
+                              <Link
+                                to={`/blog/category/${category.slug}`}
+                                className="w-full px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer rounded-md"
+                              >
+                                {category.name}
+                              </Link>
+                            </DropdownMenuItem>
+                          ))}
+                        </ScrollArea>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   )}
@@ -215,7 +223,7 @@ const Blog = () => {
 
           {/* Results Count */}
           <div className="mb-8 flex items-center justify-between">
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-lg">
               {!postsLoading && (
                 <>
                   Showing {filteredPosts.length} of {total} articles
