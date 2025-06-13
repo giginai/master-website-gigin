@@ -32,14 +32,31 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   if (validateForm()) {
     try {
-      await fetch('https://axiazgzqwlxafnvdyzir.functions.supabase.co/submit-lead', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF4aWF6Z3pxd2x4YWZudmR5emlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3OTQxNjEsImV4cCI6MjA2NTM3MDE2MX0.A_Nn0vZ_TJljZ9zZdYn6MQe9qm-ZAXeawqTDTY_ppmc`
-  },
-  body: JSON.stringify(formData),
-});
+      const response = await fetch('https://axiazgzqwlxafnvdyzir.functions.supabase.co/submit-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF4aWF6Z3pxd2x4YWZudmR5emlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3OTQxNjEsImV4cCI6MjA2NTM3MDE2MX0.A_Nn0vZ_TJljZ9zZdYn6MQe9qm-ZAXeawqTDTY_ppmc'  // Replace with actual anon key
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error submitting lead: ${response.statusText}`);
+      }
+
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        resetForm();
+        onClose();
+      }, 3000);
+    } catch (error) {
+      console.error("Submission Error:", error);
+    }
+  }
+};
+
 
 
 
