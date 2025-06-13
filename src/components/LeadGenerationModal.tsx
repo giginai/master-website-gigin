@@ -32,11 +32,14 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   if (validateForm()) {
     try {
-      await fetch('https://hook.eu2.make.com/i5g47hgra5pewog02zg8wmuo12jlure6', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+      await fetch('https://<your-project-ref>.functions.supabase.co/submit-lead', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(formData),
+});
+
 
       setIsSubmitted(true);
       setTimeout(() => {
