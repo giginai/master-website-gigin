@@ -12,6 +12,8 @@ import Blog from "./pages/Blog";
 import BlogCategory from "./pages/BlogCategory";
 import BlogPostDetail from "./pages/BlogPostDetail";
 import Verification from "./pages/Verification";
+import Jobs from "./pages/Jobs";
+import JobDetail from "./pages/JobDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,14 @@ const App = () => (
           <Route path="/blog/category/:categorySlug" element={<BlogCategory />} />
           <Route path="/blog/:category/:slug" element={<BlogPostDetail />} />
           <Route path="/verification" element={<Verification />} />
+          
+          {/* Job-related routes */}
+          <Route path="/find-a-job" element={<Jobs />} />
+          <Route path="/jobs-for-:role" element={<Jobs />} />
+          <Route path="/jobs-in-:city" element={<Jobs />} />
+          <Route path="/:role-jobs-in-:city" element={<Jobs />} />
+          <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

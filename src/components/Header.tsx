@@ -159,9 +159,11 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <Button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg font-medium">
-            Find a Job
-          </Button>
+          <Link to="/find-a-job">
+            <Button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg font-medium">
+              Find a Job
+            </Button>
+          </Link>
           <Button variant="outline" className="border-gray-300 bg-white/10 text-gray-200 hover:text-white hover:bg-white/20 hover:border-white/40 px-6 py-2 rounded-lg font-medium">
             Contact us
           </Button>
