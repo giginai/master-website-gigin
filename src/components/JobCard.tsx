@@ -16,6 +16,13 @@ const JobCard = ({ job }: JobCardProps) => {
     return description.replace(/<[^>]*>/g, '').substring(0, 150) + "...";
   };
 
+  const formatSalary = (salary: string | undefined) => {
+    if (!salary) return null;
+    // Add rupee symbol if not already present
+    if (salary.includes('₹')) return salary;
+    return `₹${salary}`;
+  };
+
   return (
     <Card className="hover:shadow-lg transition-shadow">
       <CardHeader className="pb-3">
@@ -32,7 +39,7 @@ const JobCard = ({ job }: JobCardProps) => {
             </div>
             {job.salary && (
               <div className="text-green-600 font-medium text-sm mb-2">
-                {job.salary}
+                {formatSalary(job.salary)}
               </div>
             )}
           </div>

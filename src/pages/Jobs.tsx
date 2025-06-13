@@ -14,6 +14,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
+  PaginationEllipsis,
 } from "@/components/ui/pagination";
 
 const Jobs = () => {
@@ -89,7 +90,73 @@ const Jobs = () => {
     if (role && city) return `${role.charAt(0).toUpperCase() + role.slice(1)} Jobs in ${city.charAt(0).toUpperCase() + city.slice(1)}`;
     if (role) return `${role.charAt(0).toUpperCase() + role.slice(1)} Jobs`;
     if (city) return `Jobs in ${city.charAt(0).toUpperCase() + city.slice(1)}`;
-    return 'Find a Job';
+    return 'Find Your Dream Job';
+  };
+
+  const renderPagination = () => {
+    if (!jobsData || jobsData.totalPages <= 1) return null;
+
+    const totalPages = jobsData.totalPages;
+    const pages = [];
+
+    // Always show first 3 pages
+    for (let i = 1; i <= Math.min(3, totalPages); i++) {
+      pages.push(
+        <PaginationItem key={i}>
+          <PaginationLink
+            onClick={() => handlePageChange(i)}
+            isActive={currentPage === i}
+          >
+            {i}
+          </PaginationLink>
+        </PaginationItem>
+      );
+    }
+
+    // Add ellipsis if there's a gap
+    if (totalPages > 4) {
+      pages.push(
+        <PaginationItem key="ellipsis">
+          <PaginationEllipsis />
+        </PaginationItem>
+      );
+    }
+
+    // Always show last page if it's not already shown
+    if (totalPages > 3) {
+      pages.push(
+        <PaginationItem key={totalPages}>
+          <PaginationLink
+            onClick={() => handlePageChange(totalPages)}
+            isActive={currentPage === totalPages}
+          >
+            {totalPages}
+          </PaginationLink>
+        </PaginationItem>
+      );
+    }
+
+    return (
+      <Pagination className="mt-8">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious 
+              onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
+              className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
+            />
+          </PaginationItem>
+          
+          {pages}
+          
+          <PaginationItem>
+            <PaginationNext 
+              onClick={() => currentPage < jobsData.totalPages && handlePageChange(currentPage + 1)}
+              className={currentPage >= jobsData.totalPages ? 'pointer-events-none opacity-50' : ''}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    );
   };
 
   return (
@@ -97,16 +164,19 @@ const Jobs = () => {
       <Header />
       
       <main className="pt-24 pb-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        {/* Hero Section similar to blogs page */}
+        <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-20">
+          <div className="max-w-7xl mx-auto px-6 text-center">
+            <h1 className="text-5xl font-bold mb-6">
               {getPageTitle()}
             </h1>
-            <p className="text-xl text-gray-600">
-              {jobsData ? `${jobsData.total} jobs available` : 'Search for your perfect job'}
+            <p className="text-xl opacity-90 max-w-2xl mx-auto">
+              {jobsData ? `Explore ${jobsData.total} amazing job opportunities` : 'Discover your next career opportunity with top companies'}
             </p>
           </div>
+        </div>
 
+        <div className="max-w-7xl mx-auto px-6 -mt-10">
           {!isPageSlugBased && (
             <JobFilters onSearch={handleSearch} initialFilters={filters} />
           )}
@@ -137,39 +207,7 @@ const Jobs = () => {
                 ))}
               </div>
 
-              {jobsData.totalPages > 1 && (
-                <Pagination className="mt-8">
-                  <PaginationContent>
-                    <PaginationItem>
-                      <PaginationPrevious 
-                        onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
-                        className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
-                      />
-                    </PaginationItem>
-                    
-                    {[...Array(Math.min(jobsData.totalPages, 5))].map((_, index) => {
-                      const pageNum = index + 1;
-                      return (
-                        <PaginationItem key={pageNum}>
-                          <PaginationLink
-                            onClick={() => handlePageChange(pageNum)}
-                            isActive={currentPage === pageNum}
-                          >
-                            {pageNum}
-                          </PaginationLink>
-                        </PaginationItem>
-                      );
-                    })}
-                    
-                    <PaginationItem>
-                      <PaginationNext 
-                        onClick={() => currentPage < jobsData.totalPages && handlePageChange(currentPage + 1)}
-                        className={currentPage >= jobsData.totalPages ? 'pointer-events-none opacity-50' : ''}
-                      />
-                    </PaginationItem>
-                  </PaginationContent>
-                </Pagination>
-              )}
+              {renderPagination()}
             </>
           ) : (
             <div className="text-center py-12">
