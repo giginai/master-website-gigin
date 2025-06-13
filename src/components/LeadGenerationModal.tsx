@@ -27,21 +27,30 @@ const LeadGenerationModal = ({ isOpen, onClose }: LeadGenerationModalProps) => {
     resetForm
   } = useLeadFormValidation();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (validateForm()) {
-      console.log('Form submitted:', formData);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (validateForm()) {
+    try {
+      await fetch('https://hook.eu2.make.com/i5g47hgra5pewog02zg8wmuo12jlure6', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
       setIsSubmitted(true);
-      
-      // Reset form after 3 seconds and close modal
       setTimeout(() => {
         setIsSubmitted(false);
         resetForm();
         onClose();
       }, 3000);
+    } catch (error) {
+      console.error("Make Webhook Error:", error);
     }
-  };
+  }
+};
+
+
 
   const handleClose = () => {
     setIsSubmitted(false);
