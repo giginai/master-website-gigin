@@ -10,6 +10,12 @@ interface JobCardProps {
 }
 
 const JobCard = ({ job }: JobCardProps) => {
+  // Safely handle description with fallback
+  const getDescriptionPreview = (description: string | undefined | null) => {
+    if (!description) return "No description available";
+    return description.replace(/<[^>]*>/g, '').substring(0, 150) + "...";
+  };
+
   return (
     <Card className="hover:shadow-lg transition-shadow">
       <CardHeader className="pb-3">
@@ -41,7 +47,7 @@ const JobCard = ({ job }: JobCardProps) => {
       </CardHeader>
       <CardContent className="pt-0">
         <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-          {job.description.replace(/<[^>]*>/g, '').substring(0, 150)}...
+          {getDescriptionPreview(job.description)}
         </p>
         <div className="flex items-center justify-between">
           <div className="flex items-center text-xs text-gray-500">
