@@ -93,48 +93,38 @@ const Jobs = () => {
     return 'Find Your Dream Job';
   };
 
+  // Generate pagination items with ellipsis - copied from Blog page
+  const getPaginationItems = () => {
+    if (!jobsData) return [];
+    
+    const totalPages = jobsData.totalPages;
+    const items = [];
+    const delta = 2; // Number of pages to show around current page
+    
+    for (let i = 1; i <= totalPages; i++) {
+      if (
+        i === 1 || // Always show first page
+        i === totalPages || // Always show last page
+        (i >= currentPage - delta && i <= currentPage + delta) // Show pages around current
+      ) {
+        items.push(i);
+      } else if (
+        (i === currentPage - delta - 1 && currentPage - delta - 1 > 1) || // Show ellipsis before current range
+        (i === currentPage + delta + 1 && currentPage + delta + 1 < totalPages) // Show ellipsis after current range
+      ) {
+        if (items[items.length - 1] !== 'ellipsis') {
+          items.push('ellipsis');
+        }
+      }
+    }
+    
+    return items;
+  };
+
   const renderPagination = () => {
     if (!jobsData || jobsData.totalPages <= 1) return null;
 
     const totalPages = jobsData.totalPages;
-    const pages = [];
-
-    // Always show first 3 pages
-    for (let i = 1; i <= Math.min(3, totalPages); i++) {
-      pages.push(
-        <PaginationItem key={i}>
-          <PaginationLink
-            onClick={() => handlePageChange(i)}
-            isActive={currentPage === i}
-          >
-            {i}
-          </PaginationLink>
-        </PaginationItem>
-      );
-    }
-
-    // Add ellipsis if there's a gap
-    if (totalPages > 4) {
-      pages.push(
-        <PaginationItem key="ellipsis">
-          <PaginationEllipsis />
-        </PaginationItem>
-      );
-    }
-
-    // Always show last page if it's not already shown
-    if (totalPages > 3) {
-      pages.push(
-        <PaginationItem key={totalPages}>
-          <PaginationLink
-            onClick={() => handlePageChange(totalPages)}
-            isActive={currentPage === totalPages}
-          >
-            {totalPages}
-          </PaginationLink>
-        </PaginationItem>
-      );
-    }
 
     return (
       <Pagination className="mt-8">
@@ -142,16 +132,36 @@ const Jobs = () => {
           <PaginationItem>
             <PaginationPrevious 
               onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
-              className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
+              className={currentPage <= 1 ? 'pointer-events-none opacity-50 cursor-default' : 'cursor-pointer'}
             />
           </PaginationItem>
           
-          {pages}
+          {getPaginationItems().map((item, index) => {
+            if (item === 'ellipsis') {
+              return (
+                <PaginationItem key={`ellipsis-${index}`}>
+                  <PaginationEllipsis />
+                </PaginationItem>
+              );
+            }
+            
+            return (
+              <PaginationItem key={item}>
+                <PaginationLink
+                  onClick={() => handlePageChange(item as number)}
+                  isActive={currentPage === item}
+                  className="cursor-pointer"
+                >
+                  {item}
+                </PaginationLink>
+              </PaginationItem>
+            );
+          })}
           
           <PaginationItem>
             <PaginationNext 
-              onClick={() => currentPage < jobsData.totalPages && handlePageChange(currentPage + 1)}
-              className={currentPage >= jobsData.totalPages ? 'pointer-events-none opacity-50' : ''}
+              onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
+              className={currentPage >= totalPages ? 'pointer-events-none opacity-50 cursor-default' : 'cursor-pointer'}
             />
           </PaginationItem>
         </PaginationContent>
@@ -164,8 +174,8 @@ const Jobs = () => {
       <Header />
       
       <main className="pt-24 pb-16">
-        {/* Hero Section similar to blogs page */}
-        <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-20">
+        {/* Hero Section with dark gradient like blogs page */}
+        <div className="bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white py-20">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <h1 className="text-5xl font-bold mb-6">
               {getPageTitle()}
