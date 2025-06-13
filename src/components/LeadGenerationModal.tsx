@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   Dialog,
@@ -27,53 +26,35 @@ const LeadGenerationModal = ({ isOpen, onClose }: LeadGenerationModalProps) => {
     resetForm
   } = useLeadFormValidation();
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  if (validateForm()) {
-    try {
-      const response = await fetch('https://axiazgzqwlxafnvdyzir.functions.supabase.co/submit-lead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer <YOUR_SUPABASE_ANON_KEY>'
-        },
-        body: JSON.stringify(formData),
-      });
+    if (validateForm()) {
+      try {
+        const response = await fetch('https://axiazgzqwlxafnvdyzir.functions.supabase.co/submit-lead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF4aWF6Z3pxd2x4YWZudmR5emlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3OTQxNjEsImV4cCI6MjA2NTM3MDE2MX0.A_Nn0vZ_TJljZ9zZdYn6MQe9qm-ZAXeawqTDTY_ppmc'
+          },
+          body: JSON.stringify(formData),
+        });
 
-      if (!response.ok) {
-        throw new Error(`Error submitting lead: ${response.statusText}`);
+        if (!response.ok) {
+          throw new Error(`Error submitting lead: ${response.statusText}`);
+        }
+
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsSubmitted(false);
+          resetForm();
+          onClose();
+        }, 3000);
+      } catch (error) {
+        console.error("Submission Error:", error);
       }
-
-      setIsSubmitted(true);
-
-      setTimeout(() => {
-        setIsSubmitted(false);
-        resetForm();
-        onClose();
-      }, 3000);
-
-    } catch (error) {
-      console.error("Submission Error:", error);
     }
-  }
-};
-
-
-
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        resetForm();
-        onClose();
-      }, 3000);
-    } catch (error) {
-      console.error("Make Webhook Error:", error);
-    }
-  }
-};
-
-
+  };
 
   const handleClose = () => {
     setIsSubmitted(false);
@@ -96,7 +77,6 @@ const handleSubmit = async (e: React.FormEvent) => {
         <div className="flex h-[600px]">
           <LeadModalBackground />
           
-          {/* Right side - Form */}
           <div className="flex-1 bg-white p-8 overflow-y-auto">
             <DialogHeader className="mb-6">
               <DialogTitle className="text-2xl font-bold text-gray-900 mb-2">
