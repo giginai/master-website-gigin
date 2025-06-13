@@ -8,7 +8,7 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand Section */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <div className="flex items-center mb-6">
               <img 
                 src="/lovable-uploads/0a41f02f-6d14-4ba4-9553-29cc465c0d1b.png" 
@@ -48,29 +48,51 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Jobs by Roles */}
+          {/* Job by Roles - Column 1 */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Jobs by Roles</h3>
+            <h3 className="text-lg font-semibold mb-4">Job by Roles</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-white transition-colors">Software Engineer</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Product Manager</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Data Scientist</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Designer</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Marketing</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Sales</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Accountant</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">BPO and Telecaller</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Cashiers</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Cafe Attendant</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Customer Service Representatives</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Data Entry</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Delivery Boy</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Floor Manager</a></li>
             </ul>
           </div>
 
-          {/* Jobs by Cities */}
+          {/* Job by Roles - Column 2 */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Jobs by Cities</h3>
+            <h3 className="text-lg font-semibold mb-4">Job by Roles</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-white transition-colors">Bangalore</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Mumbai</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Delhi</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Hyderabad</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Food Serving</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Front Office Executive</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Picker and Packers</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Logistics Managers</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Nurse</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Office Boy</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Office Clerks, General</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Picker and Packers</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Receptionist</a></li>
+            </ul>
+          </div>
+
+          {/* Job by Cities */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Job by Cities</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li><a href="#" className="hover:text-white transition-colors">Bengaluru</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Ahmedabad</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Chennai</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Delhi</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Gurgaon</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Hyderabad</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Pune</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Noida</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Kolkata</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Mumbai</a></li>
             </ul>
           </div>
 
@@ -78,12 +100,14 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Jobs by Skills</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-white transition-colors">React</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Node.js</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Python</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Java</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Machine Learning</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">DevOps</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Sales Executive</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Telemarketers</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Office Boy</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Accountant</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Chefs</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Cashiers</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Cafe Manager</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Retail Sales Representative</a></li>
             </ul>
           </div>
         </div>
