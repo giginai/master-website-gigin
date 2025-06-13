@@ -36,7 +36,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer <YOUR_SUPABASE_ANON_KEY>' // Replace with actual Supabase Anon Key
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF4aWF6Z3pxd2x4YWZudmR5emlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3OTQxNjEsImV4cCI6MjA2NTM3MDE2MX0.A_Nn0vZ_TJljZ9zZdYn6MQe9qm-ZAXeawqTDTY_ppmc' // Replace with your Supabase anon key
         },
         body: JSON.stringify(formData),
       });
@@ -46,17 +46,19 @@ const handleSubmit = async (e: React.FormEvent) => {
       }
 
       setIsSubmitted(true);
+
       setTimeout(() => {
         setIsSubmitted(false);
         resetForm();
         onClose();
       }, 3000);
-
+      
     } catch (error) {
       console.error("Submission Error:", error);
     }
   }
 };
+
 
 
 
