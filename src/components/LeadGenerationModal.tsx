@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import {
   Dialog,
@@ -9,6 +10,7 @@ import { useLeadFormValidation } from "@/hooks/useLeadFormValidation";
 import LeadFormSuccessMessage from "./LeadFormSuccessMessage";
 import LeadFormFields from "./LeadFormFields";
 import LeadModalBackground from "./LeadModalBackground";
+import { supabase } from "@/integrations/supabase/client";
 
 interface LeadGenerationModalProps {
   isOpen: boolean;
@@ -29,23 +31,19 @@ const LeadGenerationModal = ({ isOpen, onClose }: LeadGenerationModalProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log("Submit clicked", formData);  // Debug log
+    console.log("Submit clicked", formData);
 
     if (validateForm()) {
       try {
-        const response = await fetch('https://axiazgzqwlxafnvdyzir.functions.supabase.co/submit-lead', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF4aWF6Z3pxd2x4YWZudmR5emlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3OTQxNjEsImV4cCI6MjA2NTM3MDE2MX0.A_Nn0vZ_TJljZ9zZdYn6MQe9qm-ZAXeawqTDTY_ppmc'
-          },
-          body: JSON.stringify(formData),
+        const { data, error } = await supabase.functions.invoke('submit-lead', {
+          body: formData,
         });
 
-        if (!response.ok) {
-          throw new Error(`Error submitting lead: ${response.statusText}`);
+        if (error) {
+          throw error;
         }
 
+        console.log("Lead submitted successfully:", data);
         setIsSubmitted(true);
         setTimeout(() => {
           setIsSubmitted(false);
@@ -89,7 +87,6 @@ const LeadGenerationModal = ({ isOpen, onClose }: LeadGenerationModalProps) => {
               </p>
             </DialogHeader>
 
-            {/* Pass handleSubmit properly */}
             <LeadFormFields
               formData={formData}
               errors={errors}
