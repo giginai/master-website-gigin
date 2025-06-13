@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { useWordPressPosts } from "@/hooks/useWordPressBlog";
 
@@ -61,7 +60,7 @@ const NewsSection = () => {
           {featuredPosts.map((article, index) => (
             <Link
               key={index}
-              to={`/blog/${article.categorySlug}/${article.slug}`}
+              to={`/blog/${article.category.toLowerCase().replace(/\s+/g, '-')}/${article.slug}`}
               className="group cursor-pointer"
             >
               <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow duration-300">
