@@ -29,6 +29,8 @@ const LeadGenerationModal = ({ isOpen, onClose }: LeadGenerationModalProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    console.log("Submit clicked", formData);  // Debug log
+
     if (validateForm()) {
       try {
         const response = await fetch('https://axiazgzqwlxafnvdyzir.functions.supabase.co/submit-lead', {
@@ -76,7 +78,7 @@ const LeadGenerationModal = ({ isOpen, onClose }: LeadGenerationModalProps) => {
       <DialogContent className="max-w-4xl w-full p-0 overflow-hidden">
         <div className="flex h-[600px]">
           <LeadModalBackground />
-          
+
           <div className="flex-1 bg-white p-8 overflow-y-auto">
             <DialogHeader className="mb-6">
               <DialogTitle className="text-2xl font-bold text-gray-900 mb-2">
@@ -86,7 +88,8 @@ const LeadGenerationModal = ({ isOpen, onClose }: LeadGenerationModalProps) => {
                 Background Checks Made Easy
               </p>
             </DialogHeader>
-            
+
+            {/* Pass handleSubmit properly */}
             <LeadFormFields
               formData={formData}
               errors={errors}
