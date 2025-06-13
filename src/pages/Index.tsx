@@ -58,8 +58,9 @@ const Index = () => {
         <NewsSection />
         <FAQSection />
         <CTASection />
-        <Footer />
+        
       </div>
+      <Footer />
     </div>
   );
 };
