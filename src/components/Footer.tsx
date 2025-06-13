@@ -1,5 +1,5 @@
 
-import { Button } from "@/components/ui/button";
+import { MessageCircle, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -19,9 +19,33 @@ const Footer = () => {
             <p className="text-lg text-gray-300 mb-6">
               On a mission to better billion lives
             </p>
-            <Button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-lg font-medium">
-              Get started
-            </Button>
+            {/* Social Media Icons */}
+            <div className="flex space-x-4">
+              <a 
+                href="https://wa.me/your-whatsapp-number" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-gray-800 hover:bg-green-600 p-3 rounded-full transition-colors duration-300"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://instagram.com/your-instagram" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-gray-800 hover:bg-pink-600 p-3 rounded-full transition-colors duration-300"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://linkedin.com/company/your-linkedin" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-gray-800 hover:bg-blue-600 p-3 rounded-full transition-colors duration-300"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
           </div>
 
           {/* Jobs by Roles */}

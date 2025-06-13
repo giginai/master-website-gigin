@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -13,7 +14,7 @@ const FeaturesSection = () => {
         { value: "50%", label: "Faster Discovery" },
         { value: "2M+", label: "Pre-Screened Profiles" }
       ],
-      image: "/lovable-uploads/b8f3a332-f59e-4dff-9644-bc2397c4e30d.png"
+      image: "/lovable-uploads/ddfca99d-2d16-402d-8286-1ad67f76b60c.png"
     },
     {
       id: "screening",
@@ -23,7 +24,7 @@ const FeaturesSection = () => {
         { value: "60%", label: "Faster Screening" },
         { value: "80%", label: "Better Alignment" }
       ],
-      image: "/lovable-uploads/ec8c7937-e805-4733-b171-f703516014ea.png"
+      image: "/lovable-uploads/e8148bbc-686e-4866-b24a-81ea4eac5d04.png"
     },
     {
       id: "verification",
@@ -33,7 +34,7 @@ const FeaturesSection = () => {
         { value: "90%", label: "Faster Verification" },
         { value: "40%", label: "Lower Risks" }
       ],
-      image: "/lovable-uploads/23869083-65b7-438b-bfe6-4aab11bb9527.png"
+      image: "/lovable-uploads/97b2d708-1f63-4b46-b096-5afd801a704f.png"
     }
   ];
 

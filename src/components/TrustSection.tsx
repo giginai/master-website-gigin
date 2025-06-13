@@ -4,22 +4,22 @@ const TrustSection = () => {
     {
       title: "One Stop Solution",
       description: "One seamless workflow for sourcing, hiring & background verification.",
-      icon: "🎯"
+      image: "/lovable-uploads/ba01d0fa-4dfe-4924-ad72-5d391b109ea6.png"
     },
     {
       title: "Empower with AI", 
       description: "AI-powered insights to support and enhance human decisions.",
-      icon: "🤖"
+      image: "/lovable-uploads/e8148bbc-686e-4866-b24a-81ea4eac5d04.png"
     },
     {
       title: "Fast & Reliable",
       description: "Faster hiring with built-in trust & compliance.",
-      icon: "⚡"
+      image: "/lovable-uploads/01756287-e821-490e-b192-b1b3e8445b44.png"
     },
     {
       title: "Candidate-Centric Hiring",
       description: "Personalized candidate experiences at scale.",
-      icon: "👥"
+      image: "/lovable-uploads/ddfca99d-2d16-402d-8286-1ad67f76b60c.png"
     }
   ];
 
@@ -48,8 +48,12 @@ const TrustSection = () => {
               key={index}
               className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 group text-center"
             >
-              <div className="text-4xl mb-4">
-                {feature.icon}
+              <div className="w-16 h-16 mx-auto mb-4">
+                <img 
+                  src={feature.image}
+                  alt={feature.title}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 {feature.title}
