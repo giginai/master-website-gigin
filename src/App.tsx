@@ -42,7 +42,7 @@ const App = () => (
           <Route path="/:role-jobs-in-:city" element={<Jobs />} />
           <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
           
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* Catch-all route for 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

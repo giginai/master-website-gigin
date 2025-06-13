@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams, useLocation } from 'react-router-dom';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JobCard from "@/components/JobCard";
@@ -19,16 +19,36 @@ import {
 const Jobs = () => {
   const { role, city } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
   const [filters, setFilters] = useState<JobFiltersType>({
     role: role || searchParams.get('role') || '',
     location: city || searchParams.get('location') || ''
   });
 
   const currentPage = parseInt(searchParams.get('page') || '1');
-  const isPageSlugBased = !!role || !!city;
   
-  // Generate page slug for API
-  const pageSlug = role ? `jobs-for-${role}` : city ? `jobs-in-${city}` : '';
+  // Determine if this is a pageSlug-based route and generate the appropriate pageSlug
+  const getPageSlug = () => {
+    const pathname = location.pathname;
+    
+    if (pathname.startsWith('/jobs-for-')) {
+      return pathname.substring(1); // Remove leading slash, e.g., "jobs-for-accountant"
+    }
+    
+    if (pathname.startsWith('/jobs-in-')) {
+      return pathname.substring(1); // Remove leading slash, e.g., "jobs-in-mumbai"
+    }
+    
+    // Handle pattern like "/accountant-jobs-in-mumbai"
+    if (role && city) {
+      return `${role}-jobs-in-${city}`;
+    }
+    
+    return null;
+  };
+
+  const pageSlug = getPageSlug();
+  const isPageSlugBased = pageSlug !== null;
 
   // Use appropriate hook based on URL pattern
   const jobsQuery = isPageSlugBased 
