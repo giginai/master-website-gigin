@@ -32,7 +32,8 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   if (validateForm()) {
     try {
-      await fetch('https://<your-project-ref>.functions.supabase.co/submit-lead', {
+      await fetch('await fetch('https://axiazgzqwlxafnvdyzir.functions.supabase.co/submit-lead', {
+', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
