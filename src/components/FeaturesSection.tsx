@@ -14,7 +14,7 @@ const FeaturesSection = () => {
         { value: "50%", label: "Faster Discovery" },
         { value: "2M+", label: "Pre-Screened Profiles" }
       ],
-      image: "/lovable-uploads/ddfca99d-2d16-402d-8286-1ad67f76b60c.png"
+      image: "/lovable-uploads/dcea3cf5-e387-4d07-9397-b7d7870c08cb.png"
     },
     {
       id: "screening",
@@ -24,7 +24,7 @@ const FeaturesSection = () => {
         { value: "60%", label: "Faster Screening" },
         { value: "80%", label: "Better Alignment" }
       ],
-      image: "/lovable-uploads/e8148bbc-686e-4866-b24a-81ea4eac5d04.png"
+      image: "/lovable-uploads/02c228f4-c84a-4d4e-9381-f72a54f72bb8.png"
     },
     {
       id: "verification",
@@ -34,7 +34,7 @@ const FeaturesSection = () => {
         { value: "90%", label: "Faster Verification" },
         { value: "40%", label: "Lower Risks" }
       ],
-      image: "/lovable-uploads/97b2d708-1f63-4b46-b096-5afd801a704f.png"
+      image: "/lovable-uploads/9441c202-33f5-42c1-a3fc-9468ce0635b2.png"
     }
   ];
 

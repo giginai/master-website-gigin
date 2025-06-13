@@ -4,22 +4,22 @@ const TrustSection = () => {
     {
       title: "One Stop Solution",
       description: "One seamless workflow for sourcing, hiring & background verification.",
-      image: "/lovable-uploads/ba01d0fa-4dfe-4924-ad72-5d391b109ea6.png"
+      image: "/lovable-uploads/a6994b90-24e7-4e66-974a-d51dbf602e8f.png"
     },
     {
       title: "Empower with AI", 
       description: "AI-powered insights to support and enhance human decisions.",
-      image: "/lovable-uploads/e8148bbc-686e-4866-b24a-81ea4eac5d04.png"
+      image: "/lovable-uploads/43258c9d-33d1-41dc-ba91-e119cd57edba.png"
     },
     {
       title: "Fast & Reliable",
       description: "Faster hiring with built-in trust & compliance.",
-      image: "/lovable-uploads/01756287-e821-490e-b192-b1b3e8445b44.png"
+      image: "/lovable-uploads/1db7c0ae-2c21-42e1-9b37-25650d99432d.png"
     },
     {
       title: "Candidate-Centric Hiring",
       description: "Personalized candidate experiences at scale.",
-      image: "/lovable-uploads/ddfca99d-2d16-402d-8286-1ad67f76b60c.png"
+      image: "/lovable-uploads/063e86ea-9817-44fa-98b8-5c4bc9f3bfd4.png"
     }
   ];
 
