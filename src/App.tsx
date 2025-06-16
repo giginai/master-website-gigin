@@ -30,7 +30,7 @@ const queryClient = new QueryClient();
 
 const JobsSlugWrapper: FC = () => {
   const { pathname } = useLocation();          // e.g. "/jobs-for-office-boy"
-  console.log('JOBDATA')
+  console.log('JOBDATA',pathname)
   /* ─── Strip the fixed prefix ─────────────────────────────────────────── */
   if (!pathname.startsWith("/jobs-")) {
     // Someone navigated to /foo – bail out early
@@ -79,8 +79,8 @@ const App = () => (
           <Route path="/verification/address" element={<AddressVerification />} />
           
           {/* Job-related routes */}
-          <Route path="/find-a-jobs" element={<Jobs />} />
-          <Route path="/jobs-:slug" element={<JobsSlugWrapper />} />
+          <Route path="/find-a-job" element={<Jobs />} />
+          <Route path="/jobs-*" element={<JobsSlugWrapper />} />
           <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
           
           {/* Catch-all route for 404 */}
