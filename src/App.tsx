@@ -30,7 +30,7 @@ const queryClient = new QueryClient();
 
 const JobsSlugWrapper: FC = () => {
   const { pathname } = useLocation();          // e.g. "/jobs-for-office-boy"
-
+  console.log('JOBDATA')
   /* ─── Strip the fixed prefix ─────────────────────────────────────────── */
   if (!pathname.startsWith("/jobs-")) {
     // Someone navigated to /foo – bail out early
