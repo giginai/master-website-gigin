@@ -27,7 +27,15 @@ import ReferenceVerification from "./pages/ReferenceVerification";
 import AddressVerification from "./pages/AddressVerification";
 
 const queryClient = new QueryClient();
+function JobsSlug() {
+  const { pathname } = useLocation();          // e.g. "/jobs-for-accountant"
+  const slug = pathname.replace("/jobs-", ""); // "for-accountant"
 
+  const [prefix, ...rest] = slug.split("-");   // ["for", "accountant"]  OR ["in","mumbai"]
+  const value = rest.join("-");
+
+  return <Jobs type={prefix} value={value} />; // pass whatever props you need
+}
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -57,7 +65,7 @@ const App = () => (
           
           {/* Job-related routes */}
           <Route path="/find-a-job" element={<Jobs />} />
-          <Route path="/jobs-for-*" element={<Jobs />} />
+          <Route path="/jobs-for-*" element={<JobsSlug />} />
           <Route path="/jobs-in-*" element={<Jobs />} />
           <Route path="/:role-jobs-in-:city" element={<Jobs />} />
           <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
