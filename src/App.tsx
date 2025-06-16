@@ -16,6 +16,16 @@ import Jobs from "./pages/Jobs";
 import JobDetail from "./pages/JobDetail";
 import NotFound from "./pages/NotFound";
 
+// Verification check pages
+import IdentityVerification from "./pages/IdentityVerification";
+import CriminalRecordCheck from "./pages/CriminalRecordCheck";
+import EmploymentVerification from "./pages/EmploymentVerification";
+import EducationVerification from "./pages/EducationVerification";
+import SocialMediaScreening from "./pages/SocialMediaScreening";
+import FinancialVerification from "./pages/FinancialVerification";
+import ReferenceVerification from "./pages/ReferenceVerification";
+import AddressVerification from "./pages/AddressVerification";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -34,6 +44,16 @@ const App = () => (
           <Route path="/blog/category/:categorySlug" element={<BlogCategory />} />
           <Route path="/blog/:category/:slug" element={<BlogPostDetail />} />
           <Route path="/verification" element={<Verification />} />
+          
+          {/* Verification check pages */}
+          <Route path="/verification/identity" element={<IdentityVerification />} />
+          <Route path="/verification/criminal" element={<CriminalRecordCheck />} />
+          <Route path="/verification/employment" element={<EmploymentVerification />} />
+          <Route path="/verification/education" element={<EducationVerification />} />
+          <Route path="/verification/social" element={<SocialMediaScreening />} />
+          <Route path="/verification/financial" element={<FinancialVerification />} />
+          <Route path="/verification/reference" element={<ReferenceVerification />} />
+          <Route path="/verification/address" element={<AddressVerification />} />
           
           {/* Job-related routes */}
           <Route path="/find-a-job" element={<Jobs />} />

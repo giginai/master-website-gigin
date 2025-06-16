@@ -1,7 +1,8 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Shield, CheckCircle, Users, FileCheck, Eye, Search, Building, Globe } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const verificationData = [
   {
@@ -64,6 +65,7 @@ const verificationData = [
 
 const VerificationCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -75,6 +77,10 @@ const VerificationCarousel = () => {
 
   const handleCardClick = (index: number) => {
     setCurrentIndex(index);
+  };
+
+  const handleKnowMore = (cardId: string) => {
+    navigate(`/verification/${cardId}`);
   };
 
   const getCardStyle = (index: number) => {
@@ -151,13 +157,22 @@ const VerificationCarousel = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="p-6">
+                    <div className="p-6 flex flex-col h-48">
                       <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2">
                         {card.title}
                       </h3>
-                      <p className="text-sm text-gray-600 line-clamp-4">
+                      <p className="text-sm text-gray-600 line-clamp-3 flex-grow">
                         {card.content}
                       </p>
+                      <Button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleKnowMore(card.id);
+                        }}
+                        className="mt-4 bg-pink-500 hover:bg-pink-600 text-white w-full"
+                      >
+                        Know More
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
