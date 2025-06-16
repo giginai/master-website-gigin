@@ -60,6 +60,6 @@ const Jobs: React.FC<JobsProps> = ({ slugType, slugValue }) => {
   );
 };
 
-export default Jobs;
+//export default Jobs;
 
 export default Jobs;
