@@ -57,8 +57,8 @@ const App = () => (
           
           {/* Job-related routes */}
           <Route path="/find-a-job" element={<Jobs />} />
-          <Route path="/jobs-for-:role" element={<Jobs />} />
-          <Route path="/jobs-in-:city" element={<Jobs />} />
+          <Route path="/jobs-for-*" element={<Jobs />} />
+          <Route path="/jobs-in-*" element={<Jobs />} />
           <Route path="/:role-jobs-in-:city" element={<Jobs />} />
           <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
           
