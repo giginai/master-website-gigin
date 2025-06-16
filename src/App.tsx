@@ -28,18 +28,38 @@ import AddressVerification from "./pages/AddressVerification";
 
 const queryClient = new QueryClient();
 
-function JobsSlugWrapper() {
-  const { pathname } = useLocation(); 
-  console.log('VISHNU');// "/jobs-for-accountant"
-  const slug                = pathname.replace("/jobs-", "");
-  const [kind, ...rest]     = slug.split("-");
-  const value               = rest.join("-");
-  console.log('VISHNU',value);
-  // Type guard to ensure kind is either "for" or "in"
-  const slugType: "for" | "in" | undefined = kind === "for" || kind === "in" ? kind : undefined;
+// function JobsSlugWrapper() {
+//   const { pathname } = useLocation(); 
+//   console.log('VISHNU');// "/jobs-for-accountant"
+//   const slug                = pathname.replace("/jobs-", "");
+//   const [kind, ...rest]     = slug.split("-");
+//   const value               = rest.join("-");
+//   console.log('VISHNU',value);
+//   // Type guard to ensure kind is either "for" or "in"
+//   const slugType: "for" | "in" | undefined = kind === "for" || kind === "in" ? kind : undefined;
 
-  return <Jobs slugType={slugType} slugValue={value} />;
-}
+//   return <Jobs slugType={slugType} slugValue={value} />;
+// }
+const JobsSlugWrapper: FC = () => {
+  const { pathname } = useLocation();          // e.g. "/jobs-for-office-boy"
+
+  /* ─── Strip the fixed prefix ─────────────────────────────────────────── */
+  if (!pathname.startsWith("/jobs-")) {
+    // Someone navigated to /foo – bail out early
+    return <Navigate to="/404" replace />;
+  }
+
+  const slug = pathname.replace("/jobs-", ""); // "for-office-boy" | "in-mumbai"
+  const [kind, ...rest] = slug.split("-");
+  const value = rest.join("-");                // "office-boy" | "mumbai"
+
+  // Validate the first token
+  if (kind !== "for" && kind !== "in") {
+    return <Navigate to="/404" replace />;
+  }
+
+  return <Jobs slugType={kind} slugValue={value} />;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -70,7 +90,7 @@ const App = () => (
           
           {/* Job-related routes */}
           <Route path="/find-a-job" element={<Jobs />} />
-          <Route path="/jobs-:value" element={<JobsSlugWrapper />} />
+          <Route path="/jobs-:slug" element={<JobsSlugWrapper />} />
           <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
           
           {/* Catch-all route for 404 */}
