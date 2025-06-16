@@ -65,9 +65,10 @@ const App = () => (
           
           {/* Job-related routes */}
           <Route path="/find-a-job" element={<Jobs />} />
-          <Route path="/jobs-for-*" element={<JobsSlug />} />
+          {/* <Route path="/jobs-for-*" element={<JobsSlug />} />
           <Route path="/jobs-in-*" element={<Jobs />} />
-          <Route path="/:role-jobs-in-:city" element={<Jobs />} />
+          <Route path="/:role-jobs-in-:city" element={<Jobs />} /> */}
+          <Route path="/jobs-*" element={<JobsSlug />} />
           <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
           
           {/* Catch-all route for 404 */}
