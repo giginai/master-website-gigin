@@ -58,11 +58,6 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          {/* Job-related routes */}
-          <Route path="/find-a-job" element={<Jobs />} />
-          <Route path="/jobs-:slug" element={<JobsSlugWrapper />} />
-          <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
-          
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/home" element={<Index />} />
           <Route path="/about-us" element={<AboutUs />} />
@@ -72,6 +67,11 @@ const App = () => (
           <Route path="/blog/category/:categorySlug" element={<BlogCategory />} />
           <Route path="/blog/:category/:slug" element={<BlogPostDetail />} />
           <Route path="/verification" element={<Verification />} />
+
+            {/* Job-related routes */}
+          <Route path="/find-a-job" element={<Jobs />} />
+          <Route path="/jobs-:slug" element={<JobsSlugWrapper />} />
+          <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
           
           {/* Verification check pages */}
           <Route path="/verification/identity" element={<IdentityVerification />} />
@@ -83,6 +83,7 @@ const App = () => (
           <Route path="/verification/reference" element={<ReferenceVerification />} />
           <Route path="/verification/address" element={<AddressVerification />} />
           
+         
           
           {/* Catch-all route for 404 */}
           <Route path="*" element={<NotFound />} />
