@@ -34,7 +34,10 @@ function JobsSlugWrapper() {
   const [kind, ...rest]     = slug.split("-");
   const value               = rest.join("-");
 
-  return <Jobs slugType={kind} slugValue={value} />;
+  // Type guard to ensure kind is either "for" or "in"
+  const slugType: "for" | "in" | undefined = kind === "for" || kind === "in" ? kind : undefined;
+
+  return <Jobs slugType={slugType} slugValue={value} />;
 }
 
 const App = () => (

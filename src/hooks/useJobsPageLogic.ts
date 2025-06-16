@@ -4,7 +4,12 @@ import { useParams, useSearchParams, useLocation } from 'react-router-dom';
 import { useJobs, useJobsByPageSlug } from "@/hooks/useJobs";
 import { JobFilters as JobFiltersType } from "@/types/jobs";
 
-export const useJobsPageLogic = () => {
+type UseJobsPageLogicProps = {
+  slugType?: "for" | "in";
+  slugValue?: string;
+};
+
+export const useJobsPageLogic = ({ slugType, slugValue }: UseJobsPageLogicProps = {}) => {
   const { role, city } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -24,6 +29,10 @@ export const useJobsPageLogic = () => {
     
     if (pathname.startsWith('/jobs-in-')) {
       return pathname.substring(1);
+    }
+    
+    if (slugType && slugValue) {
+      return `jobs-${slugType}-${slugValue}`;
     }
     
     if (role && city) {
@@ -63,6 +72,12 @@ export const useJobsPageLogic = () => {
   };
 
   const getPageTitle = () => {
+    if (slugType === "for" && slugValue) {
+      return `${slugValue.charAt(0).toUpperCase() + slugValue.slice(1)} Jobs`;
+    }
+    if (slugType === "in" && slugValue) {
+      return `Jobs in ${slugValue.charAt(0).toUpperCase() + slugValue.slice(1)}`;
+    }
     if (role && city) return `${role.charAt(0).toUpperCase() + role.slice(1)} Jobs in ${city.charAt(0).toUpperCase() + city.slice(1)}`;
     if (role) return `${role.charAt(0).toUpperCase() + role.slice(1)} Jobs`;
     if (city) return `Jobs in ${city.charAt(0).toUpperCase() + city.slice(1)}`;
