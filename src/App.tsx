@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import WhyGigin from "./pages/WhyGigin";
@@ -27,6 +27,7 @@ import ReferenceVerification from "./pages/ReferenceVerification";
 import AddressVerification from "./pages/AddressVerification";
 
 const queryClient = new QueryClient();
+
 function JobsSlug() {
   const { pathname } = useLocation();          // e.g. "/jobs-for-accountant"
   const slug = pathname.replace("/jobs-", ""); // "for-accountant"
@@ -34,8 +35,9 @@ function JobsSlug() {
   const [prefix, ...rest] = slug.split("-");   // ["for", "accountant"]  OR ["in","mumbai"]
   const value = rest.join("-");
 
-  return <Jobs type={prefix} value={value} />; // pass whatever props you need
+  return <Jobs />; // Remove the invalid props
 }
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -65,9 +67,6 @@ const App = () => (
           
           {/* Job-related routes */}
           <Route path="/find-a-job" element={<Jobs />} />
-          {/* <Route path="/jobs-for-*" element={<JobsSlug />} />
-          <Route path="/jobs-in-*" element={<Jobs />} />
-          <Route path="/:role-jobs-in-:city" element={<Jobs />} /> */}
           <Route path="/jobs-*" element={<JobsSlug />} />
           <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
           
