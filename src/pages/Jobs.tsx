@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JobFilters from "@/components/JobFilters";
@@ -7,7 +6,12 @@ import JobsList from "@/components/JobsList";
 import JobsPagination from "@/components/JobsPagination";
 import { useJobsPageLogic } from "@/hooks/useJobsPageLogic";
 
-const Jobs = () => {
+type JobsProps = {
+  slugType?: "for" | "in";
+  slugValue?: string;
+};
+
+const Jobs: React.FC<JobsProps> = ({ slugType, slugValue }) => {
   const {
     filters,
     jobsData,
@@ -17,8 +21,8 @@ const Jobs = () => {
     isPageSlugBased,
     handleSearch,
     handlePageChange,
-    getPageTitle
-  } = useJobsPageLogic();
+    getPageTitle,
+  } = useJobsPageLogic({ slugType, slugValue });     // pass through
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -55,5 +59,7 @@ const Jobs = () => {
     </div>
   );
 };
+
+export default Jobs;
 
 export default Jobs;

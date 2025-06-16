@@ -28,14 +28,13 @@ import AddressVerification from "./pages/AddressVerification";
 
 const queryClient = new QueryClient();
 
-function JobsSlug() {
-  const { pathname } = useLocation();          // e.g. "/jobs-for-accountant"
-  const slug = pathname.replace("/jobs-", ""); // "for-accountant"
+function JobsSlugWrapper() {
+  const { pathname } = useLocation();            // "/jobs-for-accountant"
+  const slug                = pathname.replace("/jobs-", "");
+  const [kind, ...rest]     = slug.split("-");
+  const value               = rest.join("-");
 
-  const [prefix, ...rest] = slug.split("-");   // ["for", "accountant"]  OR ["in","mumbai"]
-  const value = rest.join("-");
-
-  return <Jobs />; // Remove the invalid props
+  return <Jobs slugType={kind} slugValue={value} />;
 }
 
 const App = () => (
@@ -67,7 +66,7 @@ const App = () => (
           
           {/* Job-related routes */}
           <Route path="/find-a-job" element={<Jobs />} />
-          <Route path="/jobs-*" element={<JobsSlug />} />
+          <Route path="/jobs-*" element={<JobsSlugWrapper />} />
           <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
           
           {/* Catch-all route for 404 */}
