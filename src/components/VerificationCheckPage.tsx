@@ -10,6 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { CheckCircle, Shield, Zap } from "lucide-react";
 
 interface FAQ {
   question: string;
@@ -54,65 +55,93 @@ const VerificationCheckPage = ({
         <Header />
         
         {/* Hero Section */}
-        <section className="relative pt-32 pb-16 min-h-[80vh] overflow-hidden">
+        <section className="relative pt-32 pb-20 min-h-[85vh] overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: `url(${heroImage})`
             }}
           />
-          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/50"></div>
           
-          <div className="max-w-7xl mx-auto px-6 text-center relative z-10 flex items-center justify-center min-h-[60vh]">
-            <div>
-              <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
-                <Icon className="w-5 h-5 text-white mr-2" />
-                <span className="text-white font-medium">{title}</span>
+          <div className="max-w-7xl mx-auto px-6 text-center relative z-10 flex items-center justify-center min-h-[65vh]">
+            <div className="max-w-4xl">
+              <div className="inline-flex items-center bg-white/10 backdrop-blur-lg rounded-full px-6 py-3 mb-8 border border-white/20">
+                <Icon className="w-6 h-6 text-white mr-3" />
+                <span className="text-white font-semibold text-lg">{title}</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight">
                 {title}
               </h1>
               
-              <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-4xl mx-auto leading-relaxed">
                 {heroSubtitle}
               </p>
               
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium"
+                className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-10 py-6 text-xl rounded-xl font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300"
               >
-                Get Started
+                Get Started Today
               </Button>
             </div>
           </div>
         </section>
 
         {/* About the Check */}
-        <section className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-              About {title}
-            </h2>
-            <p className="text-lg text-gray-600 leading-relaxed text-center">
-              {aboutDescription}
-            </p>
+        <section className="py-24 bg-white relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 to-purple-600"></div>
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <div className="inline-flex items-center bg-pink-50 rounded-full px-4 py-2 mb-6">
+                  <Shield className="w-5 h-5 text-pink-500 mr-2" />
+                  <span className="text-pink-600 font-medium">About the Check</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+                  About {title}
+                </h2>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  {aboutDescription}
+                </p>
+              </div>
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" 
+                  alt="About verification" 
+                  className="rounded-2xl shadow-2xl w-full"
+                />
+                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-xl">
+                  <CheckCircle className="w-12 h-12 text-white" />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Why It's Important */}
-        <section className="py-20 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-              Why {title} is Important
-            </h2>
+        <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center bg-white rounded-full px-4 py-2 mb-6 shadow-md">
+                <Zap className="w-5 h-5 text-pink-500 mr-2" />
+                <span className="text-pink-600 font-medium">Why It Matters</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Why {title} is Important
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Understanding the critical role this verification plays in modern hiring
+              </p>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {whyImportant.map((point, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                  <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
-                    <span className="text-pink-500 font-bold text-lg">{index + 1}</span>
+                <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                  <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                    <span className="text-white font-bold text-2xl">{index + 1}</span>
                   </div>
-                  <p className="text-gray-600">{point}</p>
+                  <p className="text-gray-700 text-lg leading-relaxed">{point}</p>
                 </div>
               ))}
             </div>
@@ -120,16 +149,30 @@ const VerificationCheckPage = ({
         </section>
 
         {/* Common Use Cases */}
-        <section className="py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-              Common Use Cases
-            </h2>
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Common Use Cases
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Real-world applications across industries and roles
+              </p>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {useCases.map((useCase, index) => (
-                <div key={index} className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{useCase.title}</h3>
-                  <p className="text-gray-600">{useCase.description}</p>
+                <div key={index} className="group bg-gradient-to-br from-white to-gray-50 border-2 border-gray-100 rounded-2xl p-8 hover:border-pink-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-pink-600 transition-colors">
+                        {useCase.title}
+                      </h3>
+                      <p className="text-gray-600 text-lg leading-relaxed">{useCase.description}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -137,30 +180,47 @@ const VerificationCheckPage = ({
         </section>
 
         {/* Gap Today */}
-        <section className="py-20 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Where's the Gap Today?
-            </h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              {gapToday}
-            </p>
+        <section className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+          <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                Where's the Gap Today?
+              </h2>
+              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-10 border border-white/20">
+                <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
+                  {gapToday}
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* How It Works */}
-        <section className="py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-              How It Works
-            </h2>
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                How It Works
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Our streamlined process ensures accuracy and efficiency
+              </p>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {howItWorks.map((step, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold text-xl">{index + 1}</span>
+                <div key={index} className="text-center group">
+                  <div className="relative mb-8">
+                    <div className="w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-white font-bold text-2xl">{index + 1}</span>
+                    </div>
+                    {index < howItWorks.length - 1 && (
+                      <div className="hidden lg:block absolute top-10 left-1/2 w-full h-0.5 bg-gradient-to-r from-pink-200 to-purple-200 transform translate-x-10"></div>
+                    )}
                   </div>
-                  <p className="text-gray-600">{step}</p>
+                  <p className="text-gray-700 text-lg leading-relaxed group-hover:text-gray-900 transition-colors">
+                    {step}
+                  </p>
                 </div>
               ))}
             </div>
@@ -168,45 +228,55 @@ const VerificationCheckPage = ({
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Implement {title}?
-            </h2>
-            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-              Get started with our comprehensive {title.toLowerCase()} solution and enhance your hiring process today.
-            </p>
-            <Button 
-              onClick={() => setIsModalOpen(true)}
-              className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium"
-            >
-              Book a Demo
-            </Button>
+        <section className="py-24 bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-700 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23ffffff" fill-opacity="0.1" fill-rule="evenodd"/%3E%3C/svg%3E')] opacity-20"></div>
+          <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8">
+                Ready to Implement {title}?
+              </h2>
+              <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
+                Get started with our comprehensive {title.toLowerCase()} solution and enhance your hiring process today.
+              </p>
+              <Button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-white text-gray-900 hover:bg-gray-100 px-12 py-6 text-xl rounded-xl font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300"
+              >
+                Book a Demo
+              </Button>
+            </div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-              Frequently Asked Questions
-            </h2>
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-200">
-                  <AccordionTrigger className="text-left hover:no-underline py-6">
-                    <span className="text-lg font-semibold text-gray-900">
-                      {faq.question}
-                    </span>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-6">
-                    <p className="text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+        <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-xl text-gray-600">
+                Get answers to common questions about {title.toLowerCase()}
+              </p>
+            </div>
+            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-100 last:border-b-0">
+                    <AccordionTrigger className="text-left hover:no-underline py-8 px-8 hover:bg-gray-50 transition-colors">
+                      <span className="text-xl font-semibold text-gray-900 pr-4">
+                        {faq.question}
+                      </span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-8 pb-8">
+                      <p className="text-gray-600 text-lg leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
           </div>
         </section>
 

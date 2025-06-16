@@ -1,7 +1,7 @@
+
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Shield, CheckCircle, Users, FileCheck, Eye, Search, Building, Globe } from "lucide-react";
+import { Shield, CheckCircle, Users, FileCheck, Eye, Search, Building, Globe, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const verificationData = [
@@ -164,15 +164,16 @@ const VerificationCarousel = () => {
                       <p className="text-sm text-gray-600 line-clamp-3 flex-grow">
                         {card.content}
                       </p>
-                      <Button
+                      <button
                         onClick={(e) => {
                           e.stopPropagation();
                           handleKnowMore(card.id);
                         }}
-                        className="mt-4 bg-pink-500 hover:bg-pink-600 text-white w-full"
+                        className="mt-4 flex items-center justify-center text-pink-500 hover:text-pink-600 font-medium transition-colors group"
                       >
                         Know More
-                      </Button>
+                        <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      </button>
                     </div>
                   </CardContent>
                 </Card>
@@ -181,7 +182,7 @@ const VerificationCarousel = () => {
           </div>
         </div>
 
-        {/* Card Indicators - smaller and closer to cards */}
+        {/* Card Indicators */}
         <div className="flex justify-center space-x-1">
           {verificationData.map((_, index) => (
             <button
