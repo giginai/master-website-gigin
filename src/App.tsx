@@ -29,11 +29,12 @@ import AddressVerification from "./pages/AddressVerification";
 const queryClient = new QueryClient();
 
 function JobsSlugWrapper() {
-  const { pathname } = useLocation();            // "/jobs-for-accountant"
+  const { pathname } = useLocation(); 
+  console.log('VISHNU');// "/jobs-for-accountant"
   const slug                = pathname.replace("/jobs-", "");
   const [kind, ...rest]     = slug.split("-");
   const value               = rest.join("-");
-
+  console.log('VISHNU',value);
   // Type guard to ensure kind is either "for" or "in"
   const slugType: "for" | "in" | undefined = kind === "for" || kind === "in" ? kind : undefined;
 
