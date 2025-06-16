@@ -1,3 +1,6 @@
+
+import { useSEO } from "@/hooks/useSEO";
+import { generateJobPageTitle, generateJobPageDescription } from "@/utils/seoUtils";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JobFilters from "@/components/JobFilters";
@@ -22,7 +25,23 @@ const Jobs: React.FC<JobsProps> = ({ slugType, slugValue }) => {
     handleSearch,
     handlePageChange,
     getPageTitle,
-  } = useJobsPageLogic({ slugType, slugValue });     // pass through
+  } = useJobsPageLogic({ slugType, slugValue });
+
+  // SEO Configuration
+  const title = slugType && slugValue 
+    ? generateJobPageTitle(slugType, slugValue)
+    : "Find Your Next Job in India";
+  
+  const description = slugType && slugValue
+    ? generateJobPageDescription(slugType, slugValue)
+    : "Discover thousands of job opportunities across India. Find your perfect match with verified employers on Gigin's trusted platform.";
+
+  useSEO({
+    title,
+    description,
+    url: `https://master-website-gigin.lovable.app${window.location.pathname}`,
+    type: "website"
+  });
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -59,7 +78,5 @@ const Jobs: React.FC<JobsProps> = ({ slugType, slugValue }) => {
     </div>
   );
 };
-
-//export default Jobs;
 
 export default Jobs;

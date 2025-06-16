@@ -16,13 +16,42 @@ const routesToPrerender = fs
     return name === 'index' ? `/` : `/${name}`
   })
 
-;(async () => {
-  for (const url of routesToPrerender) {
-    const appHtml = render(url);
-    const html = template.replace(`<!--app-html-->`, appHtml)
+// Add additional dynamic routes
+const additionalRoutes = [
+  '/home',
+  '/about-us',
+  '/why-gigin',
+  '/hiring-solutions',
+  '/verification',
+  '/find-a-job',
+  '/blog'
+];
 
-    const filePath = `dist${url === '/' ? '/index' : url}.html`
-    fs.writeFileSync(toAbsolute(filePath), html)
-    console.log('pre-rendered:', filePath)
+const allRoutes = [...new Set([...routesToPrerender, ...additionalRoutes])];
+
+;(async () => {
+  for (const url of allRoutes) {
+    try {
+      const { html: appHtml, helmet } = render(url);
+      let html = template.replace(`<!--app-html-->`, appHtml);
+      
+      // Replace helmet meta tags if available
+      if (helmet && helmet.title) {
+        html = html.replace(/<title>.*?<\/title>/, helmet.title.toString());
+      }
+      if (helmet && helmet.meta) {
+        // Insert additional meta tags
+        html = html.replace('</head>', `${helmet.meta.toString()}</head>`);
+      }
+
+      const filePath = `dist${url === '/' ? '/index' : url}.html`
+      fs.writeFileSync(toAbsolute(filePath), html)
+      console.log('pre-rendered:', filePath)
+    } catch (error) {
+      console.error(`Error pre-rendering ${url}:`, error);
+    }
   }
+  
+  // Generate sitemap
+  await import('./scripts/generateSitemap.js');
 })()

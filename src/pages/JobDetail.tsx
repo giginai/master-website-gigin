@@ -1,5 +1,8 @@
 
 import { useParams } from 'react-router-dom';
+import { useSEO } from "@/hooks/useSEO";
+import { generateJobPostingSchema } from "@/utils/schemaGenerator";
+import SEOHead from "@/components/SEOHead";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useJobDetail } from "@/hooks/useJobs";
@@ -10,6 +13,21 @@ import { MapPin, Calendar, Building2, DollarSign, Clock } from "lucide-react";
 const JobDetail = () => {
   const { jobPageUrl } = useParams<{ jobPageUrl: string }>();
   const { data: job, isLoading, error } = useJobDetail(jobPageUrl || '');
+
+  // SEO Configuration
+  const title = job ? `${job.title} at ${job.company} - ${job.location}` : "Job Details";
+  const description = job 
+    ? `${job.title} position at ${job.company} in ${job.location}. ${job.description?.substring(0, 160)}...`
+    : "View detailed job information and apply for positions on Gigin.";
+
+  useSEO({
+    title,
+    description,
+    url: `https://master-website-gigin.lovable.app/job-detail/${jobPageUrl}`,
+    type: "website"
+  });
+
+  const structuredData = job ? [generateJobPostingSchema(job)] : [];
 
   if (isLoading) {
     return (
@@ -50,6 +68,7 @@ const JobDetail = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEOHead structuredData={structuredData} />
       <Header />
       
       <main className="pt-24 pb-16">
