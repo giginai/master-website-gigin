@@ -1,4 +1,4 @@
-
+import React, { FC } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -28,18 +28,6 @@ import AddressVerification from "./pages/AddressVerification";
 
 const queryClient = new QueryClient();
 
-// function JobsSlugWrapper() {
-//   const { pathname } = useLocation(); 
-//   console.log('VISHNU');// "/jobs-for-accountant"
-//   const slug                = pathname.replace("/jobs-", "");
-//   const [kind, ...rest]     = slug.split("-");
-//   const value               = rest.join("-");
-//   console.log('VISHNU',value);
-//   // Type guard to ensure kind is either "for" or "in"
-//   const slugType: "for" | "in" | undefined = kind === "for" || kind === "in" ? kind : undefined;
-
-//   return <Jobs slugType={slugType} slugValue={value} />;
-// }
 const JobsSlugWrapper: FC = () => {
   const { pathname } = useLocation();          // e.g. "/jobs-for-office-boy"
 
@@ -58,7 +46,9 @@ const JobsSlugWrapper: FC = () => {
     return <Navigate to="/404" replace />;
   }
 
-  return <Jobs slugType={kind} slugValue={value} />;
+  const slugType: "for" | "in" = kind;
+
+  return <Jobs slugType={slugType} slugValue={value} />;
 };
 
 const App = () => (
