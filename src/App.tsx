@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, useParams } from "react-router-dom";
 import { SEOProvider } from "@/contexts/SEOContext";
 import SEOHead from "@/components/SEOHead";
 import { generateWebsiteSchema, generateOrganizationSchema } from "@/utils/schemaGenerator";
@@ -33,25 +33,19 @@ import AddressVerification from "./pages/AddressVerification";
 
 const queryClient = new QueryClient();
 
+
+
 const JobsSlugWrapper: FC = () => {
-  const { pathname } = useLocation();
-  console.log('JOBDATA',pathname)
-  
-  if (!pathname.startsWith("/jobs-")) {
-    return <Navigate to="/404" replace />;
+
+  const { slug } = useParams<{ slug: string }>();
+ 
+  if (!slug) return <NotFound />;
+
+  if (!slug || !/^jobs-(in|for)-.+/.test(slug)) {
+    return <NotFound  />;
   }
 
-  const slug = pathname.replace("/jobs-", "");
-  const [kind, ...rest] = slug.split("-");
-  const value = rest.join("-");
-
-  if (kind !== "for" && kind !== "in") {
-    return <Navigate to="/404" replace />;
-  }
-
-  const slugType: "for" | "in" = kind;
-
-  return <Jobs slugType={slugType} slugValue={value} />;
+  return <Jobs  slugValue={slug} />;
 };
 
 const App = () => (
@@ -85,9 +79,9 @@ const App = () => (
             
             {/* Job-related routes */}
             <Route path="/find-a-job" element={<Jobs />} />
-            <Route path="/jobs-/*" element={<JobsSlugWrapper />} />
-            <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
             
+            <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
+            <Route path="/:slug" element={<JobsSlugWrapper />} />
             {/* Catch-all route for 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>

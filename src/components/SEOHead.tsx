@@ -1,5 +1,5 @@
-
 import { Helmet } from 'react-helmet-async';
+
 import { useSEOContext } from '@/contexts/SEOContext';
 import { generatePageTitle, generateCanonicalUrl, generateOGImage } from '@/hooks/useSEO';
 import { StructuredData } from '@/types/seo';
@@ -7,7 +7,6 @@ import { StructuredData } from '@/types/seo';
 interface SEOHeadProps {
   structuredData?: StructuredData[];
 }
-
 const SEOHead: React.FC<SEOHeadProps> = ({ structuredData = [] }) => {
   const { seoConfig } = useSEOContext();
 
