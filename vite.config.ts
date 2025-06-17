@@ -9,7 +9,6 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  build: {     rollupOptions: {       input: 'index.html',     },   },
   plugins: [
     react(),
     mode === 'development' &&
