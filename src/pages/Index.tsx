@@ -1,4 +1,6 @@
 
+import { useEffect } from "react";
+import { useSEO } from "@/hooks/useSEO";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import LogoCarousel from "@/components/LogoCarousel";
@@ -13,6 +15,14 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  useSEO({
+    title: "Smart Hiring & Background Verification for India's Growing Workforce",
+    description: "Gigin helps businesses simplify background verification and access a verified workforce across India. Hire faster with trust and compliance built-in.",
+    url: "https://master-website-gigin.lovable.app/home",
+    type: "website",
+    image: "/lovable-uploads/og-gigin.jpg"
+  });
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background image */}
