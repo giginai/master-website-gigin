@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -17,7 +16,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
   const isHiringSolutionsPage = location.pathname === "/hiring-solutions";
-  const isVerificationPage = location.pathname === "/verification";
+  const isVerificationPage = location.pathname === "/verification" || location.pathname.startsWith("/verification");
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
@@ -120,13 +119,13 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                             <Shield className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
                             <span className="text-gray-700 group-hover:text-pink-600 font-medium">AI-Powered BGV</span>
                           </Link>
-                          <Link to="/verification" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
-                            <Zap className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
-                            <span className="text-gray-700 group-hover:text-pink-600 font-medium">Tailored to Outcomes</span>
-                          </Link>
-                          <Link to="/verification" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
+                          <Link to="/verification-catalogue" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
                             <Database className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
-                            <span className="text-gray-700 group-hover:text-pink-600 font-medium">Easy Integration with HRMS</span>
+                            <span className="text-gray-700 group-hover:text-pink-600 font-medium">Verification Catalogue</span>
+                          </Link>
+                          <Link to="/industries-solutions" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
+                            <Building2 className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
+                            <span className="text-gray-700 group-hover:text-pink-600 font-medium">Industries & Use Cases</span>
                           </Link>
                         </div>
                       </div>

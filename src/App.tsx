@@ -17,6 +17,8 @@ import Blog from "./pages/Blog";
 import BlogCategory from "./pages/BlogCategory";
 import BlogPostDetail from "./pages/BlogPostDetail";
 import Verification from "./pages/Verification";
+import VerificationCatalogue from "./pages/VerificationCatalogue";
+import IndustriesSolutions from "./pages/IndustriesSolutions";
 import Jobs from "./pages/Jobs";
 import JobDetail from "./pages/JobDetail";
 import NotFound from "./pages/NotFound";
@@ -72,6 +74,8 @@ const App = () => (
             <Route path="/blog/category/:categorySlug" element={<BlogCategory />} />
             <Route path="/blog/:category/:slug" element={<BlogPostDetail />} />
             <Route path="/verification" element={<Verification />} />
+            <Route path="/verification-catalogue" element={<VerificationCatalogue />} />
+            <Route path="/industries-solutions" element={<IndustriesSolutions />} />
             
             {/* Verification check pages */}
             <Route path="/verification/identity" element={<IdentityVerification />} />

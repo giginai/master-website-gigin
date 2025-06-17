@@ -24,18 +24,18 @@ const VerificationHeroSection = () => {
           <div>
             <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
               <span className="text-white">✦</span>
-              <span className="text-white font-medium mx-2">Verifyin</span>
+              <span className="text-white font-medium mx-2">VerifyIn</span>
               <span className="text-white">✦</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Fast & Accurate- AI Driven<br />
+              Fast & Accurate - AI Driven<br />
               Background Verification
             </h1>
             
             <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Reduce time-to-hire, mitigate hiring risks, and ensure compliance while<br />
-              minimizing the efforts.
+              Streamline background verification for HR teams—removing friction, reducing turnaround time, 
+              and providing control, compliance, and peace of mind from start to finish.
             </p>
             
             <Button 
