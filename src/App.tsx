@@ -1,10 +1,11 @@
+
 import React, { FC } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { SEOProvider } from "@/contexts/SEOContext";
 import SEOHead from "@/components/SEOHead";
 import { generateWebsiteSchema, generateOrganizationSchema } from "@/utils/schemaGenerator";
@@ -61,40 +62,42 @@ const App = () => (
     <HelmetProvider>
       <SEOProvider>
         <TooltipProvider>
-          <SEOHead structuredData={[generateWebsiteSchema(), generateOrganizationSchema()]} />
-          <Toaster />
-          <Sonner />
-          <Routes>
-            <Route path="/" element={<Navigate to="/home" replace />} />
-            <Route path="/home" element={<Index />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/why-gigin" element={<WhyGigin />} />
-            <Route path="/hiring-solutions" element={<HiringSolutions />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/category/:categorySlug" element={<BlogCategory />} />
-            <Route path="/blog/:category/:slug" element={<BlogPostDetail />} />
-            <Route path="/verification" element={<Verification />} />
-            <Route path="/verification-catalogue" element={<VerificationCatalogue />} />
-            <Route path="/industries-solutions" element={<IndustriesSolutions />} />
-            
-            {/* Verification check pages */}
-            <Route path="/verification/identity" element={<IdentityVerification />} />
-            <Route path="/verification/criminal" element={<CriminalRecordCheck />} />
-            <Route path="/verification/employment" element={<EmploymentVerification />} />
-            <Route path="/verification/education" element={<EducationVerification />} />
-            <Route path="/verification/social" element={<SocialMediaScreening />} />
-            <Route path="/verification/financial" element={<FinancialVerification />} />
-            <Route path="/verification/reference" element={<ReferenceVerification />} />
-            <Route path="/verification/address" element={<AddressVerification />} />
-            
-            {/* Job-related routes */}
-            <Route path="/find-a-job" element={<Jobs />} />
-            <Route path="/jobs-/*" element={<JobsSlugWrapper />} />
-            <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
-            
-            {/* Catch-all route for 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <BrowserRouter>
+            <SEOHead structuredData={[generateWebsiteSchema(), generateOrganizationSchema()]} />
+            <Toaster />
+            <Sonner />
+            <Routes>
+              <Route path="/" element={<Navigate to="/home" replace />} />
+              <Route path="/home" element={<Index />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/why-gigin" element={<WhyGigin />} />
+              <Route path="/hiring-solutions" element={<HiringSolutions />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/category/:categorySlug" element={<BlogCategory />} />
+              <Route path="/blog/:category/:slug" element={<BlogPostDetail />} />
+              <Route path="/verification" element={<Verification />} />
+              <Route path="/verification-catalogue" element={<VerificationCatalogue />} />
+              <Route path="/industries-solutions" element={<IndustriesSolutions />} />
+              
+              {/* Verification check pages */}
+              <Route path="/verification/identity" element={<IdentityVerification />} />
+              <Route path="/verification/criminal" element={<CriminalRecordCheck />} />
+              <Route path="/verification/employment" element={<EmploymentVerification />} />
+              <Route path="/verification/education" element={<EducationVerification />} />
+              <Route path="/verification/social" element={<SocialMediaScreening />} />
+              <Route path="/verification/financial" element={<FinancialVerification />} />
+              <Route path="/verification/reference" element={<ReferenceVerification />} />
+              <Route path="/verification/address" element={<AddressVerification />} />
+              
+              {/* Job-related routes */}
+              <Route path="/find-a-job" element={<Jobs />} />
+              <Route path="/jobs-/*" element={<JobsSlugWrapper />} />
+              <Route path="/job-detail/:jobPageUrl" element={<JobDetail />} />
+              
+              {/* Catch-all route for 404 */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
         </TooltipProvider>
       </SEOProvider>
     </HelmetProvider>
