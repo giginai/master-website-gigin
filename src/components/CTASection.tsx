@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const CTASection = () => {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation(0.2);
-  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation(0.3);
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation<HTMLDivElement>(0.2);
+  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation<HTMLDivElement>(0.3);
 
   return (
     <section className="py-20 relative overflow-hidden">

@@ -3,8 +3,8 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import AnimatedCounter from '@/components/AnimatedCounter';
 
 const ProofSection = () => {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation(0.2);
-  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation(0.3);
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation<HTMLHeadingElement>(0.2);
+  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation<HTMLDivElement>(0.3);
 
   const stats = [
     { value: "60%", label: "Faster Hiring" },

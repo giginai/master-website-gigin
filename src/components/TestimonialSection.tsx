@@ -1,9 +1,10 @@
+
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const TestimonialSection = () => {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation(0.2);
-  const { ref: carouselRef, isVisible: carouselVisible } = useScrollAnimation(0.3);
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation<HTMLDivElement>(0.2);
+  const { ref: carouselRef, isVisible: carouselVisible } = useScrollAnimation<HTMLDivElement>(0.3);
 
   const testimonials = [{
     quote: "The Gigin Recruiter app exceeded my expectations. It's efficient, easy to use, and delivers excellent hiring results. Highly recommend it to anyone looking for a smart recruitment solution.",

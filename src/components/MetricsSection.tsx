@@ -3,7 +3,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import AnimatedCounter from '@/components/AnimatedCounter';
 
 const MetricsSection = () => {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation(0.2);
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation<HTMLHeadingElement>(0.2);
 
   const metrics = [
     { value: "2M+", label: "Active Candidates", color: "from-pink-500/20 to-red-500/20" },

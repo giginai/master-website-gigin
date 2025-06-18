@@ -9,7 +9,7 @@ interface AnimatedCounterProps {
 }
 
 const AnimatedCounter = ({ value, label, className = "" }: AnimatedCounterProps) => {
-  const { ref, isVisible } = useScrollAnimation(0.3);
+  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>(0.3);
   
   // Extract numeric value from string (e.g., "2M+" -> 2000000)
   const getNumericValue = (val: string) => {
