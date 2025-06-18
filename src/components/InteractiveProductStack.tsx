@@ -50,7 +50,7 @@ const InteractiveProductStack = () => {
     <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-10 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
             Built to Hire Right. Built for You.
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
