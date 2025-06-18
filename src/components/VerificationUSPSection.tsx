@@ -1,7 +1,10 @@
 
-import { Shield, Users, Zap, Bell, Settings, Lock } from "lucide-react";
+import { Shield, Users, Zap, Bell, Settings, Lock, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 const VerificationUSPSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const differentiators = [
     {
       icon: Users,
@@ -56,8 +59,16 @@ const VerificationUSPSection = () => {
     "Reports/checks tailored to exact needs"
   ];
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % Math.ceil(differentiators.length / 2));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + Math.ceil(differentiators.length / 2)) % Math.ceil(differentiators.length / 2));
+  };
+
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -70,50 +81,91 @@ const VerificationUSPSection = () => {
           </p>
         </div>
 
-        {/* Key Differentiators Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {differentiators.map((item, index) => (
+        {/* Carousel */}
+        <div className="relative mb-16">
+          <div className="overflow-hidden">
             <div 
-              key={index} 
-              className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-pink-500 hover:shadow-lg transition-all duration-300 group"
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                  <item.icon className="w-6 h-6 text-white" />
+              {Array.from({ length: Math.ceil(differentiators.length / 2) }, (_, slideIndex) => (
+                <div key={slideIndex} className="w-full flex-shrink-0">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+                    {differentiators.slice(slideIndex * 2, slideIndex * 2 + 2).map((item, index) => (
+                      <div 
+                        key={slideIndex * 2 + index} 
+                        className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group hover:-translate-y-1"
+                      >
+                        <div className="flex items-start mb-6">
+                          <div className="w-14 h-14 bg-gradient-to-br from-pink-100 to-purple-100 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:from-pink-200 group-hover:to-purple-200 transition-all duration-300">
+                            <item.icon className="w-7 h-7 text-pink-600" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">
+                              {item.title}
+                            </h3>
+                            <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                              {item.description}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-gradient-to-r from-pink-50 to-purple-50 border-l-4 border-pink-400 p-4 mb-4 rounded-r-lg">
+                          <p className="text-pink-700 font-medium text-sm">
+                            <strong>Impact:</strong> {item.outcome}
+                          </p>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          {item.features.slice(0, 3).map((feature, featureIndex) => (
+                            <div key={featureIndex} className="flex items-center text-sm text-gray-600">
+                              <div className="w-2 h-2 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full mr-3 flex-shrink-0"></div>
+                              {feature}
+                            </div>
+                          ))}
+                          {item.features.length > 3 && (
+                            <div className="text-sm text-pink-500 font-medium mt-2">
+                              +{item.features.length - 3} more features
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-white group-hover:text-pink-400 transition-colors">
-                  {item.title}
-                </h3>
-              </div>
-              
-              <p className="text-sm text-gray-300 mb-3 leading-relaxed">
-                {item.description}
-              </p>
-              
-              <div className="bg-pink-900/30 border-l-4 border-pink-400 p-3 mb-4">
-                <p className="text-pink-300 font-medium text-xs">
-                  <strong>Impact:</strong> {item.outcome}
-                </p>
-              </div>
-              
-              <div className="space-y-1">
-                {item.features.slice(0, 3).map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center text-xs text-gray-400">
-                    <div className="w-1.5 h-1.5 bg-pink-400 rounded-full mr-2 flex-shrink-0"></div>
-                    {feature}
-                  </div>
-                ))}
-                {item.features.length > 3 && (
-                  <div className="text-xs text-pink-400 font-medium mt-2">
-                    +{item.features.length - 3} more features
-                  </div>
-                )}
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Carousel Controls */}
+          <button 
+            onClick={prevSlide}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group z-10"
+          >
+            <ChevronLeft className="w-6 h-6 text-gray-600 group-hover:text-pink-600" />
+          </button>
+          <button 
+            onClick={nextSlide}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group z-10"
+          >
+            <ChevronRight className="w-6 h-6 text-gray-600 group-hover:text-pink-600" />
+          </button>
+
+          {/* Carousel Indicators */}
+          <div className="flex justify-center space-x-2 mt-8">
+            {Array.from({ length: Math.ceil(differentiators.length / 2) }, (_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide ? 'bg-pink-500' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* VerifyIn Delivers Section - Reverted to previous design */}
+        {/* VerifyIn Delivers Section */}
         <div className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-2xl p-12 text-center text-white">
           <h3 className="text-3xl md:text-4xl font-bold mb-8">
             VerifyIn Delivers What HR Needs Most

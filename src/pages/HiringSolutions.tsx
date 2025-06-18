@@ -200,7 +200,7 @@ const HiringSolutions = () => {
       </section>
 
       {/* Job Market Place Section */}
-      <section className="relative z-10 py-20 bg-white">
+      <section id="job-marketplace" className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center bg-gray-100 rounded-full px-4 py-2 mb-6">
@@ -256,7 +256,7 @@ const HiringSolutions = () => {
       </section>
 
       {/* AI-Assisted ATS Section */}
-      <section className="relative z-10 py-20 bg-gray-50">
+      <section id="ai-ats" className="relative z-10 py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
@@ -334,13 +334,13 @@ const HiringSolutions = () => {
         </div>
       </section>
 
-      {/* Bulk Hiring Section */}
-      <section className="relative z-10 py-20 bg-white">
+      {/* Guaranteed Hiring Program Section */}
+      <section id="guaranteed-hiring" className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center bg-gray-100 rounded-full px-4 py-2 mb-6">
               <span className="text-gray-800">✦</span>
-              <span className="text-gray-800 font-medium mx-2">Bulk Hiring</span>
+              <span className="text-gray-800 font-medium mx-2">Guaranteed Hiring Program</span>
               <span className="text-gray-800">✦</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">

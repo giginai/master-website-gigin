@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -24,6 +23,27 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
   const location = useLocation();
   const isHiringSolutionsPage = location.pathname === "/hiring-solutions";
   const isVerificationPage = location.pathname === "/verification" || location.pathname.startsWith("/verification");
+
+  const handleHiringSolutionClick = (sectionId: string) => {
+    if (location.pathname === "/hiring-solutions") {
+      // If already on hiring solutions page, scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerOffset = 150;
+        const elementPosition = element.offsetTop;
+        const offsetPosition = elementPosition - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    } else {
+      // If not on hiring solutions page, navigate there with hash
+      window.location.href = `/hiring-solutions#${sectionId}`;
+    }
+    setIsDropdownOpen(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
@@ -85,11 +105,14 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                           Hiring Solutions
                         </h4>
                         <div className="space-y-3">
-                          <Link to="/hiring-solutions" className={`flex items-center p-3 rounded-lg border transition-all group ${
-                            location.pathname === "/hiring-solutions"
-                              ? "bg-pink-50 border-pink-200"
-                              : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
-                          }`}>
+                          <button 
+                            onClick={() => handleHiringSolutionClick('job-marketplace')} 
+                            className={`flex items-center p-3 rounded-lg border transition-all group w-full text-left ${
+                              location.pathname === "/hiring-solutions"
+                                ? "bg-pink-50 border-pink-200"
+                                : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
+                            }`}
+                          >
                             <Search className={`w-4 h-4 mr-3 ${
                               location.pathname === "/hiring-solutions"
                                 ? "text-pink-500"
@@ -100,12 +123,15 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                                 ? "text-pink-600"
                                 : "text-gray-700 group-hover:text-pink-600"
                             }`}>Job Market Place</span>
-                          </Link>
-                          <Link to="/hiring-solutions" className={`flex items-center p-3 rounded-lg border transition-all group ${
-                            location.pathname === "/hiring-solutions"
-                              ? "bg-pink-50 border-pink-200"
-                              : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
-                          }`}>
+                          </button>
+                          <button 
+                            onClick={() => handleHiringSolutionClick('ai-ats')} 
+                            className={`flex items-center p-3 rounded-lg border transition-all group w-full text-left ${
+                              location.pathname === "/hiring-solutions"
+                                ? "bg-pink-50 border-pink-200"
+                                : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
+                            }`}
+                          >
                             <Bot className={`w-4 h-4 mr-3 ${
                               location.pathname === "/hiring-solutions"
                                 ? "text-pink-500"
@@ -116,12 +142,15 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                                 ? "text-pink-600"
                                 : "text-gray-700 group-hover:text-pink-600"
                             }`}>AI Assisted ATS</span>
-                          </Link>
-                          <Link to="/hiring-solutions" className={`flex items-center p-3 rounded-lg border transition-all group ${
-                            location.pathname === "/hiring-solutions"
-                              ? "bg-pink-50 border-pink-200"
-                              : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
-                          }`}>
+                          </button>
+                          <button 
+                            onClick={() => handleHiringSolutionClick('guaranteed-hiring')} 
+                            className={`flex items-center p-3 rounded-lg border transition-all group w-full text-left ${
+                              location.pathname === "/hiring-solutions"
+                                ? "bg-pink-50 border-pink-200"
+                                : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
+                            }`}
+                          >
                             <CheckCircle className={`w-4 h-4 mr-3 ${
                               location.pathname === "/hiring-solutions"
                                 ? "text-pink-500"
@@ -132,7 +161,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                                 ? "text-pink-600"
                                 : "text-gray-700 group-hover:text-pink-600"
                             }`}>Guaranteed Hiring Program</span>
-                          </Link>
+                          </button>
                         </div>
                       </div>
                       
