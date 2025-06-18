@@ -34,17 +34,17 @@ const Hero = () => {
             One AI-powered platform to do it all—fast and reliably.
           </p>
 
-          {/* NASSCOM and ISO Logos */}
+          {/* NASSCOM and ISO Logos - Made smaller */}
           <div className="flex justify-center items-center gap-8 mb-8">
             <img 
               src="/lovable-uploads/f600c2f8-99c8-4304-a86f-bc99201989a0.png" 
               alt="NASSCOM Logo" 
-              className="h-12 w-auto opacity-90"
+              className="h-8 w-auto opacity-90"
             />
             <img 
               src="/lovable-uploads/c6532bb5-904a-458a-a19a-a0d30d3221c9.png" 
               alt="ISO Certification" 
-              className="h-12 w-auto opacity-90"
+              className="h-8 w-auto opacity-90"
             />
           </div>
 
@@ -54,11 +54,11 @@ const Hero = () => {
           </Button>
         </div>
 
-        {/* Hero Image - Cropped 50% vertically with no gap */}
+        {/* Hero Image - Using new dashboard image */}
         <div className="relative max-w-6xl mx-auto">
           <div className="relative overflow-hidden rounded-t-3xl group h-64 md:h-80 lg:h-96">
             <img 
-              src="/lovable-uploads/56a40185-261b-4872-a09a-a76c5af61583.png" 
+              src="/lovable-uploads/c9bccb68-f552-4043-b277-c5dc203fa088.png" 
               alt="Gigin Dashboard Interface" 
               className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
               style={{ objectPosition: 'center top' }}

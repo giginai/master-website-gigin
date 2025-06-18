@@ -33,7 +33,7 @@ const CTASection = () => {
           <div className="flex justify-center">
             <div className="relative">
               <img 
-                src="/lovable-uploads/d76849a1-064a-4fa3-aec2-50cf0ab617bc.png"
+                src="/lovable-uploads/c9bccb68-f552-4043-b277-c5dc203fa088.png"
                 alt="New Dashboard Interface"
                 className="w-full max-w-5xl h-auto object-contain rounded-2xl shadow-2xl"
               />

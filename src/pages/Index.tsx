@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import LogoCarousel from "@/components/LogoCarousel";
 import FeaturesSection from "@/components/FeaturesSection";
-import ProductStackSection from "@/components/ProductStackSection";
+import InteractiveProductStack from "@/components/InteractiveProductStack";
 import TestimonialSection from "@/components/TestimonialSection";
 import MetricsSection from "@/components/MetricsSection";
 import TrustSection from "@/components/TrustSection";
@@ -59,9 +59,9 @@ const Index = () => {
         <FeaturesSection />
       </div>
 
-      {/* New Product Stack Section */}
+      {/* New Interactive Product Stack Section */}
       <div className="relative z-10">
-        <ProductStackSection />
+        <InteractiveProductStack />
       </div>
 
       {/* Existing Sections */}
