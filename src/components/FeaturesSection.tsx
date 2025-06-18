@@ -39,7 +39,7 @@ const FeaturesSection = () => {
     }],
     image: "/lovable-uploads/9441c202-33f5-42c1-a3fc-9468ce0635b2.png"
   }];
-  return <section className="pt-8 pb-20 bg-white">
+  return <section className="pt-8 pb-20 bg-white py-[48px]">
       <div className="max-w-7xl mx-auto px-[48px]">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
