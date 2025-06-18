@@ -1,9 +1,15 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Shield, Users, CreditCard, FileCheck, Building, Eye, Globe, CheckCircle, UserCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 const VerificationCatalogue = () => {
+  const [activeCategory, setActiveCategory] = useState("all");
+
   const verificationCategories = [{
+    id: "identity-verification",
     title: "Identity Verification",
     icon: Shield,
     description: "AI-powered ID authentication for government-issued documents. Biometric matching for fraud-proof identity validation. Automated risk assessment for fake profiles and identity theft.",
@@ -27,6 +33,7 @@ const VerificationCatalogue = () => {
       link: "/verification/identity"
     }]
   }, {
+    id: "employment-verification",
     title: "Employment Verification",
     icon: Building,
     description: "Comprehensive employment history validation with multi-source database verification and automated cross-checking of job roles, tenure, and salary analysis.",
@@ -44,6 +51,7 @@ const VerificationCatalogue = () => {
       link: "/verification/reference"
     }]
   }, {
+    id: "education-verification",
     title: "Education Verification",
     icon: CheckCircle,
     description: "Ensure confidence in candidate qualifications with fast verification processes, AI-assisted certificate authentication and degree validation.",
@@ -58,6 +66,7 @@ const VerificationCatalogue = () => {
       link: "/verification/education"
     }]
   }, {
+    id: "criminal-record-verification",
     title: "Criminal Record Verification",
     icon: FileCheck,
     description: "Reliable international criminal record screening by AI scanning for court cases, legal disputes, and criminal sanctions for high-security roles.",
@@ -72,6 +81,7 @@ const VerificationCatalogue = () => {
       link: "/verification/criminal"
     }]
   }, {
+    id: "address-residence-verification",
     title: "Address & Residence Verification",
     icon: Eye,
     description: "Real-time address validation and residence history verification using multiple databases and AI-powered cross-referencing for accuracy.",
@@ -86,6 +96,7 @@ const VerificationCatalogue = () => {
       link: "/verification/address"
     }]
   }, {
+    id: "financial-risk-verification",
     title: "Financial Risk Verification",
     icon: CreditCard,
     description: "Comprehensive financial history checks including credit scores, bankruptcy records, and financial stability assessment for high-trust positions.",
@@ -100,6 +111,7 @@ const VerificationCatalogue = () => {
       link: "/verification/financial"
     }]
   }, {
+    id: "social-media-screening",
     title: "Social Media Screening",
     icon: Globe,
     description: "AI-powered social media analysis for professional reputation assessment, identifying potential risks and ensuring brand alignment.",
@@ -114,6 +126,55 @@ const VerificationCatalogue = () => {
       link: "/verification/social"
     }]
   }];
+
+  const handleCategoryClick = (categoryId: string) => {
+    setActiveCategory(categoryId);
+    if (categoryId === "all") {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.getElementById(categoryId);
+      if (element) {
+        const headerOffset = 150;
+        const elementPosition = element.offsetTop;
+        const offsetPosition = elementPosition - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200;
+      
+      // Check if we're at the top of the page
+      if (scrollPosition < 300) {
+        setActiveCategory("all");
+        return;
+      }
+
+      // Find which section is currently in view
+      for (const category of verificationCategories) {
+        const element = document.getElementById(category.id);
+        if (element) {
+          const elementTop = element.offsetTop;
+          const elementBottom = elementTop + element.offsetHeight;
+          
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            setActiveCategory(category.id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [verificationCategories]);
+
   return <div className="min-h-screen bg-gray-50">
       <Header />
       
@@ -149,12 +210,33 @@ const VerificationCatalogue = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">All Services</h3>
                 <nav className="space-y-2">
-                  <div className="p-3 bg-pink-50 border border-pink-200 rounded-lg">
-                    <span className="text-gray-700 font-medium">All</span>
+                  <div 
+                    className={`p-3 rounded-lg cursor-pointer transition-colors ${
+                      activeCategory === "all" 
+                        ? "bg-pink-50 border border-pink-200" 
+                        : "hover:bg-gray-50"
+                    }`}
+                    onClick={() => handleCategoryClick("all")}
+                  >
+                    <span className={`font-medium ${
+                      activeCategory === "all" ? "text-pink-600" : "text-gray-700"
+                    }`}>All</span>
                   </div>
-                  {verificationCategories.map((category, index) => <div key={index} className="p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors">
-                      <span className="text-gray-600">{category.title}</span>
-                    </div>)}
+                  {verificationCategories.map((category, index) => 
+                    <div 
+                      key={index} 
+                      className={`p-3 rounded-lg cursor-pointer transition-colors ${
+                        activeCategory === category.id 
+                          ? "bg-pink-50 border border-pink-200" 
+                          : "hover:bg-gray-50"
+                      }`}
+                      onClick={() => handleCategoryClick(category.id)}
+                    >
+                      <span className={`${
+                        activeCategory === category.id ? "text-pink-600 font-medium" : "text-gray-600"
+                      }`}>{category.title}</span>
+                    </div>
+                  )}
                 </nav>
               </div>
             </div>
@@ -162,7 +244,7 @@ const VerificationCatalogue = () => {
             {/* Services Content */}
             <div className="lg:col-span-2">
               <div className="space-y-12">
-                {verificationCategories.map((category, categoryIndex) => <div key={categoryIndex}>
+                {verificationCategories.map((category, categoryIndex) => <div key={categoryIndex} id={category.id}>
                     <div className="mb-8">
                       <h2 className="text-3xl font-bold text-gray-900 mb-4">{category.title}</h2>
                       <p className="text-gray-600 text-lg">{category.description}</p>

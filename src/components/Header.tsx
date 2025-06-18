@@ -85,17 +85,53 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                           Hiring Solutions
                         </h4>
                         <div className="space-y-3">
-                          <Link to="/hiring-solutions" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
-                            <Search className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
-                            <span className="text-sm text-gray-700 group-hover:text-pink-600 font-medium">Job Market Place</span>
+                          <Link to="/hiring-solutions" className={`flex items-center p-3 rounded-lg border transition-all group ${
+                            location.pathname === "/hiring-solutions"
+                              ? "bg-pink-50 border-pink-200"
+                              : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
+                          }`}>
+                            <Search className={`w-4 h-4 mr-3 ${
+                              location.pathname === "/hiring-solutions"
+                                ? "text-pink-500"
+                                : "text-gray-500 group-hover:text-pink-500"
+                            }`} />
+                            <span className={`text-sm font-medium ${
+                              location.pathname === "/hiring-solutions"
+                                ? "text-pink-600"
+                                : "text-gray-700 group-hover:text-pink-600"
+                            }`}>Job Market Place</span>
                           </Link>
-                          <Link to="/hiring-solutions" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
-                            <Bot className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
-                            <span className="text-sm text-gray-700 group-hover:text-pink-600 font-medium">AI Assisted ATS</span>
+                          <Link to="/hiring-solutions" className={`flex items-center p-3 rounded-lg border transition-all group ${
+                            location.pathname === "/hiring-solutions"
+                              ? "bg-pink-50 border-pink-200"
+                              : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
+                          }`}>
+                            <Bot className={`w-4 h-4 mr-3 ${
+                              location.pathname === "/hiring-solutions"
+                                ? "text-pink-500"
+                                : "text-gray-500 group-hover:text-pink-500"
+                            }`} />
+                            <span className={`text-sm font-medium ${
+                              location.pathname === "/hiring-solutions"
+                                ? "text-pink-600"
+                                : "text-gray-700 group-hover:text-pink-600"
+                            }`}>AI Assisted ATS</span>
                           </Link>
-                          <Link to="/hiring-solutions" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
-                            <CheckCircle className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
-                            <span className="text-sm text-gray-700 group-hover:text-pink-600 font-medium">Guaranteed Hiring Program</span>
+                          <Link to="/hiring-solutions" className={`flex items-center p-3 rounded-lg border transition-all group ${
+                            location.pathname === "/hiring-solutions"
+                              ? "bg-pink-50 border-pink-200"
+                              : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
+                          }`}>
+                            <CheckCircle className={`w-4 h-4 mr-3 ${
+                              location.pathname === "/hiring-solutions"
+                                ? "text-pink-500"
+                                : "text-gray-500 group-hover:text-pink-500"
+                            }`} />
+                            <span className={`text-sm font-medium ${
+                              location.pathname === "/hiring-solutions"
+                                ? "text-pink-600"
+                                : "text-gray-700 group-hover:text-pink-600"
+                            }`}>Guaranteed Hiring Program</span>
                           </Link>
                         </div>
                       </div>
@@ -106,17 +142,53 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                           Verification Solutions
                         </h4>
                         <div className="space-y-3">
-                          <Link to="/verification" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
-                            <Shield className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
-                            <span className="text-sm text-gray-700 group-hover:text-pink-600 font-medium">AI-Powered BGV</span>
+                          <Link to="/verification" className={`flex items-center p-3 rounded-lg border transition-all group ${
+                            location.pathname === "/verification"
+                              ? "bg-pink-50 border-pink-200"
+                              : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
+                          }`}>
+                            <Shield className={`w-4 h-4 mr-3 ${
+                              location.pathname === "/verification"
+                                ? "text-pink-500"
+                                : "text-gray-500 group-hover:text-pink-500"
+                            }`} />
+                            <span className={`text-sm font-medium ${
+                              location.pathname === "/verification"
+                                ? "text-pink-600"
+                                : "text-gray-700 group-hover:text-pink-600"
+                            }`}>AI-Powered BGV</span>
                           </Link>
-                          <Link to="/verification-catalogue" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
-                            <Database className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
-                            <span className="text-sm text-gray-700 group-hover:text-pink-600 font-medium">Verification Catalogue</span>
+                          <Link to="/verification-catalogue" className={`flex items-center p-3 rounded-lg border transition-all group ${
+                            location.pathname === "/verification-catalogue"
+                              ? "bg-pink-50 border-pink-200"
+                              : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
+                          }`}>
+                            <Database className={`w-4 h-4 mr-3 ${
+                              location.pathname === "/verification-catalogue"
+                                ? "text-pink-500"
+                                : "text-gray-500 group-hover:text-pink-500"
+                            }`} />
+                            <span className={`text-sm font-medium ${
+                              location.pathname === "/verification-catalogue"
+                                ? "text-pink-600"
+                                : "text-gray-700 group-hover:text-pink-600"
+                            }`}>Verification Catalogue</span>
                           </Link>
-                          <Link to="/industries-solutions" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
-                            <Building2 className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
-                            <span className="text-sm text-gray-700 group-hover:text-pink-600 font-medium">Industries & Use Cases</span>
+                          <Link to="/industries-solutions" className={`flex items-center p-3 rounded-lg border transition-all group ${
+                            location.pathname === "/industries-solutions"
+                              ? "bg-pink-50 border-pink-200"
+                              : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
+                          }`}>
+                            <Building2 className={`w-4 h-4 mr-3 ${
+                              location.pathname === "/industries-solutions"
+                                ? "text-pink-500"
+                                : "text-gray-500 group-hover:text-pink-500"
+                            }`} />
+                            <span className={`text-sm font-medium ${
+                              location.pathname === "/industries-solutions"
+                                ? "text-pink-600"
+                                : "text-gray-700 group-hover:text-pink-600"
+                            }`}>Industries & Use Cases</span>
                           </Link>
                         </div>
                       </div>
