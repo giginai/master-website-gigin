@@ -67,9 +67,7 @@ const FeaturesSection = () => {
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                      {feature.title}
-                    </h3>
+                    
                     <p className="text-lg text-gray-600 leading-relaxed">
                       {feature.description}
                     </p>
