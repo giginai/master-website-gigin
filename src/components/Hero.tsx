@@ -35,13 +35,13 @@ const Hero = () => {
         </div>
 
         {/* Hero Image - Using new dashboard image */}
-        <div className="relative max-w-6xl mx-auto">
+        {/*<div className="relative max-w-6xl mx-auto">
           <div className="relative overflow-hidden rounded-t-3xl group h-64 md:h-80 lg:h-96">
             <img src="/lovable-uploads/c9bccb68-f552-4043-b277-c5dc203fa088.png" alt="Gigin Dashboard Interface" className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105" style={{
             objectPosition: 'center top'
           }} />
           </div>
-        </div>
+        </div>*/}
       </div>
     </div>;
 };
