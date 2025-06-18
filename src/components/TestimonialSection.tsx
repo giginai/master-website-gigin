@@ -1,5 +1,10 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+
 const TestimonialSection = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation(0.2);
+  const { ref: carouselRef, isVisible: carouselVisible } = useScrollAnimation(0.3);
+
   const testimonials = [{
     quote: "The Gigin Recruiter app exceeded my expectations. It's efficient, easy to use, and delivers excellent hiring results. Highly recommend it to anyone looking for a smart recruitment solution.",
     author: "Shifa Khan",
@@ -29,17 +34,23 @@ const TestimonialSection = () => {
     author: "Anita Desai",
     role: "HR Director"
   }];
-  return <section className="py-20 bg-gray-50 relative overflow-hidden">
+  return (
+    <section className="py-20 bg-gray-50 relative overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: 'url(/lovable-uploads/f0acdf04-0015-4664-af62-d43a84908fcd.png)'
-    }}></div>
+        backgroundImage: 'url(/lovable-uploads/f0acdf04-0015-4664-af62-d43a84908fcd.png)'
+      }}></div>
       
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/70"></div>
       
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-        <div className="mb-4">
+        <div 
+          ref={titleRef}
+          className={`mb-4 transition-all duration-700 ${
+            titleVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <div className="inline-flex items-center glass-morphism border border-white/20 rounded-full px-4 py-2">
             <span className="text-white">✦</span>
             <span className="text-white font-medium mx-2">Testimonial</span>
@@ -47,13 +58,28 @@ const TestimonialSection = () => {
           </div>
         </div>
         
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Trusted by 150k+ Recruiters</h2>
-        <p className="text-xl text-white/80 mb-16">
+        <h2 
+          className={`text-4xl md:text-5xl font-bold text-white mb-4 transition-all duration-700 delay-200 ${
+            titleVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          Trusted by 150k+ Recruiters
+        </h2>
+        <p 
+          className={`text-xl text-white/80 mb-16 transition-all duration-700 delay-400 ${
+            titleVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
+          }`}
+        >
           Our clients speak on behalf of us!
         </p>
 
         {/* Testimonial Carousel */}
-        <div className="relative max-w-4xl mx-auto">
+        <div 
+          ref={carouselRef}
+          className={`relative max-w-4xl mx-auto transition-all duration-700 delay-600 ${
+            carouselVisible ? 'animate-fade-in animate-scale-in' : 'opacity-0 translate-y-8 scale-95'
+          }`}
+        >
           <Carousel className="w-full">
             <CarouselContent>
               {testimonials.map((testimonial, index) => <CarouselItem key={index}>
@@ -86,6 +112,8 @@ const TestimonialSection = () => {
           </Carousel>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default TestimonialSection;

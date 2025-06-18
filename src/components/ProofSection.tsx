@@ -1,6 +1,11 @@
 
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import AnimatedCounter from '@/components/AnimatedCounter';
 
 const ProofSection = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation(0.2);
+  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation(0.3);
+
   const stats = [
     { value: "60%", label: "Faster Hiring" },
     { value: "37", label: "Years of Hiring Time Saved" },
@@ -12,12 +17,22 @@ const ProofSection = () => {
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 
+            ref={titleRef}
+            className={`text-4xl md:text-5xl font-bold text-gray-900 mb-6 transition-all duration-700 ${
+              titleVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
+            }`}
+          >
             Trust Built On Results
           </h2>
           
           {/* Updated Visual with new uploaded image */}
-          <div className="relative max-w-4xl mx-auto mb-4">
+          <div 
+            ref={imageRef}
+            className={`relative max-w-4xl mx-auto mb-4 transition-all duration-700 delay-300 ${
+              imageVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <div className="rounded-3xl p-8 relative overflow-hidden">
               <img 
                 src="/lovable-uploads/12cd2a9a-72db-4c6f-b47e-acd848785f95.png"
@@ -31,16 +46,11 @@ const ProofSection = () => {
         {/* Stats Grid - Plain style with consistent spacing */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-5xl mx-auto">
           {stats.map((stat, index) => (
-            <div 
-              key={index} 
-              className="text-center hover:scale-105 transition-all duration-300"
-            >
-              <div className="text-3xl md:text-4xl font-bold mb-3 text-pink-500">
-                {stat.value}
-              </div>
-              <div className="text-gray-700 font-medium whitespace-nowrap">
-                {stat.label}
-              </div>
+            <div key={index} style={{ animationDelay: `${index * 200}ms` }}>
+              <AnimatedCounter
+                value={stat.value}
+                label={stat.label}
+              />
             </div>
           ))}
         </div>
@@ -50,4 +60,3 @@ const ProofSection = () => {
 };
 
 export default ProofSection;
-
