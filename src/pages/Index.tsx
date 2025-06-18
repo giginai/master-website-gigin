@@ -1,10 +1,10 @@
-
 import { useEffect } from "react";
 import { useSEO } from "@/hooks/useSEO";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import LogoCarousel from "@/components/LogoCarousel";
 import FeaturesSection from "@/components/FeaturesSection";
+import ProductStackSection from "@/components/ProductStackSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import MetricsSection from "@/components/MetricsSection";
 import TrustSection from "@/components/TrustSection";
@@ -59,7 +59,12 @@ const Index = () => {
         <FeaturesSection />
       </div>
 
-      {/* New Sections */}
+      {/* New Product Stack Section */}
+      <div className="relative z-10">
+        <ProductStackSection />
+      </div>
+
+      {/* Existing Sections */}
       <div className="relative z-10">
         <TestimonialSection />
         <TrustSection />

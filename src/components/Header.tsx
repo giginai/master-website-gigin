@@ -1,10 +1,16 @@
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, Users, Shield, Search, Bot, Building2, CheckCircle, Zap, Database } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { ChevronDown, Users, Shield, Search, Bot, Building2, CheckCircle, Zap, Database, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
@@ -14,6 +20,7 @@ interface HeaderProps {
 
 const Header = ({ currentPage = "home" }: HeaderProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHiringSolutionsPage = location.pathname === "/hiring-solutions";
   const isVerificationPage = location.pathname === "/verification" || location.pathname.startsWith("/verification");
@@ -31,7 +38,8 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
           </Link>
         </div>
         
-        <div className="hidden md:flex items-center space-x-2">
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center space-x-2">
           <Link 
             to="/home" 
             className={`font-medium transition-colors px-4 py-2 rounded-lg ${
@@ -69,19 +77,6 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
             >
               <div className="bg-white backdrop-blur-[12px] border border-gray-200/40 rounded-2xl shadow-2xl min-w-[800px] overflow-hidden" style={{boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)'}}>
                 <div className="flex">
-                  <div className="w-1/3 relative bg-gradient-to-br from-pink-500/20 to-purple-600/20 overflow-hidden">
-                    <div className="absolute inset-0 bg-black/40"></div>
-                    <img 
-                      src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop"
-                      alt="Solutions Banner"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
-                      <h3 className="text-2xl font-bold text-white mb-2">AI-Powered Solutions</h3>
-                      <p className="text-gray-200 text-sm">Transform your hiring and verification processes</p>
-                    </div>
-                  </div>
-                  
                   <div className="w-2/3 p-8">
                     <div className="grid grid-cols-2 gap-8">
                       <div>
@@ -131,6 +126,19 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                       </div>
                     </div>
                   </div>
+                  
+                  <div className="w-1/3 relative bg-gradient-to-br from-pink-500/20 to-purple-600/20 overflow-hidden">
+                    <div className="absolute inset-0 bg-black/40"></div>
+                    <img 
+                      src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop"
+                      alt="Solutions Banner"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+                      <h3 className="text-2xl font-bold text-white mb-2">AI-Powered Solutions</h3>
+                      <p className="text-gray-200 text-sm">Transform your hiring and verification processes</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </DropdownMenuContent>
@@ -157,15 +165,107 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
           </Link>
         </div>
 
-        <div className="flex items-center space-x-4">
+        {/* Desktop CTAs */}
+        <div className="hidden lg:flex items-center space-x-4">
           <Link to="/find-a-job">
             <Button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg font-medium">
               Find a Job
             </Button>
           </Link>
           <Button variant="outline" className="border-gray-300 bg-white/10 text-gray-200 hover:text-white hover:bg-white/20 hover:border-white/40 px-6 py-2 rounded-lg font-medium">
-            Contact us
+            Sign In
           </Button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className="lg:hidden">
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-white">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] bg-white/95 backdrop-blur-lg">
+              <div className="flex flex-col space-y-4 mt-8">
+                <Link 
+                  to="/home" 
+                  className="text-gray-800 hover:text-pink-600 font-medium py-2 px-4 rounded-lg hover:bg-pink-50 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Home
+                </Link>
+                <Link 
+                  to="/about-us" 
+                  className="text-gray-800 hover:text-pink-600 font-medium py-2 px-4 rounded-lg hover:bg-pink-50 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About Us
+                </Link>
+                
+                {/* Mobile Solutions Menu */}
+                <div className="space-y-2">
+                  <div className="text-gray-800 font-medium py-2 px-4">Solutions</div>
+                  <div className="ml-4 space-y-2">
+                    <Link 
+                      to="/hiring-solutions" 
+                      className="block text-gray-600 hover:text-pink-600 py-1 px-4 text-sm"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Hiring Solutions
+                    </Link>
+                    <Link 
+                      to="/verification" 
+                      className="block text-gray-600 hover:text-pink-600 py-1 px-4 text-sm"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      AI-Powered BGV
+                    </Link>
+                    <Link 
+                      to="/verification-catalogue" 
+                      className="block text-gray-600 hover:text-pink-600 py-1 px-4 text-sm"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Verification Catalogue
+                    </Link>
+                    <Link 
+                      to="/industries-solutions" 
+                      className="block text-gray-600 hover:text-pink-600 py-1 px-4 text-sm"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Industries & Use Cases
+                    </Link>
+                  </div>
+                </div>
+                
+                <Link 
+                  to="/why-gigin" 
+                  className="text-gray-800 hover:text-pink-600 font-medium py-2 px-4 rounded-lg hover:bg-pink-50 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Why Gigin?
+                </Link>
+                <Link 
+                  to="/blog" 
+                  className="text-gray-800 hover:text-pink-600 font-medium py-2 px-4 rounded-lg hover:bg-pink-50 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Blogs
+                </Link>
+                
+                {/* Mobile CTAs */}
+                <div className="pt-4 space-y-3">
+                  <Link to="/find-a-job" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white">
+                      Find a Job
+                    </Button>
+                  </Link>
+                  <Button variant="outline" className="w-full border-gray-300">
+                    Sign In
+                  </Button>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </nav>
     </header>

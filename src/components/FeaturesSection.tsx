@@ -43,10 +43,10 @@ const FeaturesSection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Powerful Features for Modern Hiring
+            Smarter Features. Faster Hiring
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Transform your recruitment process with AI-powered solutions
+            From sourcing to verification—make every step smarter.
           </p>
         </div>
 
@@ -56,13 +56,13 @@ const FeaturesSection = () => {
               value="sourcing" 
               className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1"
             >
-              Talent Sourcing
+              Sourcing
             </TabsTrigger>
             <TabsTrigger 
               value="screening" 
               className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1"
             >
-              Smart Screening
+              Screening
             </TabsTrigger>
             <TabsTrigger 
               value="verification" 

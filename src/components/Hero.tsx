@@ -17,29 +17,40 @@ const Hero = () => {
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-6">
-          {/* Gigin Badge */}
+          {/* Updated Badge */}
           <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
             <span className="text-white">✦</span>
-            <span className="text-white font-medium mx-2">Gigin</span>
+            <span className="text-white font-medium mx-2">All-in-one Platform</span>
             <span className="text-white">✦</span>
           </div>
 
-          {/* Main Heading */}
+          {/* Updated Main Heading */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-5xl mx-auto">
-            Unified AI-Powered Solution To<br />
-            Source, Hire, & Verify Talent
+            Source. Hire. Verify.
           </h1>
 
-          {/* Subheading */}
-          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Empower your HR teams with speed, quality and human-centric<br />
-            intelligence that accelerates sourcing, simplifies hiring, and ensures trust<br />
-            through verification—all in one place
+          {/* Updated Subheading */}
+          <p className="text-lg md:text-xl text-white/90 mb-6 max-w-4xl mx-auto leading-relaxed">
+            One AI-powered platform to do it all—fast and reliably.
           </p>
 
-          {/* CTA Button */}
+          {/* NASSCOM and ISO Logos */}
+          <div className="flex justify-center items-center gap-8 mb-8">
+            <img 
+              src="/lovable-uploads/f600c2f8-99c8-4304-a86f-bc99201989a0.png" 
+              alt="NASSCOM Logo" 
+              className="h-12 w-auto opacity-90"
+            />
+            <img 
+              src="/lovable-uploads/c6532bb5-904a-458a-a19a-a0d30d3221c9.png" 
+              alt="ISO Certification" 
+              className="h-12 w-auto opacity-90"
+            />
+          </div>
+
+          {/* Updated CTA Button */}
           <Button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium mb-6 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300">
-            Hire Verified Talent Now
+            Get Started Now
           </Button>
         </div>
 
