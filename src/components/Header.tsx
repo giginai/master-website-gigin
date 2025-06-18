@@ -63,7 +63,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
           <Link 
             to="/home" 
             className={`text-sm font-medium transition-colors px-4 py-2 rounded-lg ${
-              currentPage === "home" 
+              location.pathname === "/home"
                 ? "text-white bg-white/10 border border-pink-400/20" 
                 : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
             }`}
@@ -73,7 +73,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
           <Link 
             to="/about-us" 
             className={`text-sm font-medium transition-colors px-4 py-2 rounded-lg ${
-              currentPage === "about-us" 
+              location.pathname === "/about-us"
                 ? "text-white bg-white/10 border border-pink-400/20" 
                 : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
             }`}
@@ -107,60 +107,24 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                         <div className="space-y-3">
                           <button 
                             onClick={() => handleHiringSolutionClick('job-marketplace')} 
-                            className={`flex items-center p-3 rounded-lg border transition-all group w-full text-left ${
-                              location.pathname === "/hiring-solutions"
-                                ? "bg-pink-50 border-pink-200"
-                                : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
-                            }`}
+                            className="flex items-center p-3 rounded-lg border transition-all group w-full text-left hover:bg-pink-50 hover:border-pink-100 border-transparent"
                           >
-                            <Search className={`w-4 h-4 mr-3 ${
-                              location.pathname === "/hiring-solutions"
-                                ? "text-pink-500"
-                                : "text-gray-500 group-hover:text-pink-500"
-                            }`} />
-                            <span className={`text-sm font-medium ${
-                              location.pathname === "/hiring-solutions"
-                                ? "text-pink-600"
-                                : "text-gray-700 group-hover:text-pink-600"
-                            }`}>Job Market Place</span>
+                            <Search className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
+                            <span className="text-sm font-medium text-gray-700 group-hover:text-pink-600">Job Market Place</span>
                           </button>
                           <button 
                             onClick={() => handleHiringSolutionClick('ai-ats')} 
-                            className={`flex items-center p-3 rounded-lg border transition-all group w-full text-left ${
-                              location.pathname === "/hiring-solutions"
-                                ? "bg-pink-50 border-pink-200"
-                                : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
-                            }`}
+                            className="flex items-center p-3 rounded-lg border transition-all group w-full text-left hover:bg-pink-50 hover:border-pink-100 border-transparent"
                           >
-                            <Bot className={`w-4 h-4 mr-3 ${
-                              location.pathname === "/hiring-solutions"
-                                ? "text-pink-500"
-                                : "text-gray-500 group-hover:text-pink-500"
-                            }`} />
-                            <span className={`text-sm font-medium ${
-                              location.pathname === "/hiring-solutions"
-                                ? "text-pink-600"
-                                : "text-gray-700 group-hover:text-pink-600"
-                            }`}>AI Assisted ATS</span>
+                            <Bot className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
+                            <span className="text-sm font-medium text-gray-700 group-hover:text-pink-600">AI Assisted ATS</span>
                           </button>
                           <button 
                             onClick={() => handleHiringSolutionClick('guaranteed-hiring')} 
-                            className={`flex items-center p-3 rounded-lg border transition-all group w-full text-left ${
-                              location.pathname === "/hiring-solutions"
-                                ? "bg-pink-50 border-pink-200"
-                                : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
-                            }`}
+                            className="flex items-center p-3 rounded-lg border transition-all group w-full text-left hover:bg-pink-50 hover:border-pink-100 border-transparent"
                           >
-                            <CheckCircle className={`w-4 h-4 mr-3 ${
-                              location.pathname === "/hiring-solutions"
-                                ? "text-pink-500"
-                                : "text-gray-500 group-hover:text-pink-500"
-                            }`} />
-                            <span className={`text-sm font-medium ${
-                              location.pathname === "/hiring-solutions"
-                                ? "text-pink-600"
-                                : "text-gray-700 group-hover:text-pink-600"
-                            }`}>Guaranteed Hiring Program</span>
+                            <CheckCircle className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
+                            <span className="text-sm font-medium text-gray-700 group-hover:text-pink-600">Guaranteed Hiring Program</span>
                           </button>
                         </div>
                       </div>
@@ -243,7 +207,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
           <Link 
             to="/why-gigin" 
             className={`text-sm font-medium transition-colors px-4 py-2 rounded-lg ${
-              currentPage === "why-gigin" 
+              location.pathname === "/why-gigin"
                 ? "text-white bg-white/10 border border-pink-400/20" 
                 : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
             }`}
@@ -253,7 +217,7 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
           <Link 
             to="/blog" 
             className={`text-sm font-medium transition-colors px-4 py-2 rounded-lg ${
-              currentPage === "blog" 
+              location.pathname === "/blog"
                 ? "text-white bg-white/10 border border-pink-400/20" 
                 : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
             }`}
