@@ -80,7 +80,7 @@ const IndustriesSolutions = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {industries.map((industry, index) => <Link key={index} to={industry.link} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 hover:border-pink-300">
                 <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-xl flex items-center justify-center mr-4">
                     <industry.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-pink-600">
