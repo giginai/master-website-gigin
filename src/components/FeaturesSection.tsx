@@ -42,9 +42,7 @@ const FeaturesSection = () => {
   return <section className="pt-8 pb-20 bg-white py-[48px]">
       <div className="max-w-7xl mx-auto px-[48px]">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Smarter Features. Faster Hiring
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Unlock Strategic HR</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             From sourcing to verification—make every step smarter.
           </p>
