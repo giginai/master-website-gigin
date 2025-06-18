@@ -24,12 +24,10 @@ const Hero = () => {
           </h1>
 
           {/* Updated Subheading */}
-          <p className="text-base md:text-lg text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
-            One AI-powered platform to do it all—fast and reliably.
-          </p>
+          <p className="text-base md:text-lg text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">All-in-one platform, designed to transform hiring, verification, and workforce management.</p>
 
           {/* Updated CTA Button */}
-          <Button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium mb-6 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300">Sign Up</Button>
+          <Button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium mb-6 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300">Sign Up Now</Button>
         </div>
 
         {/* Hero Image - Using new dashboard image */}

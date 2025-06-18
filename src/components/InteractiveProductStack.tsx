@@ -37,12 +37,8 @@ const InteractiveProductStack = () => {
   return <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-[48px]">
         <div className="text-center mb-10 md:mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
-            Built to Hire Right. Built for You.
-          </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
-            Our complete product stack uses AI to simplify hiring from start to finish.
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Your Complete Talent Ecosystem</h2>
+          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">Fragmented systems and manual tasks are a thing of the past. Gigin AI brings all your critical HR functions into one unified platform</p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
