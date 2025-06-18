@@ -1,54 +1,39 @@
-
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-
 const TestimonialSection = () => {
-  const testimonials = [
-    {
-      quote: "The Gigin Recruiter app exceeded my expectations. It's efficient, easy to use, and delivers excellent hiring results. Highly recommend it to anyone looking for a smart recruitment solution.",
-      author: "Shifa Khan",
-      role: "HR Manager"
-    },
-    {
-      quote: "Gigin has transformed our hiring process completely. The AI-powered insights help us make better decisions and find the right candidates faster than ever before.",
-      author: "Rajesh Patel",
-      role: "Talent Acquisition Lead"
-    },
-    {
-      quote: "The verification process is seamless and reliable. We've reduced our hiring time by 40% since implementing Gigin's solution.",
-      author: "Priya Sharma",
-      role: "Recruitment Director"
-    },
-    {
-      quote: "Outstanding platform for modern recruitment needs. The candidate experience is exceptional and the results speak for themselves.",
-      author: "Amit Kumar",
-      role: "VP of Human Resources"
-    },
-    {
-      quote: "The best hiring platform we've used. The interface is intuitive and the results are consistently impressive.",
-      author: "Neha Gupta",
-      role: "Recruitment Manager"
-    },
-    {
-      quote: "Gigin's AI technology has revolutionized how we approach talent acquisition. Highly recommended for any growing company.",
-      author: "Vikram Singh",
-      role: "Head of Talent"
-    },
-    {
-      quote: "Exceptional service and support. The platform delivers on its promises and has significantly improved our hiring efficiency.",
-      author: "Anita Desai",
-      role: "HR Director"
-    }
-  ];
-
-  return (
-    <section className="py-20 bg-gray-50 relative overflow-hidden">
+  const testimonials = [{
+    quote: "The Gigin Recruiter app exceeded my expectations. It's efficient, easy to use, and delivers excellent hiring results. Highly recommend it to anyone looking for a smart recruitment solution.",
+    author: "Shifa Khan",
+    role: "HR Manager"
+  }, {
+    quote: "Gigin has transformed our hiring process completely. The AI-powered insights help us make better decisions and find the right candidates faster than ever before.",
+    author: "Rajesh Patel",
+    role: "Talent Acquisition Lead"
+  }, {
+    quote: "The verification process is seamless and reliable. We've reduced our hiring time by 40% since implementing Gigin's solution.",
+    author: "Priya Sharma",
+    role: "Recruitment Director"
+  }, {
+    quote: "Outstanding platform for modern recruitment needs. The candidate experience is exceptional and the results speak for themselves.",
+    author: "Amit Kumar",
+    role: "VP of Human Resources"
+  }, {
+    quote: "The best hiring platform we've used. The interface is intuitive and the results are consistently impressive.",
+    author: "Neha Gupta",
+    role: "Recruitment Manager"
+  }, {
+    quote: "Gigin's AI technology has revolutionized how we approach talent acquisition. Highly recommended for any growing company.",
+    author: "Vikram Singh",
+    role: "Head of Talent"
+  }, {
+    quote: "Exceptional service and support. The platform delivers on its promises and has significantly improved our hiring efficiency.",
+    author: "Anita Desai",
+    role: "HR Director"
+  }];
+  return <section className="py-20 bg-gray-50 relative overflow-hidden">
       {/* Background image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(/lovable-uploads/f0acdf04-0015-4664-af62-d43a84908fcd.png)'
-        }}
-      ></div>
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: 'url(/lovable-uploads/f0acdf04-0015-4664-af62-d43a84908fcd.png)'
+    }}></div>
       
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/70"></div>
@@ -62,9 +47,7 @@ const TestimonialSection = () => {
           </div>
         </div>
         
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-          Recruiters Who Trust Gigin
-        </h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Trusted by 150k+ Recruiters</h2>
         <p className="text-xl text-white/80 mb-16">
           Our clients speak on behalf of us!
         </p>
@@ -73,8 +56,7 @@ const TestimonialSection = () => {
         <div className="relative max-w-4xl mx-auto">
           <Carousel className="w-full">
             <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index}>
+              {testimonials.map((testimonial, index) => <CarouselItem key={index}>
                   <div className="glass-morphism rounded-3xl p-8 md:p-12 border border-white/20 backdrop-blur-xl shadow-2xl bg-white/10">
                     <div className="bg-white/5 rounded-2xl p-6 border border-white/10 shadow-lg">
                       <blockquote className="text-lg md:text-xl text-white/90 leading-relaxed mb-6 italic">
@@ -97,16 +79,13 @@ const TestimonialSection = () => {
                       </div>
                     </div>
                   </div>
-                </CarouselItem>
-              ))}
+                </CarouselItem>)}
             </CarouselContent>
             <CarouselPrevious className="glass-morphism border-white/20 text-white hover:bg-white/10" />
             <CarouselNext className="glass-morphism border-white/20 text-white hover:bg-white/10" />
           </Carousel>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default TestimonialSection;
