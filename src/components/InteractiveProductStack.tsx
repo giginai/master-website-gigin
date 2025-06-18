@@ -77,9 +77,7 @@ const InteractiveProductStack = () => {
                     <Button className="bg-white text-gray-900 hover:bg-gray-100 font-medium">
                       Learn More
                     </Button>
-                    <Button variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 font-medium">
-                      Get Started
-                    </Button>
+                    
                   </div>
                 </div>
                 
