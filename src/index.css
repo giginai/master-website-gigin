@@ -90,6 +90,19 @@
     font-size: 14px; /* Reduced base font size */
   }
 
+  /* Standardized header sizes across website */
+  h1 {
+    font-size: 2rem; /* 32px - Consistent large header */
+  }
+  
+  h2 {
+    font-size: 1.75rem; /* 28px - Consistent section headers */
+  }
+  
+  h3 {
+    font-size: 1.25rem; /* 20px - Consistent sub-headers */
+  }
+
   /* Responsive font size adjustments */
   @media (max-width: 768px) {
     body {
@@ -97,15 +110,15 @@
     }
     
     h1 {
-      font-size: 1.8rem !important;
+      font-size: 1.5rem !important; /* 24px on mobile */
     }
     
     h2 {
-      font-size: 1.5rem !important;
+      font-size: 1.25rem !important; /* 20px on mobile */
     }
     
     h3 {
-      font-size: 1.25rem !important;
+      font-size: 1.125rem !important; /* 18px on mobile */
     }
     
     p {
@@ -121,17 +134,17 @@
     }
   }
   
-  @media (min-width: 769px) {
+  @media (min-width: 769px) and (max-width: 1024px) {
     h1 {
-      font-size: 2.25rem;
+      font-size: 1.875rem; /* 30px on tablet */
     }
     
     h2 {
-      font-size: 1.875rem;
+      font-size: 1.5rem; /* 24px on tablet */
     }
     
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.125rem; /* 18px on tablet */
     }
   }
 }

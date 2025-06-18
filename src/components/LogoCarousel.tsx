@@ -35,10 +35,10 @@ const LogoCarousel = () => {
   }, []);
 
   return (
-    <section className="pt-16 pb-8 bg-gray-50">
+    <section className="pt-12 pb-6 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h3 className="text-xl font-semibold text-gray-600 mb-2">
+        <div className="text-center mb-8">
+          <h3 className="text-lg font-semibold text-gray-600 mb-2">
             Trusted by 100+ Leading Companies
           </h3>
         </div>
@@ -47,11 +47,11 @@ const LogoCarousel = () => {
           ref={scrollerRef}
           className="scroller overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]"
         >
-          <div className="scroller-inner flex gap-20 animate-scroll hover:[animation-play-state:paused]">
+          <div className="scroller-inner flex gap-16 animate-scroll hover:[animation-play-state:paused]">
             {logos.map((logo) => (
               <div 
                 key={logo.id} 
-                className="flex items-center justify-center min-w-[320px] h-44 p-10 flex-shrink-0"
+                className="flex items-center justify-center min-w-[280px] h-20 p-6 flex-shrink-0"
               >
                 <img 
                   src={logo.src} 

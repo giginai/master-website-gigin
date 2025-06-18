@@ -25,28 +25,14 @@ const Hero = () => {
           </div>
 
           {/* Updated Main Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-5xl mx-auto">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight max-w-5xl mx-auto">
             Source. Hire. Verify.
           </h1>
 
           {/* Updated Subheading */}
-          <p className="text-lg md:text-xl text-white/90 mb-6 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
             One AI-powered platform to do it all—fast and reliably.
           </p>
-
-          {/* NASSCOM and ISO Logos - Made smaller */}
-          <div className="flex justify-center items-center gap-8 mb-8">
-            <img 
-              src="/lovable-uploads/f600c2f8-99c8-4304-a86f-bc99201989a0.png" 
-              alt="NASSCOM Logo" 
-              className="h-8 w-auto opacity-90"
-            />
-            <img 
-              src="/lovable-uploads/c6532bb5-904a-458a-a19a-a0d30d3221c9.png" 
-              alt="ISO Certification" 
-              className="h-8 w-auto opacity-90"
-            />
-          </div>
 
           {/* Updated CTA Button */}
           <Button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium mb-6 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300">

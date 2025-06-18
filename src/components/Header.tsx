@@ -114,6 +114,10 @@ const Header = ({ currentPage = "home" }: HeaderProps) => {
                             <Database className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
                             <span className="text-sm text-gray-700 group-hover:text-pink-600 font-medium">Verification Catalogue</span>
                           </Link>
+                          <Link to="/industries-solutions" className="flex items-center p-3 rounded-lg hover:bg-pink-50 hover:border-pink-100 border border-transparent transition-all group">
+                            <Building2 className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
+                            <span className="text-sm text-gray-700 group-hover:text-pink-600 font-medium">Industries & Use Cases</span>
+                          </Link>
                         </div>
                       </div>
                     </div>

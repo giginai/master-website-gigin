@@ -60,40 +60,40 @@ const InteractiveProductStack = () => {
   const activeProductData = products.find(p => p.id === activeProduct);
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
+        <div className="text-center mb-10 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">
             Built to Hire Right. Built for You.
           </h2>
-          <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
             Our complete product stack uses AI to simplify hiring from start to finish.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Product Navigation */}
-          <div className="space-y-3 md:space-y-4">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Product Navigation - More compact design */}
+          <div className="space-y-2">
             {products.map((product) => (
               <button
                 key={product.id}
                 onClick={() => setActiveProduct(product.id)}
-                className={`w-full text-left p-4 md:p-6 rounded-2xl transition-all duration-300 border-2 ${
+                className={`w-full text-left p-3 md:p-4 rounded-xl transition-all duration-300 border ${
                   activeProduct === product.id
-                    ? `${product.color} text-white border-transparent shadow-lg scale-105`
-                    : "bg-white text-gray-700 border-gray-200 hover:border-gray-300 hover:shadow-md"
+                    ? `${product.color} text-white border-transparent shadow-md scale-[1.02]`
+                    : "bg-white text-gray-700 border-gray-200 hover:border-gray-300 hover:shadow-sm"
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-lg md:text-xl font-bold mb-1 md:mb-2">{product.name}</h3>
+                    <h3 className="text-base md:text-lg font-semibold mb-1">{product.name}</h3>
                     <p className={`text-xs md:text-sm ${
                       activeProduct === product.id ? "text-white/90" : "text-gray-600"
                     }`}>
                       {product.description}
                     </p>
                   </div>
-                  <ChevronRight className={`w-4 h-4 md:w-5 md:h-5 transition-transform ${
+                  <ChevronRight className={`w-4 h-4 transition-transform ${
                     activeProduct === product.id ? "rotate-90" : ""
                   }`} />
                 </div>
@@ -101,36 +101,36 @@ const InteractiveProductStack = () => {
             ))}
           </div>
 
-          {/* Active Product Display with Image */}
+          {/* Active Product Display - More compact */}
           <div className="relative">
-            <div className={`rounded-3xl p-6 md:p-8 text-white ${activeProductData?.color} shadow-2xl`}>
-              <div className="mb-6 relative group overflow-hidden rounded-2xl">
+            <div className={`rounded-2xl p-5 md:p-6 text-white ${activeProductData?.color} shadow-xl`}>
+              <div className="mb-4 relative group overflow-hidden rounded-xl">
                 <img 
                   src={activeProductData?.image}
                   alt={activeProductData?.name}
-                  className="w-full h-48 md:h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-40 md:h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <Button 
                     variant="outline" 
-                    className="bg-white/90 border-white text-gray-900 hover:bg-white hover:border-white"
+                    className="bg-white/90 border-white text-gray-900 hover:bg-white hover:border-white text-sm"
                   >
                     Learn More
                   </Button>
                 </div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">{activeProductData?.name}</h3>
-              <p className="text-base md:text-lg mb-4 md:mb-6 text-white/90">{activeProductData?.description}</p>
+              <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-3">{activeProductData?.name}</h3>
+              <p className="text-sm md:text-base mb-3 md:mb-4 text-white/90">{activeProductData?.description}</p>
               <Button 
                 variant="outline" 
-                className="bg-white/20 border-white/30 text-white hover:bg-white/30 hover:border-white/50"
+                className="bg-white/20 border-white/30 text-white hover:bg-white/30 hover:border-white/50 text-sm"
               >
                 Get Started
               </Button>
             </div>
             
             {/* Background decoration */}
-            <div className="absolute -top-4 -right-4 w-full h-full rounded-3xl bg-gradient-to-br from-gray-200 to-gray-300 -z-10"></div>
+            <div className="absolute -top-3 -right-3 w-full h-full rounded-2xl bg-gradient-to-br from-gray-200 to-gray-300 -z-10"></div>
           </div>
         </div>
       </div>
