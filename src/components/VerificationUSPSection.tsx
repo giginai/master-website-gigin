@@ -75,36 +75,36 @@ const VerificationUSPSection = () => {
           {differentiators.map((item, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-xl p-6 border border-gray-200 hover:border-pink-200 hover:shadow-lg transition-all duration-300 group"
+              className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-pink-500 hover:shadow-lg transition-all duration-300 group"
             >
               <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
-                  <item.icon className="w-5 h-5 text-white" />
+                <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                  <item.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 group-hover:text-pink-600 transition-colors">
+                <h3 className="text-lg font-bold text-white group-hover:text-pink-400 transition-colors">
                   {item.title}
                 </h3>
               </div>
               
-              <p className="text-sm text-gray-600 mb-3 leading-relaxed">
+              <p className="text-sm text-gray-300 mb-3 leading-relaxed">
                 {item.description}
               </p>
               
-              <div className="bg-pink-50 border-l-4 border-pink-400 p-3 mb-4">
-                <p className="text-pink-800 font-medium text-xs">
+              <div className="bg-pink-900/30 border-l-4 border-pink-400 p-3 mb-4">
+                <p className="text-pink-300 font-medium text-xs">
                   <strong>Impact:</strong> {item.outcome}
                 </p>
               </div>
               
               <div className="space-y-1">
                 {item.features.slice(0, 3).map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center text-xs text-gray-600">
+                  <div key={featureIndex} className="flex items-center text-xs text-gray-400">
                     <div className="w-1.5 h-1.5 bg-pink-400 rounded-full mr-2 flex-shrink-0"></div>
                     {feature}
                   </div>
                 ))}
                 {item.features.length > 3 && (
-                  <div className="text-xs text-pink-600 font-medium mt-2">
+                  <div className="text-xs text-pink-400 font-medium mt-2">
                     +{item.features.length - 3} more features
                   </div>
                 )}
@@ -113,27 +113,27 @@ const VerificationUSPSection = () => {
           ))}
         </div>
 
-        {/* VerifyIn Delivers Section */}
-        <div className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-2xl p-8 text-center text-white">
-          <h3 className="text-2xl md:text-3xl font-bold mb-6">
+        {/* VerifyIn Delivers Section - Reverted to previous design */}
+        <div className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-2xl p-12 text-center text-white">
+          <h3 className="text-3xl md:text-4xl font-bold mb-8">
             VerifyIn Delivers What HR Needs Most
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-10">
             {keyBenefits.map((benefit, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-4 hover:bg-white/20 transition-all duration-300">
-                <div className="flex items-center justify-center mb-2">
-                  <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">{index + 1}</span>
+              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-white font-bold text-lg">{index + 1}</span>
                   </div>
                 </div>
-                <p className="text-white font-medium text-sm">{benefit}</p>
+                <p className="text-white font-medium text-lg leading-relaxed">{benefit}</p>
               </div>
             ))}
           </div>
           
-          <div className="mt-8">
-            <button className="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+          <div className="mt-10">
+            <button className="bg-white text-pink-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg">
               Experience the Difference
             </button>
           </div>
