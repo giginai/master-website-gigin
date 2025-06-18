@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { SEOProvider } from "@/contexts/SEOContext";
 import SEOHead from "@/components/SEOHead";
+import FloatingAccreditation from "@/components/FloatingAccreditation";
 import { generateWebsiteSchema, generateOrganizationSchema } from "@/utils/schemaGenerator";
 
 import Index from "./pages/Index";
@@ -64,6 +65,7 @@ const App = () => (
         <TooltipProvider>
           <BrowserRouter>
             <SEOHead structuredData={[generateWebsiteSchema(), generateOrganizationSchema()]} />
+            <FloatingAccreditation />
             <Toaster />
             <Sonner />
             <Routes>
