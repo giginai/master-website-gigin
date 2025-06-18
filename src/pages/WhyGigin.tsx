@@ -123,7 +123,7 @@ const WhyGigin = () => {
                 <AccordionContent className="px-8 pb-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-4">
                     <div className="space-y-4">
-                      <h4 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">{item.content}</h4>
+                      
                       <p className="text-gray-600 leading-relaxed text-lg">{item.description}</p>
                     </div>
                     <div className="relative">
