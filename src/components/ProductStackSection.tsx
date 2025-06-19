@@ -82,7 +82,7 @@ const ProductStackSection = () => {
           </div>
         </div>
 
-        {/* Product Stack Image */}
+        {/* Product Stack Image with Subtext */}
         <div className="mt-16 text-center">
           <div className="relative max-w-5xl mx-auto">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
@@ -91,6 +91,16 @@ const ProductStackSection = () => {
                 alt="Complete Product Stack - ATS and BGV Dashboard"
                 className="w-full h-auto object-contain"
               />
+            </div>
+            {/* Subtext below the image */}
+            <div className="mt-6 max-w-3xl mx-auto">
+              <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                Unified Dashboard Experience
+              </h4>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Experience seamless integration between our ATS and BGV systems. Our unified dashboard provides 
+                real-time insights, streamlined workflows, and comprehensive reporting all in one place.
+              </p>
             </div>
           </div>
         </div>

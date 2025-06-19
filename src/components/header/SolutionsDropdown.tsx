@@ -41,7 +41,7 @@ const SolutionsDropdown = () => {
             ? "text-white bg-white/10 border border-pink-400/20"
             : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
         }`}>
-          Solutions
+          Products
           <ChevronDown className="w-4 h-4 ml-1 text-gray-200" />
         </button>
       </DropdownMenuTrigger>
@@ -56,7 +56,7 @@ const SolutionsDropdown = () => {
                 <div>
                   <h4 className="text-xs font-medium text-gray-500 mb-4 flex items-center uppercase tracking-wide">
                     <Users className="w-3 h-3 mr-2 text-gray-500" />
-                    Hiring Solutions
+                    Hiring Products
                   </h4>
                   <div className="space-y-3">
                     <button 
@@ -86,7 +86,7 @@ const SolutionsDropdown = () => {
                 <div>
                   <h4 className="text-xs font-medium text-gray-500 mb-4 flex items-center uppercase tracking-wide">
                     <Shield className="w-3 h-3 mr-2 text-gray-500" />
-                    Verification Solutions
+                    Verification Products
                   </h4>
                   <div className="space-y-3">
                     <Link to="/verification" className={`flex items-center p-3 rounded-lg border transition-all group ${
@@ -146,11 +146,11 @@ const SolutionsDropdown = () => {
               <div className="absolute inset-0 bg-black/40"></div>
               <img 
                 src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop"
-                alt="Solutions Banner"
+                alt="Products Banner"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
-                <h3 className="text-xl font-bold text-white mb-2">AI-Powered Solutions</h3>
+                <h3 className="text-xl font-bold text-white mb-2">AI-Powered Products</h3>
                 <p className="text-gray-200 text-xs">Transform your hiring and verification processes</p>
               </div>
             </div>

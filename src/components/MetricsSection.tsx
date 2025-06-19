@@ -30,7 +30,7 @@ const MetricsSection = () => {
           <div className="mb-4">
             <div className="inline-flex items-center glass-morphism border border-white/20 rounded-full px-4 py-2">
               <span className="text-white">✦</span>
-              <span className="text-white font-medium mx-2">Metrics</span>
+              <span className="text-white font-medium mx-2">Unlocking Strategic HR</span>
               <span className="text-white">✦</span>
             </div>
           </div>
