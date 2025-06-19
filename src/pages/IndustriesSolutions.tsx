@@ -127,91 +127,96 @@ const IndustriesSolutions = () => {
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="facility-management" className="w-full">
               {/* Tabs Navigation */}
-              <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8 mb-8 bg-gray-100 p-1 rounded-xl">
+              <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8 mb-8 bg-gray-100 p-2 rounded-xl h-auto">
                 {industries.map((industry) => (
                   <TabsTrigger 
                     key={industry.id} 
                     value={industry.id}
-                    className="flex flex-col items-center gap-1 py-3 px-2 text-xs font-medium data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-lg transition-all"
+                    className="flex flex-col items-center gap-2 py-4 px-3 text-xs font-medium data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-lg transition-all h-auto min-h-[80px]"
                   >
-                    <industry.icon className="w-4 h-4" />
-                    <span className="hidden sm:block truncate">{industry.name.split(' ')[0]}</span>
+                    <industry.icon className="w-5 h-5" />
+                    <span className="hidden sm:block text-center leading-tight">{industry.name.split(' ')[0]}</span>
                   </TabsTrigger>
                 ))}
               </TabsList>
 
-              {/* Tab Content - Single Card Display */}
+              {/* Tab Content */}
               {industries.map((industry) => (
                 <TabsContent key={industry.id} value={industry.id} className="mt-0">
-                  <div className="flex justify-center">
-                    <div className="relative group max-w-lg w-full">
+                  <div className="w-full">
+                    <div className="relative group">
                       {/* Stacked Card Effect - Background Cards */}
                       <div className="absolute inset-0 bg-white rounded-2xl shadow-lg transform translate-x-3 translate-y-3 opacity-20"></div>
                       <div className="absolute inset-0 bg-white rounded-2xl shadow-lg transform translate-x-1.5 translate-y-1.5 opacity-40"></div>
                       
                       {/* Main Card */}
                       <div className="relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 overflow-hidden border border-gray-200">
-                        {/* Image Header */}
-                        <div className="relative h-56 overflow-hidden">
-                          <img 
-                            src={industry.image} 
-                            alt={industry.name}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                          
-                          {/* Icon Overlay */}
-                          <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                            <industry.icon className="w-6 h-6 text-gray-900" />
-                          </div>
-                          
-                          {/* Title Overlay */}
-                          <div className="absolute bottom-4 left-4 right-4">
-                            <h3 className="text-2xl font-bold text-white mb-1">
-                              {industry.name}
-                            </h3>
-                          </div>
-                        </div>
-
-                        {/* Card Content */}
-                        <div className="p-6">
-                          <p className="text-gray-600 mb-6 leading-relaxed">
-                            {industry.description}
-                          </p>
-
-                          {/* Use Cases */}
-                          <div className="mb-6">
-                            <h4 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">Common Use Cases:</h4>
-                            <div className="flex flex-wrap gap-2">
-                              {industry.useCases.map((useCase, useCaseIndex) => (
-                                <span key={useCaseIndex} className="text-sm text-gray-600 bg-gray-100 rounded-lg px-3 py-1">
-                                  {useCase}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Key Checks */}
-                          <div className="mb-8">
-                            <h4 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">Key Verification Checks:</h4>
-                            <div className="space-y-2">
-                              {industry.keyChecks.map((check, checkIndex) => (
-                                <div key={checkIndex} className="flex items-center text-sm text-gray-600">
-                                  <div className="w-2 h-2 bg-pink-400 rounded-full mr-3 flex-shrink-0"></div>
-                                  {check}
+                        <div className="flex flex-col md:flex-row h-[400px]">
+                          {/* Content Area - Left Side */}
+                          <div className="flex-1 p-8 flex flex-col justify-between">
+                            {/* Header */}
+                            <div className="mb-6">
+                              <div className="flex items-center gap-4 mb-4">
+                                <div className="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center">
+                                  <industry.icon className="w-6 h-6 text-pink-600" />
                                 </div>
-                              ))}
+                                <h3 className="text-2xl font-bold text-gray-900">
+                                  {industry.name}
+                                </h3>
+                              </div>
+                              
+                              <p className="text-gray-600 leading-relaxed">
+                                {industry.description}
+                              </p>
                             </div>
+
+                            {/* Use Cases & Key Checks */}
+                            <div className="space-y-4 mb-6">
+                              {/* Use Cases */}
+                              <div>
+                                <h4 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">Common Use Cases:</h4>
+                                <div className="flex flex-wrap gap-2">
+                                  {industry.useCases.slice(0, 3).map((useCase, useCaseIndex) => (
+                                    <span key={useCaseIndex} className="text-xs text-gray-600 bg-gray-100 rounded-lg px-2 py-1">
+                                      {useCase}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+
+                              {/* Key Checks */}
+                              <div>
+                                <h4 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">Key Verification Checks:</h4>
+                                <div className="grid grid-cols-1 gap-1">
+                                  {industry.keyChecks.slice(0, 3).map((check, checkIndex) => (
+                                    <div key={checkIndex} className="flex items-center text-sm text-gray-600">
+                                      <div className="w-2 h-2 bg-pink-400 rounded-full mr-3 flex-shrink-0"></div>
+                                      {check}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                            
+                            {/* CTA */}
+                            <Link 
+                              to={industry.link} 
+                              className="inline-flex items-center justify-center bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-300 group/cta self-start"
+                            >
+                              <span>Explore More</span>
+                              <ArrowRight className="w-4 h-4 ml-2 group-hover/cta:translate-x-1 transition-transform" />
+                            </Link>
                           </div>
-                          
-                          {/* CTA */}
-                          <Link 
-                            to={industry.link} 
-                            className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-4 px-6 rounded-lg font-medium text-center flex items-center justify-center hover:from-pink-600 hover:to-purple-700 transition-all duration-300 group/cta"
-                          >
-                            <span>Explore More</span>
-                            <ArrowRight className="w-5 h-5 ml-2 group-hover/cta:translate-x-1 transition-transform" />
-                          </Link>
+
+                          {/* Image Area - Right Side */}
+                          <div className="w-full md:w-80 relative">
+                            <img 
+                              src={industry.image} 
+                              alt={industry.name}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/10"></div>
+                          </div>
                         </div>
                       </div>
                     </div>
