@@ -26,9 +26,7 @@ const TrustSection = () => {
               <span>✦</span>
             </div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Why Do Recruiters Trust Gigin?
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Why Do Employers Trust Gigin?</h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
             More than automation—our AI-powered hiring & verification enhances decision-making, ensuring speed, trust, and human-first intelligence.
           </p>
