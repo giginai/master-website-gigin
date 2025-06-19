@@ -1,3 +1,4 @@
+
 import { Shield, Users, Zap, Bell, Settings, Lock, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 const VerificationUSPSection = () => {
@@ -71,7 +72,7 @@ const VerificationUSPSection = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
                     {differentiators.slice(slideIndex * 2, slideIndex * 2 + 2).map((item, index) => <div key={slideIndex * 2 + index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group hover:-translate-y-1 py-[24px]">
                         <div className="flex items-start mb-6">
-                          <div className="w-14 h-14 bg-gradient-to-br from-pink-100 to-purple-100 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:from-pink-200 group-hover:to-purple-200 transition-all duration-300">
+                          <div className="w-14 h-14 glass-morphism rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:backdrop-blur-[20px] transition-all duration-300 border border-white/30 bg-gradient-to-br from-pink-500/20 to-purple-600/20">
                             <item.icon className="w-7 h-7 text-pink-600" />
                           </div>
                           <div>
@@ -128,7 +129,7 @@ const VerificationUSPSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-10">
             {keyBenefits.map((benefit, index) => <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
                 <div className="flex items-center justify-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-12 h-12 glass-morphism rounded-full flex items-center justify-center shadow-lg border border-white/30 bg-gradient-to-br from-pink-500/30 to-purple-600/30">
                     <span className="text-white font-bold text-lg">{index + 1}</span>
                   </div>
                 </div>
