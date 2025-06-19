@@ -1,9 +1,13 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Building2, Users, Truck, DollarSign, Shield, Utensils, Factory, Briefcase, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Building2, Users, Truck, DollarSign, Shield, Utensils, Factory, Briefcase } from "lucide-react";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
+import IndustryCard from "@/components/industry/IndustryCard";
+import IndustryTabNavigation from "@/components/industry/IndustryTabNavigation";
+import IndustryHeroSection from "@/components/industry/IndustryHeroSection";
+import IndustryBenefitsSection from "@/components/industry/IndustryBenefitsSection";
+import IndustryCTASection from "@/components/industry/IndustryCTASection";
 
 const IndustriesSolutions = () => {
   const industries = [
@@ -93,24 +97,7 @@ const IndustriesSolutions = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-gray-900 via-black to-gray-800">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
-            <span className="text-white">✦</span>
-            <span className="text-white font-medium mx-2">Industries & Use Cases</span>
-            <span className="text-white">✦</span>
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Industry-Specific<br />Verification Solutions
-          </h1>
-          
-          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Tailored background verification solutions designed for the unique requirements of different industries and business sectors.
-          </p>
-        </div>
-      </section>
+      <IndustryHeroSection />
 
       {/* Interactive Industry Tabs */}
       <section className="py-20 relative overflow-hidden">
@@ -126,101 +113,12 @@ const IndustriesSolutions = () => {
 
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="facility-management" className="w-full">
-              {/* Tabs Navigation */}
-              <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8 mb-8 bg-gray-100 p-2 rounded-xl h-auto">
-                {industries.map((industry) => (
-                  <TabsTrigger 
-                    key={industry.id} 
-                    value={industry.id}
-                    className="flex flex-col items-center gap-2 py-4 px-3 text-xs font-medium data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-lg transition-all h-auto min-h-[80px]"
-                  >
-                    <industry.icon className="w-5 h-5" />
-                    <span className="hidden sm:block text-center leading-tight">{industry.name.split(' ')[0]}</span>
-                  </TabsTrigger>
-                ))}
-              </TabsList>
+              <IndustryTabNavigation industries={industries} />
 
               {/* Tab Content */}
               {industries.map((industry) => (
                 <TabsContent key={industry.id} value={industry.id} className="mt-0">
-                  <div className="w-full">
-                    <div className="relative group">
-                      {/* Stacked Card Effect - Background Cards */}
-                      <div className="absolute inset-0 bg-white rounded-2xl shadow-lg transform translate-x-3 translate-y-3 opacity-20"></div>
-                      <div className="absolute inset-0 bg-white rounded-2xl shadow-lg transform translate-x-1.5 translate-y-1.5 opacity-40"></div>
-                      
-                      {/* Main Card */}
-                      <div className="relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 overflow-hidden border border-gray-200">
-                        <div className="flex flex-col md:flex-row h-[400px]">
-                          {/* Content Area - Left Side */}
-                          <div className="flex-1 p-8 flex flex-col justify-between">
-                            {/* Header */}
-                            <div className="mb-6">
-                              <div className="flex items-center gap-4 mb-4">
-                                <div className="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center">
-                                  <industry.icon className="w-6 h-6 text-pink-600" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-gray-900">
-                                  {industry.name}
-                                </h3>
-                              </div>
-                              
-                              <p className="text-gray-600 leading-relaxed">
-                                {industry.description}
-                              </p>
-                            </div>
-
-                            {/* Use Cases & Key Checks */}
-                            <div className="space-y-4 mb-6">
-                              {/* Use Cases */}
-                              <div>
-                                <h4 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">Common Use Cases:</h4>
-                                <div className="flex flex-wrap gap-2">
-                                  {industry.useCases.slice(0, 3).map((useCase, useCaseIndex) => (
-                                    <span key={useCaseIndex} className="text-xs text-gray-600 bg-gray-100 rounded-lg px-2 py-1">
-                                      {useCase}
-                                    </span>
-                                  ))}
-                                </div>
-                              </div>
-
-                              {/* Key Checks */}
-                              <div>
-                                <h4 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">Key Verification Checks:</h4>
-                                <div className="grid grid-cols-1 gap-1">
-                                  {industry.keyChecks.slice(0, 3).map((check, checkIndex) => (
-                                    <div key={checkIndex} className="flex items-center text-sm text-gray-600">
-                                      <div className="w-2 h-2 bg-pink-400 rounded-full mr-3 flex-shrink-0"></div>
-                                      {check}
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                            
-                            {/* CTA */}
-                            <Link 
-                              to={industry.link} 
-                              className="inline-flex items-center justify-center bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-300 group/cta self-start"
-                            >
-                              <span>Explore More</span>
-                              <ArrowRight className="w-4 h-4 ml-2 group-hover/cta:translate-x-1 transition-transform" />
-                            </Link>
-                          </div>
-
-                          {/* Image Area - Right Side */}
-                          <div className="w-full md:w-80 relative">
-                            <img 
-                              src={industry.image} 
-                              alt={industry.name}
-                              className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/10"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <IndustryCard industry={industry} />
                 </TabsContent>
               ))}
             </Tabs>
@@ -228,64 +126,8 @@ const IndustriesSolutions = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Why Industry-Specific Verification Matters
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Shield className="w-8 h-8 text-pink-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Compliance Assurance</h3>
-              <p className="text-gray-600">
-                Meet industry-specific regulations and compliance requirements with tailored verification processes.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Users className="w-8 h-8 text-pink-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Risk Mitigation</h3>
-              <p className="text-gray-600">
-                Reduce industry-specific risks through targeted background checks and specialized screening protocols.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Building2 className="w-8 h-8 text-pink-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Industry Expertise</h3>
-              <p className="text-gray-600">
-                Benefit from our deep understanding of industry challenges and best practices in background verification.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-pink-500 to-purple-600">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Don't See Your Industry?
-          </h2>
-          <p className="text-xl text-white/90 mb-8">
-            We provide customized verification solutions for businesses across all sectors. 
-            Contact us to discuss your specific requirements.
-          </p>
-          <button className="bg-white text-pink-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors">
-            Contact Our Experts
-          </button>
-        </div>
-      </section>
+      <IndustryBenefitsSection />
+      <IndustryCTASection />
 
       <Footer />
     </div>
