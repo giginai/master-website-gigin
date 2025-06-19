@@ -9,7 +9,7 @@ const MetricsSection = () => {
     { value: "2M+", label: "Active Candidates", color: "from-pink-500/20 to-red-500/20" },
     { value: "100k+", label: "Trusted Recruiters", color: "from-blue-500/20 to-purple-500/20" },
     { value: "1M+", label: "Job Applications Processed", color: "from-green-500/20 to-teal-500/20" },
-    { value: "40%", label: "Faster Verifications", color: "from-purple-500/20 to-indigo-500/20" }
+    { value: "40%", label: "Faster Background Verifications", color: "from-purple-500/20 to-indigo-500/20" }
   ];
 
   return (
