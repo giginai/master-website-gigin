@@ -3,15 +3,17 @@ import { useEffect, useState } from 'react';
 
 export const useCountAnimation = (
   end: number,
-  duration: number = 2000,
+  duration: number = 1500,
   start: number = 0,
   isVisible: boolean = false
 ) => {
   const [count, setCount] = useState(start);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || hasAnimated) return;
 
+    setHasAnimated(true);
     let startTime: number;
     let animationFrame: number;
 
@@ -19,6 +21,7 @@ export const useCountAnimation = (
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
       
+      // Easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
       const currentCount = start + (end - start) * easeOutQuart;
       
@@ -38,7 +41,7 @@ export const useCountAnimation = (
         cancelAnimationFrame(animationFrame);
       }
     };
-  }, [end, duration, start, isVisible]);
+  }, [end, duration, start, isVisible, hasAnimated]);
 
   return count;
 };
