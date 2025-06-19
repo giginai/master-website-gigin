@@ -4,6 +4,7 @@ import AnimatedCounter from '@/components/AnimatedCounter';
 
 const MetricsSection = () => {
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation<HTMLHeadingElement>(0.2);
+  const { ref: metricsRef, isVisible: metricsVisible } = useScrollAnimation<HTMLDivElement>(0.3);
 
   const metrics = [
     { value: "2M+", label: "Active Candidates", color: "from-pink-500/20 to-red-500/20" },
@@ -27,7 +28,9 @@ const MetricsSection = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <div className="mb-4">
+          <div className={`mb-4 transition-all duration-700 ${
+            titleVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
+          }`}>
             <div className="inline-flex items-center glass-morphism border border-white/20 rounded-full px-4 py-2">
               <span className="text-white">✦</span>
               <span className="text-white font-medium mx-2">Unlocking Strategic HR</span>
@@ -36,7 +39,7 @@ const MetricsSection = () => {
           </div>
           <h2 
             ref={titleRef}
-            className={`text-4xl md:text-5xl font-bold text-white mb-6 transition-all duration-700 ${
+            className={`text-4xl md:text-5xl font-bold text-white mb-6 transition-all duration-700 delay-200 ${
               titleVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
             }`}
           >
@@ -44,19 +47,28 @@ const MetricsSection = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div 
+          ref={metricsRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {metrics.map((metric, index) => (
             <div 
               key={index}
-              className={`glass-morphism bg-gradient-to-br ${metric.color} rounded-2xl p-6 text-white transform hover:scale-105 transition-transform duration-300 border border-white/10 backdrop-blur-xl text-center group`}
-              style={{ animationDelay: `${index * 150}ms` }}
+              className={`glass-morphism bg-gradient-to-br ${metric.color} rounded-2xl p-6 text-white transform hover:scale-105 transition-all duration-700 border border-white/10 backdrop-blur-xl text-center group ${
+                metricsVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ animationDelay: `${400 + index * 150}ms` }}
             >
               <div className="text-3xl md:text-4xl font-bold mb-2 text-pink-400 drop-shadow-lg transition-all duration-300 hover:scale-110 hover:text-pink-300 cursor-pointer" 
                    style={{
                      textShadow: '0 0 20px rgba(236, 72, 153, 0.8), 0 0 40px rgba(236, 72, 153, 0.4)',
                      filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.6))'
                    }}>
-                <AnimatedCounter value={metric.value} label="" />
+                <AnimatedCounter 
+                  value={metric.value} 
+                  label="" 
+                  className="group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
               <div className="text-white/90 font-medium">
                 {metric.label}
