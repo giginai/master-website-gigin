@@ -1,3 +1,4 @@
+
 import React, { FC } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
@@ -36,6 +37,13 @@ import AddressVerification from "./pages/AddressVerification";
 
 // Industry pages
 import FacilityManagement from "./pages/industry/FacilityManagement";
+import FoodBeverage from "./pages/industry/FoodBeverage";
+import GigEconomy from "./pages/industry/GigEconomy";
+import Transportation from "./pages/industry/Transportation";
+import FinancialServices from "./pages/industry/FinancialServices";
+import Insurance from "./pages/industry/Insurance";
+import Manufacturing from "./pages/industry/Manufacturing";
+import CorporateServices from "./pages/industry/CorporateServices";
 
 const queryClient = new QueryClient();
 
@@ -95,6 +103,13 @@ const App = () => (
               
               {/* Industry pages */}
               <Route path="/industry/facility-management" element={<FacilityManagement />} />
+              <Route path="/industry/food-beverage" element={<FoodBeverage />} />
+              <Route path="/industry/gig-economy" element={<GigEconomy />} />
+              <Route path="/industry/transportation" element={<Transportation />} />
+              <Route path="/industry/financial-services" element={<FinancialServices />} />
+              <Route path="/industry/insurance" element={<Insurance />} />
+              <Route path="/industry/manufacturing" element={<Manufacturing />} />
+              <Route path="/industry/corporate-services" element={<CorporateServices />} />
               
               {/* Job-related routes */}
               <Route path="/find-a-job" element={<Jobs />} />
