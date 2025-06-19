@@ -137,9 +137,7 @@ const VerificationUSPSection = () => {
           </div>
           
           <div className="mt-10">
-            <button className="bg-white text-pink-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg">
-              Experience the Difference
-            </button>
+            <button className="bg-white text-pink-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg">Talk to Sales</button>
           </div>
         </div>
       </div>
