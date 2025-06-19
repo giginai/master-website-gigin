@@ -76,7 +76,7 @@ const InteractiveProductStack = () => {
                 {/* Content Overlay */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 py-[32px]">
                   {/* Text Background for Better Visibility */}
-                  <div className="backdrop-blur-sm rounded-lg p-6 mb-2 bg-inherit">
+                  <div className="rounded-lg p-6 mb-2 bg-inherit">
                     <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4">
                       {activeProductData?.name}
                     </h3>
