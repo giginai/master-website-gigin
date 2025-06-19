@@ -67,7 +67,7 @@ const VerificationUSPSection = () => {
           }}>
               {Array.from({
               length: Math.ceil(differentiators.length / 2)
-            }, (_, slideIndex) => <div key={slideIndex} className="w-full flex-shrink-0">
+            }, (_, slideIndex) => <div key={slideIndex} className="w-full flex-shrink-0 my-[24px]">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
                     {differentiators.slice(slideIndex * 2, slideIndex * 2 + 2).map((item, index) => <div key={slideIndex * 2 + index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group hover:-translate-y-1 py-[24px]">
                         <div className="flex items-start mb-6">
@@ -95,9 +95,7 @@ const VerificationUSPSection = () => {
                               <div className="w-2 h-2 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full mr-3 flex-shrink-0"></div>
                               {feature}
                             </div>)}
-                          {item.features.length > 3 && <div className="text-sm text-pink-500 font-medium mt-2">
-                              +{item.features.length - 3} more features
-                            </div>}
+                          {item.features.length > 3}
                         </div>
                       </div>)}
                   </div>
