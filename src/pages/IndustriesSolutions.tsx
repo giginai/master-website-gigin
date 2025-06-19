@@ -1,7 +1,9 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Building2, Users, Truck, DollarSign, Shield, Utensils, Factory, Briefcase, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+
 const IndustriesSolutions = () => {
   const industries = [{
     name: "Facility Management",
@@ -60,7 +62,9 @@ const IndustriesSolutions = () => {
     link: "/industry/corporate-services",
     useCases: ["Executives", "Managers", "Office Staff", "Consultants"]
   }];
-  return <div className="min-h-screen bg-gray-50">
+
+  return (
+    <div className="min-h-screen bg-gray-50">
       <Header />
       
       {/* Hero Section */}
@@ -85,10 +89,18 @@ const IndustriesSolutions = () => {
       {/* Industries Overview */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
-          
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Explore Industries We Serve
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Each industry has unique challenges and requirements. Our specialized solutions address specific compliance needs, safety standards, and regulatory requirements across various sectors.
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {industries.map((industry, index) => <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 hover:border-pink-300 overflow-hidden">
+            {industries.map((industry, index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 hover:border-pink-300 overflow-hidden">
                 {/* Industry Header */}
                 <div className="p-8 pb-6">
                   <div className="flex items-center mb-6">
@@ -109,9 +121,11 @@ const IndustriesSolutions = () => {
                 <div className="px-8 pb-6">
                   <h4 className="text-sm font-semibold text-gray-700 mb-3">Common Use Cases:</h4>
                   <div className="grid grid-cols-2 gap-2 mb-6">
-                    {industry.useCases.map((useCase, useCaseIndex) => <div key={useCaseIndex} className="text-xs text-gray-600 bg-gray-50 rounded-lg px-3 py-2">
+                    {industry.useCases.map((useCase, useCaseIndex) => (
+                      <div key={useCaseIndex} className="text-xs text-gray-600 bg-gray-50 rounded-lg px-3 py-2">
                         {useCase}
-                      </div>)}
+                      </div>
+                    ))}
                   </div>
                 </div>
 
@@ -119,21 +133,27 @@ const IndustriesSolutions = () => {
                 <div className="px-8 pb-6">
                   <h4 className="text-sm font-semibold text-gray-700 mb-3">Key Verification Checks:</h4>
                   <div className="space-y-2">
-                    {industry.keyChecks.map((check, checkIndex) => <div key={checkIndex} className="flex items-center text-sm text-gray-600">
+                    {industry.keyChecks.map((check, checkIndex) => (
+                      <div key={checkIndex} className="flex items-center text-sm text-gray-600">
                         <div className="w-2 h-2 bg-pink-400 rounded-full mr-3"></div>
                         {check}
-                      </div>)}
+                      </div>
+                    ))}
                   </div>
                 </div>
                 
                 {/* CTA */}
                 <div className="px-8 pb-8">
-                  <Link to={industry.link} className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium text-center flex items-center justify-center hover:from-pink-600 hover:to-purple-700 transition-all duration-300 group">
+                  <Link 
+                    to={industry.link} 
+                    className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium text-center flex items-center justify-center hover:from-pink-600 hover:to-purple-700 transition-all duration-300 group"
+                  >
                     <span>Explore {industry.name}</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -198,6 +218,8 @@ const IndustriesSolutions = () => {
       </section>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default IndustriesSolutions;
