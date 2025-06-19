@@ -1,5 +1,6 @@
+
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Star, Users, Shield, TrendingUp } from "lucide-react";
+import { CheckCircle, ArrowRight, Star, Users, Shield, TrendingUp, Building2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
