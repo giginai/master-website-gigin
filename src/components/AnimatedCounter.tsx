@@ -21,7 +21,7 @@ const AnimatedCounter = ({ value, label, className = "" }: AnimatedCounterProps)
   };
 
   const numericValue = getNumericValue(value);
-  const animatedCount = useCountAnimation(numericValue, 1500, 0, isVisible);
+  const animatedCount = useCountAnimation(numericValue, 2000, 0, isVisible);
   
   // Format the animated count back to original format
   const formatCount = (count: number) => {
@@ -40,11 +40,11 @@ const AnimatedCounter = ({ value, label, className = "" }: AnimatedCounterProps)
   return (
     <div 
       ref={ref}
-      className={`text-center hover:scale-105 transition-all duration-300 hover-lift ${
+      className={`text-center hover:scale-105 transition-all duration-300 ${
         isVisible ? 'animate-fade-in' : 'opacity-0'
       } ${className}`}
     >
-      <div className="text-3xl md:text-4xl font-bold mb-3 text-pink-500 transition-all duration-300 hover:text-pink-600">
+      <div className="text-3xl md:text-4xl font-bold mb-3 text-pink-500">
         {formatCount(animatedCount)}
       </div>
       <div className="text-gray-700 font-medium whitespace-nowrap">
