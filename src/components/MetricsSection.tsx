@@ -48,10 +48,10 @@ const MetricsSection = () => {
           {metrics.map((metric, index) => (
             <div 
               key={index}
-              className={`glass-morphism bg-gradient-to-br ${metric.color} rounded-2xl p-6 text-white transform hover:scale-105 transition-transform duration-300 border border-white/10 backdrop-blur-xl text-center`}
+              className={`glass-morphism bg-gradient-to-br ${metric.color} rounded-2xl p-6 text-white transform hover:scale-105 transition-transform duration-300 border border-white/10 backdrop-blur-xl text-center group`}
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-pink-400 drop-shadow-lg" 
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-pink-400 drop-shadow-lg transition-all duration-300 hover:scale-110 hover:text-pink-300 cursor-pointer" 
                    style={{
                      textShadow: '0 0 20px rgba(236, 72, 153, 0.8), 0 0 40px rgba(236, 72, 153, 0.4)',
                      filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.6))'
