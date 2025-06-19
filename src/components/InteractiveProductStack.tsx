@@ -84,7 +84,7 @@ const InteractiveProductStack = () => {
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button className="bg-white text-gray-900 hover:bg-gray-100 font-medium">Install Now</Button>
+                    <Button className="bg-white text-gray-900 hover:bg-gray-100 font-medium">Learn More</Button>
                   </div>
                 </div>
                 
