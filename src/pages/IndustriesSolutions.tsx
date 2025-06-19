@@ -3,11 +3,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Building2, Users, Truck, DollarSign, Shield, Utensils, Factory, Briefcase, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const IndustriesSolutions = () => {
   const industries = [
     {
+      id: "facility-management",
       name: "Facility Management",
       icon: Building2,
       description: "Comprehensive background checks for security personnel, maintenance staff, and facility management teams ensuring safety and reliability.",
@@ -17,6 +18,7 @@ const IndustriesSolutions = () => {
       image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop"
     },
     {
+      id: "food-beverage",
       name: "Food & Beverage",
       icon: Utensils,
       description: "Health and safety compliance verification for restaurant staff, food handlers, and hospitality workers with industry-specific requirements.",
@@ -26,6 +28,7 @@ const IndustriesSolutions = () => {
       image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop"
     },
     {
+      id: "gig-economy",
       name: "Gig Economy",
       icon: Users,
       description: "Rapid verification solutions for freelancers, delivery partners, and on-demand service providers with streamlined processes.",
@@ -35,6 +38,7 @@ const IndustriesSolutions = () => {
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop"
     },
     {
+      id: "transportation",
       name: "Transportation & Logistics",
       icon: Truck,
       description: "Specialized verification for drivers, logistics personnel, and transportation staff with focus on safety and compliance.",
@@ -44,6 +48,7 @@ const IndustriesSolutions = () => {
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop"
     },
     {
+      id: "financial-services",
       name: "Financial Services",
       icon: DollarSign,
       description: "Stringent verification standards for banking, insurance, and financial sector employees with regulatory compliance focus.",
@@ -53,6 +58,7 @@ const IndustriesSolutions = () => {
       image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop"
     },
     {
+      id: "insurance",
       name: "Insurance",
       icon: Shield,
       description: "Comprehensive verification for insurance agents, underwriters, and claims processors with emphasis on trustworthiness.",
@@ -62,6 +68,7 @@ const IndustriesSolutions = () => {
       image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop"
     },
     {
+      id: "manufacturing",
       name: "Manufacturing",
       icon: Factory,
       description: "Safety-focused verification for manufacturing workers, quality control staff, and industrial personnel.",
@@ -71,6 +78,7 @@ const IndustriesSolutions = () => {
       image: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&h=600&fit=crop"
     },
     {
+      id: "corporate-services",
       name: "Corporate Services",
       icon: Briefcase,
       description: "Executive and professional verification for corporate roles, management positions, and office-based employees.",
@@ -104,7 +112,7 @@ const IndustriesSolutions = () => {
         </div>
       </section>
 
-      {/* Industries Carousel */}
+      {/* Interactive Industry Tabs */}
       <section className="py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -116,20 +124,35 @@ const IndustriesSolutions = () => {
             </p>
           </div>
 
-          <div className="relative max-w-5xl mx-auto">
-            <Carousel className="w-full">
-              <CarouselContent className="-ml-4">
-                {industries.map((industry, index) => (
-                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <div className="relative group">
+          <div className="max-w-6xl mx-auto">
+            <Tabs defaultValue="facility-management" className="w-full">
+              {/* Tabs Navigation */}
+              <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8 mb-8 bg-gray-100 p-1 rounded-xl">
+                {industries.map((industry) => (
+                  <TabsTrigger 
+                    key={industry.id} 
+                    value={industry.id}
+                    className="flex flex-col items-center gap-1 py-3 px-2 text-xs font-medium data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-lg transition-all"
+                  >
+                    <industry.icon className="w-4 h-4" />
+                    <span className="hidden sm:block truncate">{industry.name.split(' ')[0]}</span>
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+
+              {/* Tab Content - Single Card Display */}
+              {industries.map((industry) => (
+                <TabsContent key={industry.id} value={industry.id} className="mt-0">
+                  <div className="flex justify-center">
+                    <div className="relative group max-w-lg w-full">
                       {/* Stacked Card Effect - Background Cards */}
-                      <div className="absolute inset-0 bg-white rounded-2xl shadow-lg transform translate-x-2 translate-y-2 opacity-30"></div>
-                      <div className="absolute inset-0 bg-white rounded-2xl shadow-lg transform translate-x-1 translate-y-1 opacity-60"></div>
+                      <div className="absolute inset-0 bg-white rounded-2xl shadow-lg transform translate-x-3 translate-y-3 opacity-20"></div>
+                      <div className="absolute inset-0 bg-white rounded-2xl shadow-lg transform translate-x-1.5 translate-y-1.5 opacity-40"></div>
                       
                       {/* Main Card */}
                       <div className="relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 overflow-hidden border border-gray-200">
                         {/* Image Header */}
-                        <div className="relative h-48 overflow-hidden">
+                        <div className="relative h-56 overflow-hidden">
                           <img 
                             src={industry.image} 
                             alt={industry.name}
@@ -144,7 +167,7 @@ const IndustriesSolutions = () => {
                           
                           {/* Title Overlay */}
                           <div className="absolute bottom-4 left-4 right-4">
-                            <h3 className="text-xl font-bold text-white mb-1">
+                            <h3 className="text-2xl font-bold text-white mb-1">
                               {industry.name}
                             </h3>
                           </div>
@@ -152,62 +175,50 @@ const IndustriesSolutions = () => {
 
                         {/* Card Content */}
                         <div className="p-6">
-                          <p className="text-gray-600 mb-4 leading-relaxed text-sm">
+                          <p className="text-gray-600 mb-6 leading-relaxed">
                             {industry.description}
                           </p>
 
                           {/* Use Cases */}
-                          <div className="mb-4">
-                            <h4 className="text-xs font-semibold text-gray-700 mb-2 uppercase tracking-wide">Common Use Cases:</h4>
-                            <div className="flex flex-wrap gap-1">
-                              {industry.useCases.slice(0, 2).map((useCase, useCaseIndex) => (
-                                <span key={useCaseIndex} className="text-xs text-gray-600 bg-gray-100 rounded-md px-2 py-1">
+                          <div className="mb-6">
+                            <h4 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">Common Use Cases:</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {industry.useCases.map((useCase, useCaseIndex) => (
+                                <span key={useCaseIndex} className="text-sm text-gray-600 bg-gray-100 rounded-lg px-3 py-1">
                                   {useCase}
                                 </span>
                               ))}
-                              {industry.useCases.length > 2 && (
-                                <span className="text-xs text-gray-500 bg-gray-50 rounded-md px-2 py-1">
-                                  +{industry.useCases.length - 2} more
-                                </span>
-                              )}
                             </div>
                           </div>
 
                           {/* Key Checks */}
-                          <div className="mb-6">
-                            <h4 className="text-xs font-semibold text-gray-700 mb-2 uppercase tracking-wide">Key Verification Checks:</h4>
-                            <div className="space-y-1">
-                              {industry.keyChecks.slice(0, 3).map((check, checkIndex) => (
-                                <div key={checkIndex} className="flex items-center text-xs text-gray-600">
-                                  <div className="w-1.5 h-1.5 bg-pink-400 rounded-full mr-2 flex-shrink-0"></div>
+                          <div className="mb-8">
+                            <h4 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">Key Verification Checks:</h4>
+                            <div className="space-y-2">
+                              {industry.keyChecks.map((check, checkIndex) => (
+                                <div key={checkIndex} className="flex items-center text-sm text-gray-600">
+                                  <div className="w-2 h-2 bg-pink-400 rounded-full mr-3 flex-shrink-0"></div>
                                   {check}
                                 </div>
                               ))}
-                              {industry.keyChecks.length > 3 && (
-                                <div className="text-xs text-gray-500 ml-3.5">
-                                  +{industry.keyChecks.length - 3} more checks
-                                </div>
-                              )}
                             </div>
                           </div>
                           
                           {/* CTA */}
                           <Link 
                             to={industry.link} 
-                            className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 px-4 rounded-lg font-medium text-sm text-center flex items-center justify-center hover:from-pink-600 hover:to-purple-700 transition-all duration-300 group"
+                            className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-4 px-6 rounded-lg font-medium text-center flex items-center justify-center hover:from-pink-600 hover:to-purple-700 transition-all duration-300 group/cta"
                           >
-                            <span>Explore {industry.name}</span>
-                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                            <span>Explore More</span>
+                            <ArrowRight className="w-5 h-5 ml-2 group-hover/cta:translate-x-1 transition-transform" />
                           </Link>
                         </div>
                       </div>
                     </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-12 bg-white shadow-lg border-gray-200 hover:bg-gray-50" />
-              <CarouselNext className="hidden md:flex -right-12 bg-white shadow-lg border-gray-200 hover:bg-gray-50" />
-            </Carousel>
+                  </div>
+                </TabsContent>
+              ))}
+            </Tabs>
           </div>
         </div>
       </section>
