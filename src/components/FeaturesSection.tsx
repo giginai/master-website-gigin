@@ -48,13 +48,13 @@ const FeaturesSection = () => {
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-gray-100 p-1 rounded-xl mb-12 h-auto">
-            <TabsTrigger value="sourcing" className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1">
+            <TabsTrigger value="sourcing" className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=inactive]:hover:bg-gray-200 transition-all duration-300 m-1">
               Sourcing
             </TabsTrigger>
-            <TabsTrigger value="screening" className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1">
+            <TabsTrigger value="screening" className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=inactive]:hover:bg-gray-200 transition-all duration-300 m-1">
               Screening
             </TabsTrigger>
-            <TabsTrigger value="verification" className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300 m-1">
+            <TabsTrigger value="verification" className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=inactive]:hover:bg-gray-200 transition-all duration-300 m-1">
               Verification
             </TabsTrigger>
           </TabsList>
