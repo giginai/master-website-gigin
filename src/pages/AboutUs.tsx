@@ -1,39 +1,27 @@
-
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
-
 const AboutUs = () => {
   const [activeValueTab, setActiveValueTab] = useState("excellence");
-
-  const coreValues = [
-    {
-      id: "excellence",
-      title: "Customer-Driven Excellence",
-      description: "We prioritize solving real hiring challenges with AI-driven efficiency. Every decision is guided by innovation, customer needs, and measurable results."
-    },
-    {
-      id: "teams",
-      title: "Strong Teams, Stronger Outcomes", 
-      description: "Collaboration, leadership, and data-driven insights power our hiring ecosystem. We build accountable teams that drive impact at scale."
-    },
-    {
-      id: "trust",
-      title: "Trust, Growth & Impact",
-      description: "Transparency and integrity define how we work with businesses and job seekers. Trust and continuous learning fuel long-term success."
-    }
-  ];
-
-  return (
-    <div className="min-h-screen relative overflow-hidden">
+  const coreValues = [{
+    id: "excellence",
+    title: "Customer-Driven Excellence",
+    description: "We prioritize solving real hiring challenges with AI-driven efficiency. Every decision is guided by innovation, customer needs, and measurable results."
+  }, {
+    id: "teams",
+    title: "Strong Teams, Stronger Outcomes",
+    description: "Collaboration, leadership, and data-driven insights power our hiring ecosystem. We build accountable teams that drive impact at scale."
+  }, {
+    id: "trust",
+    title: "Trust, Growth & Impact",
+    description: "Transparency and integrity define how we work with businesses and job seekers. Trust and continuous learning fuel long-term success."
+  }];
+  return <div className="min-h-screen relative overflow-hidden">
       {/* Background image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(/lovable-uploads/4ecd3353-db67-4541-aa16-d14ac3ab34fd.png)'
-        }}
-      >
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: 'url(/lovable-uploads/4ecd3353-db67-4541-aa16-d14ac3ab34fd.png)'
+    }}>
         {/* Reduced overlay opacity to make background image more visible */}
         <div className="absolute inset-0 bg-black/20"></div>
       </div>
@@ -56,11 +44,7 @@ const AboutUs = () => {
         
         {/* Team Image - Full width, no gaps */}
         <div className="w-full">
-          <img 
-            src="/lovable-uploads/87b15fdb-bc3f-4754-a553-2f3e9cf9b7fe.png"
-            alt="Gigin Team - Diverse professionals representing our mission"
-            className="w-full h-auto object-cover"
-          />
+          <img alt="Gigin Team - Diverse professionals representing our mission" className="w-full h-auto object-cover" src="/lovable-uploads/f5b8fe0c-f606-4650-aa1b-1b583771da9a.png" />
         </div>
       </section>
 
@@ -188,39 +172,18 @@ const AboutUs = () => {
           <div className="w-full">
             {/* Tab Navigation */}
             <div className="flex flex-wrap justify-center gap-6 mb-12">
-              {coreValues.map((value) => (
-                <button
-                  key={value.id}
-                  onClick={() => setActiveValueTab(value.id)}
-                  className={`px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-500 transform hover:scale-105 border-2 ${
-                    activeValueTab === value.id
-                      ? 'bg-gradient-to-r from-pink-500 to-pink-600 text-white shadow-2xl shadow-pink-500/30 border-pink-500 scale-105'
-                      : 'bg-white text-gray-700 hover:bg-gray-50 hover:shadow-lg border-gray-200 hover:border-gray-300'
-                  }`}
-                >
+              {coreValues.map(value => <button key={value.id} onClick={() => setActiveValueTab(value.id)} className={`px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-500 transform hover:scale-105 border-2 ${activeValueTab === value.id ? 'bg-gradient-to-r from-pink-500 to-pink-600 text-white shadow-2xl shadow-pink-500/30 border-pink-500 scale-105' : 'bg-white text-gray-700 hover:bg-gray-50 hover:shadow-lg border-gray-200 hover:border-gray-300'}`}>
                   {value.id === 'excellence' && 'Customer Excellence'}
                   {value.id === 'teams' && 'Strong Teams'}
                   {value.id === 'trust' && 'Trust & Growth'}
-                </button>
-              ))}
+                </button>)}
             </div>
 
             {/* Tab Content with Card Overlapping Effect */}
             <div className="relative h-[400px] perspective-1000">
-              {coreValues.map((value, index) => (
-                <div
-                  key={value.id}
-                  className={`absolute inset-0 transition-all duration-700 ease-in-out transform-gpu ${
-                    activeValueTab === value.id
-                      ? 'opacity-100 scale-100 z-30 translate-y-0 rotate-0'
-                      : index < coreValues.findIndex(v => v.id === activeValueTab)
-                      ? 'opacity-60 scale-95 z-10 -translate-y-4 -rotate-2 translate-x-8'
-                      : 'opacity-60 scale-95 z-10 translate-y-4 rotate-2 -translate-x-8'
-                  }`}
-                  style={{
-                    transformOrigin: 'center center',
-                  }}
-                >
+              {coreValues.map((value, index) => <div key={value.id} className={`absolute inset-0 transition-all duration-700 ease-in-out transform-gpu ${activeValueTab === value.id ? 'opacity-100 scale-100 z-30 translate-y-0 rotate-0' : index < coreValues.findIndex(v => v.id === activeValueTab) ? 'opacity-60 scale-95 z-10 -translate-y-4 -rotate-2 translate-x-8' : 'opacity-60 scale-95 z-10 translate-y-4 rotate-2 -translate-x-8'}`} style={{
+              transformOrigin: 'center center'
+            }}>
                   <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-12 text-center shadow-2xl border border-gray-200 max-w-4xl mx-auto h-full flex flex-col justify-center">
                     <div className="w-20 h-20 bg-gradient-to-r from-pink-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
@@ -232,14 +195,11 @@ const AboutUs = () => {
                       {value.description}
                     </p>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default AboutUs;
