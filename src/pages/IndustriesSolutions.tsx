@@ -87,7 +87,7 @@ const IndustriesSolutions = () => {
       <IndustryHeroSection />
 
       {/* Interactive Industry Tabs */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="relative overflow-hidden py-[4px]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             
