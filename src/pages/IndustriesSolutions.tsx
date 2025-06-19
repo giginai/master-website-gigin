@@ -1,76 +1,85 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Building2, Users, Truck, DollarSign, Shield, Utensils, Factory, Briefcase, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Building2, Users, Truck, DollarSign, Shield, Utensils, Factory, Briefcase, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const IndustriesSolutions = () => {
-  const industries = [{
-    name: "Facility Management",
-    icon: Building2,
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop",
-    description: "Comprehensive background checks for security personnel, maintenance staff, and facility management teams ensuring safety and reliability.",
-    keyChecks: ["Criminal Background Check", "Identity Verification", "Employment History", "Reference Verification"],
-    link: "/industry/facility-management",
-    useCases: ["Security Personnel", "Maintenance Staff", "Cleaning Crews", "Access Control"]
-  }, {
-    name: "Food & Beverage",
-    icon: Utensils,
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop",
-    description: "Health and safety compliance verification for restaurant staff, food handlers, and hospitality workers with industry-specific requirements.",
-    keyChecks: ["Health Certificate Verification", "Criminal Background Check", "Employment Verification", "Address Verification"],
-    link: "/industry/food-beverage",
-    useCases: ["Food Handlers", "Kitchen Staff", "Restaurant Managers", "Delivery Personnel"]
-  }, {
-    name: "Gig Economy",
-    icon: Users,
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-    description: "Rapid verification solutions for freelancers, delivery partners, and on-demand service providers with streamlined processes.",
-    keyChecks: ["Identity Verification", "Driving License Check", "Criminal Background Check", "Reference Verification"],
-    link: "/industry/gig-economy",
-    useCases: ["Delivery Drivers", "Freelance Workers", "On-demand Services", "Contract Workers"]
-  }, {
-    name: "Transportation & Logistics",
-    icon: Truck,
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
-    description: "Specialized verification for drivers, logistics personnel, and transportation staff with focus on safety and compliance.",
-    keyChecks: ["Driving License Verification", "Criminal Background Check", "Employment History", "Medical Fitness Check"],
-    link: "/industry/transportation",
-    useCases: ["Commercial Drivers", "Logistics Coordinators", "Warehouse Staff", "Fleet Managers"]
-  }, {
-    name: "Financial Services",
-    icon: DollarSign,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-    description: "Stringent verification standards for banking, insurance, and financial sector employees with regulatory compliance focus.",
-    keyChecks: ["Financial Background Check", "Criminal Record Check", "Education Verification", "Professional Certification"],
-    link: "/industry/financial-services",
-    useCases: ["Bank Employees", "Financial Advisors", "Insurance Agents", "Investment Professionals"]
-  }, {
-    name: "Insurance",
-    icon: Shield,
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop",
-    description: "Comprehensive verification for insurance agents, underwriters, and claims processors with emphasis on trustworthiness.",
-    keyChecks: ["Professional License Check", "Financial Verification", "Criminal Background Check", "Education Verification"],
-    link: "/industry/insurance",
-    useCases: ["Insurance Agents", "Claims Adjusters", "Underwriters", "Risk Assessors"]
-  }, {
-    name: "Manufacturing",
-    icon: Factory,
-    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&h=400&fit=crop",
-    description: "Safety-focused verification for manufacturing workers, quality control staff, and industrial personnel.",
-    keyChecks: ["Safety Certification Check", "Employment Verification", "Criminal Background Check", "Technical Skills Validation"],
-    link: "/industry/manufacturing",
-    useCases: ["Production Workers", "Quality Controllers", "Safety Officers", "Equipment Operators"]
-  }, {
-    name: "Corporate Services",
-    icon: Briefcase,
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
-    description: "Executive and professional verification for corporate roles, management positions, and office-based employees.",
-    keyChecks: ["Education Verification", "Employment History", "Professional References", "Social Media Screening"],
-    link: "/industry/corporate-services",
-    useCases: ["Executives", "Managers", "Office Staff", "Consultants"]
-  }];
+  const industries = [
+    {
+      name: "Facility Management",
+      icon: Building2,
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop",
+      description: "Comprehensive background checks for security personnel, maintenance staff, and facility management teams ensuring safety and reliability.",
+      keyChecks: ["Criminal Background Check", "Identity Verification", "Employment History", "Reference Verification"],
+      link: "/industry/facility-management",
+      useCases: ["Security Personnel", "Maintenance Staff", "Cleaning Crews", "Access Control"]
+    },
+    {
+      name: "Food & Beverage",
+      icon: Utensils,
+      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop",
+      description: "Health and safety compliance verification for restaurant staff, food handlers, and hospitality workers with industry-specific requirements.",
+      keyChecks: ["Health Certificate Verification", "Criminal Background Check", "Employment Verification", "Address Verification"],
+      link: "/industry/food-beverage",
+      useCases: ["Food Handlers", "Kitchen Staff", "Restaurant Managers", "Delivery Personnel"]
+    },
+    {
+      name: "Gig Economy",
+      icon: Users,
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      description: "Rapid verification solutions for freelancers, delivery partners, and on-demand service providers with streamlined processes.",
+      keyChecks: ["Identity Verification", "Driving License Check", "Criminal Background Check", "Reference Verification"],
+      link: "/industry/gig-economy",
+      useCases: ["Delivery Drivers", "Freelance Workers", "On-demand Services", "Contract Workers"]
+    },
+    {
+      name: "Transportation & Logistics",
+      icon: Truck,
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
+      description: "Specialized verification for drivers, logistics personnel, and transportation staff with focus on safety and compliance.",
+      keyChecks: ["Driving License Verification", "Criminal Background Check", "Employment History", "Medical Fitness Check"],
+      link: "/industry/transportation",
+      useCases: ["Commercial Drivers", "Logistics Coordinators", "Warehouse Staff", "Fleet Managers"]
+    },
+    {
+      name: "Financial Services",
+      icon: DollarSign,
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      description: "Stringent verification standards for banking, insurance, and financial sector employees with regulatory compliance focus.",
+      keyChecks: ["Financial Background Check", "Criminal Record Check", "Education Verification", "Professional Certification"],
+      link: "/industry/financial-services",
+      useCases: ["Bank Employees", "Financial Advisors", "Insurance Agents", "Investment Professionals"]
+    },
+    {
+      name: "Insurance",
+      icon: Shield,
+      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop",
+      description: "Comprehensive verification for insurance agents, underwriters, and claims processors with emphasis on trustworthiness.",
+      keyChecks: ["Professional License Check", "Financial Verification", "Criminal Background Check", "Education Verification"],
+      link: "/industry/insurance",
+      useCases: ["Insurance Agents", "Claims Adjusters", "Underwriters", "Risk Assessors"]
+    },
+    {
+      name: "Manufacturing",
+      icon: Factory,
+      image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&h=400&fit=crop",
+      description: "Safety-focused verification for manufacturing workers, quality control staff, and industrial personnel.",
+      keyChecks: ["Safety Certification Check", "Employment Verification", "Criminal Background Check", "Technical Skills Validation"],
+      link: "/industry/manufacturing",
+      useCases: ["Production Workers", "Quality Controllers", "Safety Officers", "Equipment Operators"]
+    },
+    {
+      name: "Corporate Services",
+      icon: Briefcase,
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+      description: "Executive and professional verification for corporate roles, management positions, and office-based employees.",
+      keyChecks: ["Education Verification", "Employment History", "Professional References", "Social Media Screening"],
+      link: "/industry/corporate-services",
+      useCases: ["Executives", "Managers", "Office Staff", "Consultants"]
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -78,7 +87,7 @@ const IndustriesSolutions = () => {
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-gray-900 via-black to-gray-800 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.1\"%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"1\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
         
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
           <div className="glass-morphism rounded-full px-4 py-2 mb-8 inline-flex items-center">
@@ -236,7 +245,7 @@ const IndustriesSolutions = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-pink-500 to-purple-600 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M50 0a50 50 0 1 1 0 100 50 50 0 0 1 0-100z"/%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"100\" height=\"100\" viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.1\"%3E%3Cpath d=\"M50 0a50 50 0 1 1 0 100 50 50 0 0 1 0-100z\"/%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
         
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
