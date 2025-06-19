@@ -55,7 +55,7 @@ const InteractiveProductStack = () => {
           </div>
 
           {/* Active Product Display */}
-          <div className="lg:w-2/3">
+          <div className="lg:w-2/3 py-[8px]">
             <div className="relative group">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img src={activeProductData?.image} alt={activeProductData?.name} className="w-full h-64 md:h-80 lg:h-96 object-cover transition-transform duration-500 group-hover:scale-110" />
@@ -64,7 +64,7 @@ const InteractiveProductStack = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 py-[32px]">
                   <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4">
                     {activeProductData?.name}
                   </h3>
