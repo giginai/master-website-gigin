@@ -98,8 +98,7 @@ const AboutUs = () => {
               <span className="text-gray-800">✦</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-              Meet Our<br />
-              Leaders
+              Meet Our Leaders<br />
             </h2>
           </div>
 
