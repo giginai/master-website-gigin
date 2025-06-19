@@ -28,7 +28,7 @@ const IndustryCard = ({
         <div className="relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 overflow-hidden border border-gray-200">
           <div className="flex flex-col md:flex-row h-[400px]">
             {/* Content Area - Left Side */}
-            <div className="flex-1 p-8 flex flex-col justify-between py-[18px]">
+            <div className="flex-1 p-8 flex flex-col justify-between py-[28px]">
               {/* Header */}
               <div className="mb-6">
                 <div className="flex items-center gap-4 mb-4">
