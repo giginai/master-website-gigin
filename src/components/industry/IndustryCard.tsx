@@ -19,7 +19,7 @@ interface IndustryCardProps {
 
 const IndustryCard = ({ industry }: IndustryCardProps) => {
   return (
-    <div className="w-full">
+    <div className="w-full pb-8">
       <div className="relative group">
         {/* Stacked Card Effect - Background Cards */}
         <div className="absolute inset-0 bg-white rounded-2xl shadow-lg transform translate-x-3 translate-y-3 opacity-20"></div>
@@ -85,7 +85,7 @@ const IndustryCard = ({ industry }: IndustryCardProps) => {
             </div>
 
             {/* Image Area - Right Side */}
-            <div className="w-full md:w-80 relative">
+            <div className="flex-1 relative">
               <img 
                 src={industry.image} 
                 alt={industry.name}
