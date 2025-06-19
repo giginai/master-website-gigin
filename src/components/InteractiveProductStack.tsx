@@ -1,7 +1,10 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+
 const InteractiveProductStack = () => {
   const [activeProduct, setActiveProduct] = useState("jobs");
+
   const products = [{
     id: "jobs",
     name: "Gigin Jobs",
@@ -33,12 +36,22 @@ const InteractiveProductStack = () => {
     color: "bg-teal-500",
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop"
   }];
+
   const activeProductData = products.find(p => p.id === activeProduct);
-  return <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white">
+
+  return (
+    <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-[48px]">
         <div className="text-center mb-10 md:mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Your Complete Talent Ecosystem</h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">Fragmented systems and manual tasks are a thing of the past. Gigin AI brings all your critical HR functions into one unified platform</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
+            Your Complete Talent Ecosystem
+          </h2>
+          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto mb-4">
+            Fragmented systems and manual tasks are a thing of the past. Gigin AI brings all your critical HR functions into one unified platform
+          </p>
+          <p className="text-sm md:text-base text-gray-500 max-w-2xl mx-auto">
+            Streamline your entire talent management process with our integrated suite of AI-powered solutions designed for modern businesses.
+          </p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
@@ -86,6 +99,8 @@ const InteractiveProductStack = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default InteractiveProductStack;
