@@ -83,7 +83,7 @@ const IndustriesSolutions = () => {
       </section>
 
       {/* Industries Overview */}
-      <section className="py-0">
+      <section className="py-[48px]">
         <div className="max-w-7xl mx-auto px-6">
           
 
