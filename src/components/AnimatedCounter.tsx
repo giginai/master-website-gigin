@@ -1,7 +1,6 @@
 
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useCountAnimation } from '@/hooks/useCountAnimation';
-import { useState, useEffect } from 'react';
 
 interface AnimatedCounterProps {
   value: string;
@@ -11,7 +10,6 @@ interface AnimatedCounterProps {
 
 const AnimatedCounter = ({ value, label, className = "" }: AnimatedCounterProps) => {
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>(0.3);
-  const [hasAnimated, setHasAnimated] = useState(false);
   
   // Extract numeric value from string (e.g., "2M+" -> 2000000)
   const getNumericValue = (val: string) => {
@@ -23,14 +21,7 @@ const AnimatedCounter = ({ value, label, className = "" }: AnimatedCounterProps)
   };
 
   const numericValue = getNumericValue(value);
-  const shouldAnimate = isVisible && !hasAnimated;
-  const animatedCount = useCountAnimation(numericValue, 1500, 0, shouldAnimate);
-  
-  useEffect(() => {
-    if (isVisible && !hasAnimated) {
-      setHasAnimated(true);
-    }
-  }, [isVisible, hasAnimated]);
+  const animatedCount = useCountAnimation(numericValue, 2000, 0, isVisible);
   
   // Format the animated count back to original format
   const formatCount = (count: number) => {
@@ -41,9 +32,9 @@ const AnimatedCounter = ({ value, label, className = "" }: AnimatedCounterProps)
       return `${(count / 1000).toFixed(count >= 1000 ? 0 : 1)}k${value.includes('+') ? '+' : ''}`;
     }
     if (value.includes('%')) {
-      return `${Math.round(count)}%`;
+      return `${count}%`;
     }
-    return Math.round(count).toString() + (value.includes('+') ? '+' : '');
+    return count.toString() + (value.includes('+') ? '+' : '');
   };
 
   return (
@@ -56,11 +47,9 @@ const AnimatedCounter = ({ value, label, className = "" }: AnimatedCounterProps)
       <div className="text-3xl md:text-4xl font-bold mb-3 text-pink-500">
         {formatCount(animatedCount)}
       </div>
-      {label && (
-        <div className="text-gray-700 font-medium whitespace-nowrap">
-          {label}
-        </div>
-      )}
+      <div className="text-gray-700 font-medium whitespace-nowrap">
+        {label}
+      </div>
     </div>
   );
 };
