@@ -67,8 +67,8 @@ const LogoCarousel = () => {
         
         <div ref={scrollerRef} className="scroller overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]">
           <div className="scroller-inner flex gap-16 animate-scroll hover:[animation-play-state:paused]">
-            {logos.map(logo => <div key={logo.id} className="flex items-center justify-center min-w-[280px] h-20 p-6 flex-shrink-0 py-[4px] px-0">
-                <img src={logo.src} alt={logo.name} className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100" />
+            {logos.map(logo => <div key={logo.id} className="flex items-center justify-center min-w-[280px] h-20 p-6 flex-shrink-0 px-0 py-0">
+                <img src={logo.src} alt={logo.name} className="max-w-full max-h-full filter grayscale hover:grayscale-0 transition-all duration-300 opacity-100 hover:opacity-100 object-contain" />
               </div>)}
           </div>
         </div>
