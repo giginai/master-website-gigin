@@ -13,6 +13,7 @@ const SolutionsDropdown = () => {
   const location = useLocation();
   const isHiringSolutionsPage = location.pathname === "/hiring-solutions";
   const isVerificationPage = location.pathname === "/verification" || location.pathname.startsWith("/verification");
+  const isIndustriesPage = location.pathname === "/industries-solutions" || location.pathname.startsWith("/industry/");
 
   const handleHiringSolutionClick = (sectionId: string) => {
     if (location.pathname === "/hiring-solutions") {
@@ -37,7 +38,7 @@ const SolutionsDropdown = () => {
     <DropdownMenu onOpenChange={setIsDropdownOpen}>
       <DropdownMenuTrigger asChild>
         <button className={`text-sm font-medium transition-colors flex items-center px-4 py-2 rounded-lg ${
-          isDropdownOpen || isHiringSolutionsPage || isVerificationPage
+          isDropdownOpen || isHiringSolutionsPage || isVerificationPage || isIndustriesPage
             ? "text-white bg-white/10 border border-pink-400/20"
             : "text-gray-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
         }`}>
@@ -122,17 +123,17 @@ const SolutionsDropdown = () => {
                       }`}>Verification Catalogue</span>
                     </Link>
                     <Link to="/industries-solutions" className={`flex items-center p-3 rounded-lg border transition-all group ${
-                      location.pathname === "/industries-solutions"
+                      isIndustriesPage
                         ? "bg-pink-50 border-pink-200"
                         : "hover:bg-pink-50 hover:border-pink-100 border-transparent"
                     }`}>
                       <Building2 className={`w-4 h-4 mr-3 ${
-                        location.pathname === "/industries-solutions"
+                        isIndustriesPage
                           ? "text-pink-500"
                           : "text-gray-500 group-hover:text-pink-500"
                       }`} />
                       <span className={`text-sm font-medium ${
-                        location.pathname === "/industries-solutions"
+                        isIndustriesPage
                           ? "text-pink-600"
                           : "text-gray-700 group-hover:text-pink-600"
                       }`}>Industries & Use Cases</span>

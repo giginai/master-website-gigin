@@ -1,4 +1,3 @@
-
 import React, { FC } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
@@ -34,6 +33,9 @@ import SocialMediaScreening from "./pages/SocialMediaScreening";
 import FinancialVerification from "./pages/FinancialVerification";
 import ReferenceVerification from "./pages/ReferenceVerification";
 import AddressVerification from "./pages/AddressVerification";
+
+// Industry pages
+import FacilityManagement from "./pages/industry/FacilityManagement";
 
 const queryClient = new QueryClient();
 
@@ -90,6 +92,9 @@ const App = () => (
               <Route path="/verification/financial" element={<FinancialVerification />} />
               <Route path="/verification/reference" element={<ReferenceVerification />} />
               <Route path="/verification/address" element={<AddressVerification />} />
+              
+              {/* Industry pages */}
+              <Route path="/industry/facility-management" element={<FacilityManagement />} />
               
               {/* Job-related routes */}
               <Route path="/find-a-job" element={<Jobs />} />

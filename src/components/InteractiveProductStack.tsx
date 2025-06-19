@@ -15,7 +15,7 @@ const InteractiveProductStack = () => {
     id: "recruiter",
     name: "Gigin Recruiter",
     color: "bg-pink-500",
-    image: "/lovable-uploads/2172be88-31b6-4d91-ba38-e327b73f715c.png",
+    image: "/lovable-uploads/4c0628fc-95da-40e4-8fa2-4360b37b7aa7.png",
     description: "Advanced recruitment tools for efficient talent acquisition and candidate management."
   }, {
     id: "verifyin",
@@ -39,7 +39,7 @@ const InteractiveProductStack = () => {
     id: "waas",
     name: "Gigin Work-as-a-Service",
     color: "bg-pink-500",
-    image: "/lovable-uploads/4c0628fc-95da-40e4-8fa2-4360b37b7aa7.png",
+    image: "/lovable-uploads/2172be88-31b6-4d91-ba38-e327b73f715c.png",
     description: "Flexible workforce solutions for on-demand talent and project-based hiring."
   }];
 
