@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +11,7 @@ const InteractiveProductStack = () => {
       setTimeout(() => {
         setActiveProduct(productId);
         setIsImageVisible(true);
-      }, 200);
+      }, 300);
     }
   };
 
@@ -76,10 +75,10 @@ const InteractiveProductStack = () => {
                 <button
                   key={product.id}
                   onClick={() => handleProductChange(product.id)}
-                  className={`relative p-4 rounded-lg transition-all duration-300 text-left ${
+                  className={`relative p-4 rounded-lg transition-all duration-300 text-left transform ${
                     activeProduct === product.id
-                      ? "bg-pink-500 text-white shadow-lg transform scale-105"
-                      : "bg-white text-gray-700 border border-gray-200 hover:border-pink-300 hover:shadow-md hover:text-pink-600"
+                      ? "bg-pink-500 text-white shadow-lg scale-105"
+                      : "bg-white text-gray-700 border border-gray-200 hover:border-pink-300 hover:shadow-md hover:text-pink-600 hover:scale-102"
                   }`}
                 >
                   <div className="font-semibold text-sm md:text-base">
@@ -96,10 +95,10 @@ const InteractiveProductStack = () => {
           {/* Active Product Display */}
           <div className="lg:w-2/3 py-[8px]">
             <div className="relative group">
-              <div className={`relative overflow-hidden rounded-2xl shadow-2xl transition-all duration-500 ease-out ${
+              <div className={`relative overflow-hidden rounded-2xl shadow-2xl transition-all duration-700 ease-out transform ${
                 isImageVisible 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-8'
+                  ? 'opacity-100 translate-y-0 scale-100' 
+                  : 'opacity-0 translate-y-12 scale-95'
               }`}>
                 <img
                   src={activeProductData?.image}
@@ -123,7 +122,7 @@ const InteractiveProductStack = () => {
                     </p>
                     
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <Button className="bg-white text-gray-900 hover:bg-gray-100 font-medium">
+                      <Button className="bg-white text-gray-900 hover:bg-gray-100 font-medium transition-all duration-300 hover:scale-105">
                         Learn More
                       </Button>
                     </div>

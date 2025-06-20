@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -12,7 +11,7 @@ const FeaturesSection = () => {
       setTimeout(() => {
         setActiveTab(value);
         setIsContentVisible(true);
-      }, 150);
+      }, 300);
     }
   };
 
@@ -68,7 +67,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="pt-20 pb-20 bg-white">
+    <section className="pt-32 pb-20 bg-white">
       <div className="max-w-7xl mx-auto px-[48px]">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Unlock Strategic HR</h2>
@@ -101,10 +100,10 @@ const FeaturesSection = () => {
 
           {features.map((feature) => (
             <TabsContent key={feature.id} value={feature.id} className="mt-0">
-              <div className={`grid lg:grid-cols-2 gap-12 items-center transition-all duration-500 ease-out ${
+              <div className={`grid lg:grid-cols-2 gap-12 items-center transition-all duration-700 ease-out ${
                 isContentVisible 
                   ? 'opacity-100 translate-x-0' 
-                  : 'opacity-0 translate-x-8'
+                  : 'opacity-0 translate-x-16'
               }`}>
                 <div className="space-y-6">
                   <div>
