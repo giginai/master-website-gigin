@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Calendar, Building2 } from "lucide-react";
@@ -10,16 +9,17 @@ interface JobCardProps {
 }
 
 const JobCard = ({ job }: JobCardProps) => {
+  console.log(job);
   // Safely handle description with fallback
   const getDescriptionPreview = (description: string | undefined | null) => {
     if (!description) return "No description available";
-    return description.replace(/<[^>]*>/g, '').substring(0, 150) + "...";
+    return description.replace(/<[^>]*>/g, "").substring(0, 150) + "...";
   };
 
   const formatSalary = (salary: string | undefined) => {
     if (!salary) return null;
     // Add rupee symbol if not already present
-    if (salary.includes('₹')) return salary;
+    if (salary.includes("₹")) return salary;
     return `₹${salary}`;
   };
 
@@ -28,7 +28,9 @@ const JobCard = ({ job }: JobCardProps) => {
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <h3 className="font-semibold text-lg mb-1 line-clamp-2">{job.title}</h3>
+            <h3 className="font-semibold text-lg mb-1 line-clamp-2">
+              {job.title}
+            </h3>
             <div className="flex items-center text-gray-600 mb-2">
               <Building2 className="w-4 h-4 mr-1" />
               <span className="text-sm">{job.company}</span>
@@ -44,8 +46,8 @@ const JobCard = ({ job }: JobCardProps) => {
             )}
           </div>
           {job.companyLogo && (
-            <img 
-              src={job.companyLogo} 
+            <img
+              src={job.companyLogo}
               alt={`${job.company} logo`}
               className="w-12 h-12 object-contain rounded"
             />
@@ -61,7 +63,7 @@ const JobCard = ({ job }: JobCardProps) => {
             <Calendar className="w-3 h-3 mr-1" />
             <span>{new Date(job.publishedDate).toLocaleDateString()}</span>
           </div>
-          <Link to={`/job-detail/${job.jobPageUrl}`}>
+          <Link to={`/job-detail/${job.jobpageurl}`}>
             <Button size="sm" className="bg-pink-500 hover:bg-pink-600">
               View Details
             </Button>

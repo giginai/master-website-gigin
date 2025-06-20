@@ -1,13 +1,13 @@
 import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
-import { HelmetProvider } from "react-helmet-async";
+import { HelmetProvider, type HelmetServerState } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SEOProvider } from "@/contexts/SEOContext";
-import { AppRoutes } from "./App";
+import App from "./App";
 
 export function render(url: string) {
-  const helmetContext = {};
+  const helmetContext: { helmet?: HelmetServerState } = {};
   const queryClient = new QueryClient();
 
   const html = ReactDOMServer.renderToString(
@@ -16,7 +16,7 @@ export function render(url: string) {
         <SEOProvider>
           <TooltipProvider>
             <StaticRouter location={url}>
-              <AppRoutes />
+              <App />
             </StaticRouter>
           </TooltipProvider>
         </SEOProvider>
@@ -24,8 +24,8 @@ export function render(url: string) {
     </QueryClientProvider>
   );
 
-  // Extract helmet data for SEO
-  const { helmet } = helmetContext as { helmet?: unknown };
+  // Extract helmet data for SEO - React Helmet Async format
+  const { helmet } = helmetContext;
 
   return {
     html,

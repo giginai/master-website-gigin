@@ -1,7 +1,7 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import LeadGenerationModal from "./LeadGenerationModal";
 import VerificationHero from "./verification/VerificationHero";
 import VerificationAbout from "./verification/VerificationAbout";
@@ -45,18 +45,47 @@ const VerificationCheckPage = ({
   useCases,
   gapToday,
   howItWorks,
-  faqs
+  faqs,
 }: VerificationCheckPageProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalOpen = () => setIsModalOpen(true);
   const handleModalClose = () => setIsModalOpen(false);
 
+  // Generate SEO data based on the page title
+  const pageTitle = `${title} | Gigin`;
+  const pageDescription = `Professional ${title.toLowerCase()} services by Gigin. ${heroSubtitle}`;
+  const pageUrl = `https://master-website-gigin.lovable.app/verification/${title
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "")}`;
+
   return (
     <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={pageUrl} />
+        <meta
+          property="og:image"
+          content="https://master-website-gigin.lovable.app/lovable-uploads/og-gigin.jpg"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta
+          name="twitter:image"
+          content="https://master-website-gigin.lovable.app/lovable-uploads/og-gigin.jpg"
+        />
+      </Helmet>
+
       <div className="min-h-screen bg-gray-50">
         <Header />
-        
+
         <VerificationHero
           title={title}
           heroSubtitle={heroSubtitle}
@@ -65,45 +94,24 @@ const VerificationCheckPage = ({
           onGetStarted={handleModalOpen}
         />
 
-        <VerificationAbout
-          title={title}
-          aboutDescription={aboutDescription}
-        />
+        <VerificationAbout title={title} aboutDescription={aboutDescription} />
 
-        <VerificationWhyImportant
-          title={title}
-          whyImportant={whyImportant}
-        />
+        <VerificationWhyImportant title={title} whyImportant={whyImportant} />
 
-        <VerificationUseCases
-          useCases={useCases}
-        />
+        <VerificationUseCases useCases={useCases} />
 
-        <VerificationGap
-          gapToday={gapToday}
-        />
+        <VerificationGap gapToday={gapToday} />
 
-        <VerificationHowItWorks
-          howItWorks={howItWorks}
-        />
+        <VerificationHowItWorks howItWorks={howItWorks} />
 
-        <VerificationCTA
-          title={title}
-          onBookDemo={handleModalOpen}
-        />
+        <VerificationCTA title={title} onBookDemo={handleModalOpen} />
 
-        <VerificationFAQ
-          title={title}
-          faqs={faqs}
-        />
+        <VerificationFAQ title={title} faqs={faqs} />
 
         <Footer />
       </div>
 
-      <LeadGenerationModal 
-        isOpen={isModalOpen} 
-        onClose={handleModalClose} 
-      />
+      <LeadGenerationModal isOpen={isModalOpen} onClose={handleModalClose} />
     </>
   );
 };

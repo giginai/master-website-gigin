@@ -1,5 +1,4 @@
-
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
 import { generateJobPostingSchema } from "@/utils/schemaGenerator";
 import SEOHead from "@/components/SEOHead";
@@ -8,23 +7,27 @@ import Footer from "@/components/Footer";
 import { useJobDetail } from "@/hooks/useJobs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Calendar, Building2, DollarSign, Clock } from "lucide-react";
+import { MapPin, Calendar, Building2, Clock, IndianRupee } from "lucide-react";
 
 const JobDetail = () => {
   const { jobPageUrl } = useParams<{ jobPageUrl: string }>();
-  const { data: job, isLoading, error } = useJobDetail(jobPageUrl || '');
+  const { data: job, isLoading, error } = useJobDetail(jobPageUrl || "");
 
   // SEO Configuration
-  const title = job ? `${job.title} at ${job.company} - ${job.location}` : "Job Details";
-  const description = job 
-    ? `${job.title} position at ${job.company} in ${job.location}. ${job.description?.substring(0, 160)}...`
+  const title = job
+    ? `${job.title} at ${job.company} - ${job.location}`
+    : "Job Details";
+  const description = job
+    ? `${job.title} position at ${job.company} in ${
+        job.location
+      }. ${job.job_description?.substring(0, 160)}...`
     : "View detailed job information and apply for positions on Gigin.";
 
   useSEO({
     title,
     description,
     url: `https://master-website-gigin.lovable.app/job-detail/${jobPageUrl}`,
-    type: "website"
+    type: "website",
   });
 
   const structuredData = job ? [generateJobPostingSchema(job)] : [];
@@ -57,8 +60,12 @@ const JobDetail = () => {
         <Header />
         <main className="pt-24 pb-16">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Job Not Found</h1>
-            <p className="text-gray-600">The job you're looking for doesn't exist or has been removed.</p>
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+              Job Not Found
+            </h1>
+            <p className="text-gray-600">
+              The job you're looking for doesn't exist or has been removed.
+            </p>
           </div>
         </main>
         <Footer />
@@ -70,7 +77,7 @@ const JobDetail = () => {
     <div className="min-h-screen bg-gray-50">
       <SEOHead structuredData={structuredData} />
       <Header />
-      
+
       <main className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-6">
           {/* Job Header */}
@@ -90,7 +97,7 @@ const JobDetail = () => {
                     </div>
                     {job.salary && (
                       <div className="flex items-center text-green-600">
-                        <DollarSign className="w-4 h-4 mr-1" />
+                        <IndianRupee className="w-4 h-4 mr-1" />
                         <span>{job.salary}</span>
                       </div>
                     )}
@@ -102,13 +109,15 @@ const JobDetail = () => {
                     )}
                     <div className="flex items-center">
                       <Calendar className="w-4 h-4 mr-1" />
-                      <span>Posted {new Date(job.publishedDate).toLocaleDateString()}</span>
+                      <span>
+                        Posted {new Date(job.posted_on).toLocaleDateString()}
+                      </span>
                     </div>
                   </div>
                 </div>
                 {job.companyLogo && (
-                  <img 
-                    src={job.companyLogo} 
+                  <img
+                    src={job.companyLogo}
                     alt={`${job.company} logo`}
                     className="w-20 h-20 object-contain rounded"
                   />
@@ -116,7 +125,10 @@ const JobDetail = () => {
               </div>
             </CardHeader>
             <CardContent>
-              <Button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 text-lg">
+              <Button
+                className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 text-lg"
+                onClick={() => window.open(job.ApplyNowUrl, "_blank")}
+              >
                 Apply Now
               </Button>
             </CardContent>
@@ -128,9 +140,9 @@ const JobDetail = () => {
               <CardTitle>Job Description</CardTitle>
             </CardHeader>
             <CardContent>
-              <div 
+              <div
                 className="prose max-w-none text-gray-700"
-                dangerouslySetInnerHTML={{ __html: job.description }}
+                dangerouslySetInnerHTML={{ __html: job.job_description || "" }}
               />
             </CardContent>
           </Card>
@@ -176,7 +188,7 @@ const JobDetail = () => {
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {job.skills.map((skill, index) => (
-                    <span 
+                    <span
                       key={index}
                       className="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm"
                     >
@@ -193,9 +205,13 @@ const JobDetail = () => {
             <CardContent className="text-center py-8">
               <h3 className="text-xl font-semibold mb-4">Ready to apply?</h3>
               <p className="text-gray-600 mb-6">
-                Don't miss out on this opportunity. Apply now and take the next step in your career.
+                Don't miss out on this opportunity. Apply now and take the next
+                step in your career.
               </p>
-              <Button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 text-lg">
+              <Button
+                className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 text-lg"
+                onClick={() => window.open(job.ApplyNowUrl, "_blank")}
+              >
                 Apply for this Job
               </Button>
             </CardContent>

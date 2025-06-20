@@ -1,21 +1,14 @@
-
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import LeadGenerationModal from "./LeadGenerationModal";
-
 const VerificationHeroSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  return (
-    <>
+  return <>
       <section className="relative pt-32 pb-8 min-h-[90vh] overflow-hidden">
         {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url(/lovable-uploads/aabac661-4393-418d-847f-8d74a313e0b3.png)'
-          }}
-        />
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+        backgroundImage: 'url(/lovable-uploads/aabac661-4393-418d-847f-8d74a313e0b3.png)'
+      }} />
         
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/60"></div>
@@ -38,33 +31,21 @@ const VerificationHeroSection = () => {
               and providing control, compliance, and peace of mind from start to finish.
             </p>
             
-            <Button 
-              onClick={() => setIsModalOpen(true)}
-              className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium mb-8"
-            >
+            <Button onClick={() => setIsModalOpen(true)} className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg rounded-lg font-medium mb-8">
               Get Started
             </Button>
             
             {/* Hero Dashboard Image with hover animation */}
             <div className="relative max-w-4xl mx-auto mb-8">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
-                <img 
-                  src="/lovable-uploads/44f3826a-9ec1-4397-bcaf-340a68a507ee.png" 
-                  alt="Verification Dashboard" 
-                  className="w-full h-auto transition-transform duration-700 ease-out group-hover:scale-105"
-                />
+                <img alt="Verification Dashboard" className="w-full h-auto transition-transform duration-700 ease-out group-hover:scale-105" src="/lovable-uploads/34dbba9e-aa01-4445-8f77-636e94470acb.png" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <LeadGenerationModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
-    </>
-  );
+      <LeadGenerationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>;
 };
-
 export default VerificationHeroSection;

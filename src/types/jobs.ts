@@ -1,4 +1,3 @@
-
 export interface Job {
   id: number;
   title: string;
@@ -7,15 +6,16 @@ export interface Job {
   salary?: string;
   experience?: string;
   jobType?: string;
-  description: string;
   requirements?: string[];
   benefits?: string[];
-  jobPageUrl: string;
-  publishedDate: string;
+  jobpageurl: string;
+  posted_on: string;
   applicationDeadline?: string;
   companyLogo?: string;
   category: string;
   skills?: string[];
+  ApplyNowUrl?: string;
+  job_description?: string;
 }
 
 export interface JobsApiResponse {
