@@ -1,9 +1,5 @@
-
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useEffect, useRef } from 'react';
-import Autoplay from "embla-carousel-autoplay";
-
 const TestimonialSection = () => {
   const {
     ref: titleRef,
@@ -13,11 +9,6 @@ const TestimonialSection = () => {
     ref: carouselRef,
     isVisible: carouselVisible
   } = useScrollAnimation<HTMLDivElement>(0.3);
-
-  const plugin = useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
-  );
-
   const testimonials = [{
     quote: "The Gigin Recruiter app exceeded my expectations. It's efficient, easy to use, and delivers excellent hiring results. Highly recommend it to anyone looking for a smart recruitment solution.",
     author: "Shifa Khan",
@@ -47,7 +38,6 @@ const TestimonialSection = () => {
     author: "Anita Desai",
     role: "HR Director"
   }];
-
   return <section className="py-20 bg-gray-50 relative overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
@@ -73,12 +63,7 @@ const TestimonialSection = () => {
 
         {/* Testimonial Carousel */}
         <div ref={carouselRef} className={`relative max-w-4xl mx-auto transition-all duration-700 delay-600 ${carouselVisible ? 'animate-fade-in animate-scale-in' : 'opacity-0 translate-y-8 scale-95'}`}>
-          <Carousel 
-            className="w-full"
-            plugins={[plugin.current]}
-            onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
-          >
+          <Carousel className="w-full">
             <CarouselContent>
               {testimonials.map((testimonial, index) => <CarouselItem key={index}>
                   <div className="glass-morphism rounded-3xl p-8 md:p-12 border border-white/20 backdrop-blur-xl shadow-2xl bg-white/10">
@@ -112,5 +97,4 @@ const TestimonialSection = () => {
       </div>
     </section>;
 };
-
 export default TestimonialSection;
