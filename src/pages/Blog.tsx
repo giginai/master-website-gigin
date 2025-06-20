@@ -1,15 +1,44 @@
-
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/ui/pagination";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+  PaginationEllipsis,
+} from "@/components/ui/pagination";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Search, Calendar, User, ArrowRight, AlertCircle, RefreshCw, ChevronDown } from "lucide-react";
+import {
+  Search,
+  Calendar,
+  User,
+  ArrowRight,
+  AlertCircle,
+  RefreshCw,
+  ChevronDown,
+} from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useWordPressPosts, useWordPressCategories } from "@/hooks/useWordPressBlog";
+import {
+  useWordPressPosts,
+  useWordPressCategories,
+} from "@/hooks/useWordPressBlog";
 import { BlogGridSkeleton } from "@/components/ui/loading-skeleton";
 
 const Blog = () => {
@@ -18,40 +47,48 @@ const Blog = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // WordPress API integration
-  const { categories, rawCategories, isLoading: categoriesLoading } = useWordPressCategories();
-  
-  const { 
-    posts, 
-    isLoading: postsLoading, 
+  const {
+    categories,
+    rawCategories,
+    isLoading: categoriesLoading,
+  } = useWordPressCategories();
+
+  const {
+    posts,
+    isLoading: postsLoading,
     error: postsError,
     isFetching,
     total,
     totalPages,
-    prefetchNextPage
+    prefetchNextPage,
   } = useWordPressPosts({
     page: currentPage,
     search: searchTerm,
-    category: selectedCategory
+    category: selectedCategory,
   });
 
   // Filter posts locally for better UX (WordPress API might not have all filters)
   const filteredPosts = useMemo(() => {
     if (!posts) return [];
-    
-    return posts.filter(post => {
-      const matchesSearch = searchTerm === "" || 
+
+    return posts.filter((post) => {
+      const matchesSearch =
+        searchTerm === "" ||
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-      
-      const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
-      
+
+      const matchesCategory =
+        selectedCategory === "all" || post.category === selectedCategory;
+
       return matchesSearch && matchesCategory;
     });
   }, [posts, searchTerm, selectedCategory]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const handleCategoryChange = (category: string) => {
@@ -64,9 +101,11 @@ const Blog = () => {
       "AI & Technology": "bg-blue-100 text-blue-800",
       "Hiring Best Practices": "bg-green-100 text-green-800",
       "Industry Insights": "bg-purple-100 text-purple-800",
-      "Company News": "bg-orange-100 text-orange-800"
+      "Company News": "bg-orange-100 text-orange-800",
     };
-    return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
+    return (
+      colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800"
+    );
   };
 
   // Split categories into visible and dropdown (show 5 categories, rest in dropdown)
@@ -77,7 +116,7 @@ const Blog = () => {
   const getPaginationItems = () => {
     const items = [];
     const delta = 2; // Number of pages to show around current page
-    
+
     for (let i = 1; i <= totalPages; i++) {
       if (
         i === 1 || // Always show first page
@@ -89,12 +128,12 @@ const Blog = () => {
         (i === currentPage - delta - 1 && currentPage - delta - 1 > 1) || // Show ellipsis before current range
         (i === currentPage + delta + 1 && currentPage + delta + 1 < totalPages) // Show ellipsis after current range
       ) {
-        if (items[items.length - 1] !== 'ellipsis') {
-          items.push('ellipsis');
+        if (items[items.length - 1] !== "ellipsis") {
+          items.push("ellipsis");
         }
       }
     }
-    
+
     return items;
   };
 
@@ -106,14 +145,23 @@ const Blog = () => {
   }, [currentPage, prefetchNextPage]);
 
   // Error component
-  const ErrorState = ({ error, onRetry }: { error: any, onRetry: () => void }) => (
+  const ErrorState = ({
+    error,
+    onRetry,
+  }: {
+    error: Error | null;
+    onRetry: () => void;
+  }) => (
     <div className="text-center py-12">
       <div className="text-red-400 mb-4">
         <AlertCircle className="w-12 h-12 mx-auto" />
       </div>
-      <h3 className="text-xl font-semibold text-gray-600 mb-2">Failed to load blog posts</h3>
+      <h3 className="text-xl font-semibold text-gray-600 mb-2">
+        Failed to load blog posts
+      </h3>
       <p className="text-gray-500 mb-4">
-        {error?.message || "Please check your internet connection and try again."}
+        {error?.message ||
+          "Please check your internet connection and try again."}
       </p>
       <Button onClick={onRetry} variant="outline">
         <RefreshCw className="w-4 h-4 mr-2" />
@@ -125,7 +173,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header currentPage="blog" />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-gray-900 via-black to-gray-800">
         <div className="max-w-7xl mx-auto px-6 text-center">
@@ -133,7 +181,8 @@ const Blog = () => {
             Insights & Updates
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Stay updated with the latest trends in recruitment, AI technology, and industry insights from the Gigin team.
+            Stay updated with the latest trends in recruitment, AI technology,
+            and industry insights from the Gigin team.
           </p>
         </div>
       </section>
@@ -161,7 +210,10 @@ const Blog = () => {
               {categoriesLoading ? (
                 <div className="flex gap-3">
                   {Array.from({ length: 6 }).map((_, i) => (
-                    <div key={i} className="bg-gray-200 animate-pulse rounded-lg h-10 w-32" />
+                    <div
+                      key={i}
+                      className="bg-gray-200 animate-pulse rounded-lg h-10 w-32"
+                    />
                   ))}
                 </div>
               ) : (
@@ -176,7 +228,7 @@ const Blog = () => {
                   >
                     All Categories
                   </button>
-                  
+
                   {/* Visible Categories */}
                   {visibleCategories.map((category) => (
                     <Link
@@ -187,20 +239,23 @@ const Blog = () => {
                       {category.name}
                     </Link>
                   ))}
-                  
+
                   {/* Dropdown for Additional Categories */}
                   {dropdownCategories.length > 0 && (
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button 
-                          variant="outline" 
+                        <Button
+                          variant="outline"
                           className="px-6 py-3 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105 border-none rounded-xl"
                         >
                           More Categories
                           <ChevronDown className="w-4 h-4 ml-2" />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" className="w-56 bg-white border shadow-lg rounded-lg">
+                      <DropdownMenuContent
+                        align="end"
+                        className="w-56 bg-white border shadow-lg rounded-lg"
+                      >
                         <ScrollArea className="h-64">
                           {dropdownCategories.map((category) => (
                             <DropdownMenuItem key={category.id} asChild>
@@ -244,9 +299,9 @@ const Blog = () => {
 
           {/* Error State */}
           {postsError && !postsLoading && (
-            <ErrorState 
-              error={postsError} 
-              onRetry={() => window.location.reload()} 
+            <ErrorState
+              error={postsError}
+              onRetry={() => window.location.reload()}
             />
           )}
 
@@ -254,27 +309,37 @@ const Blog = () => {
           {!postsLoading && !postsError && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               {filteredPosts.map((post) => {
-                const categorySlugForUrl = rawCategories?.find(cat => cat.name === post.category)?.slug || post.category.toLowerCase().replace(/\s+/g, '-');
-                
+                const categorySlugForUrl =
+                  rawCategories?.find((cat) => cat.name === post.category)
+                    ?.slug || post.category.toLowerCase().replace(/\s+/g, "-");
+
                 return (
-                  <Card key={post.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group overflow-hidden">
+                  <Card
+                    key={post.id}
+                    className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group overflow-hidden"
+                  >
                     <div className="relative h-48 overflow-hidden">
-                      <img 
+                      <img
                         src={post.image}
                         alt={post.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                         onError={(e) => {
-                          e.currentTarget.src = 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80';
+                          e.currentTarget.src =
+                            "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80";
                         }}
                       />
                       <div className="absolute top-4 left-4">
-                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(post.category)}`}>
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(
+                            post.category
+                          )}`}
+                        >
                           {post.category}
                         </span>
                       </div>
                     </div>
-                    
+
                     <CardHeader className="p-6">
                       <CardTitle className="text-xl font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors line-clamp-2">
                         {post.title}
@@ -282,7 +347,7 @@ const Blog = () => {
                       <CardDescription className="text-gray-600 leading-relaxed line-clamp-3 mb-4">
                         {post.excerpt}
                       </CardDescription>
-                      
+
                       <div className="flex items-center space-x-4 text-sm text-gray-500">
                         <div className="flex items-center">
                           <User className="w-4 h-4 mr-1" />
@@ -294,10 +359,17 @@ const Blog = () => {
                         </div>
                       </div>
                     </CardHeader>
-                    
+
                     <CardContent className="px-6 pb-6">
-                      <Link to={`/blog/${encodeURIComponent(categorySlugForUrl)}/${post.slug}`}>
-                        <Button variant="outline" className="w-full group-hover:bg-pink-500 group-hover:text-white group-hover:border-pink-500 transition-all duration-300">
+                      <Link
+                        to={`/blog/${encodeURIComponent(categorySlugForUrl)}/${
+                          post.slug
+                        }`}
+                      >
+                        <Button
+                          variant="outline"
+                          className="w-full group-hover:bg-pink-500 group-hover:text-white group-hover:border-pink-500 transition-all duration-300"
+                        >
                           Read More
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
@@ -315,8 +387,12 @@ const Blog = () => {
               <div className="text-gray-400 mb-4">
                 <Search className="w-12 h-12 mx-auto" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">No articles found</h3>
-              <p className="text-gray-500">Try adjusting your search terms or filters.</p>
+              <h3 className="text-xl font-semibold text-gray-600 mb-2">
+                No articles found
+              </h3>
+              <p className="text-gray-500">
+                Try adjusting your search terms or filters.
+              </p>
             </div>
           )}
 
@@ -326,21 +402,27 @@ const Blog = () => {
               <Pagination>
                 <PaginationContent>
                   <PaginationItem>
-                    <PaginationPrevious 
-                      onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                      className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                    <PaginationPrevious
+                      onClick={() =>
+                        handlePageChange(Math.max(1, currentPage - 1))
+                      }
+                      className={
+                        currentPage === 1
+                          ? "pointer-events-none opacity-50"
+                          : "cursor-pointer"
+                      }
                     />
                   </PaginationItem>
-                  
+
                   {getPaginationItems().map((item, index) => {
-                    if (item === 'ellipsis') {
+                    if (item === "ellipsis") {
                       return (
                         <PaginationItem key={`ellipsis-${index}`}>
                           <PaginationEllipsis />
                         </PaginationItem>
                       );
                     }
-                    
+
                     return (
                       <PaginationItem key={item}>
                         <PaginationLink
@@ -353,11 +435,17 @@ const Blog = () => {
                       </PaginationItem>
                     );
                   })}
-                  
+
                   <PaginationItem>
-                    <PaginationNext 
-                      onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
-                      className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                    <PaginationNext
+                      onClick={() =>
+                        handlePageChange(Math.min(totalPages, currentPage + 1))
+                      }
+                      className={
+                        currentPage === totalPages
+                          ? "pointer-events-none opacity-50"
+                          : "cursor-pointer"
+                      }
                     />
                   </PaginationItem>
                 </PaginationContent>
@@ -374,11 +462,12 @@ const Blog = () => {
             Stay Updated with Our Latest Insights
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Get the latest recruitment trends, AI insights, and company updates delivered to your inbox.
+            Get the latest recruitment trends, AI insights, and company updates
+            delivered to your inbox.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <Input 
-              type="email" 
+            <Input
+              type="email"
               placeholder="Enter your email"
               className="flex-1 bg-white"
             />

@@ -1,12 +1,35 @@
-
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Calendar, User, ArrowRight, Search, RefreshCw, AlertCircle } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  User,
+  ArrowRight,
+  Search,
+  RefreshCw,
+  AlertCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import Header from "@/components/Header";
-import { useWordPressPosts, useWordPressCategories } from "@/hooks/useWordPressBlog";
+import {
+  useWordPressPosts,
+  useWordPressCategories,
+} from "@/hooks/useWordPressBlog";
 import { BlogGridSkeleton } from "@/components/ui/loading-skeleton";
 import { useState } from "react";
 
@@ -15,28 +38,36 @@ const BlogCategory = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { categories, rawCategories, isLoading: categoriesLoading } = useWordPressCategories();
-  
+  const {
+    categories,
+    rawCategories,
+    isLoading: categoriesLoading,
+  } = useWordPressCategories();
+
   // Find the category name from slug
-  const currentCategory = rawCategories?.find(cat => cat.slug === categorySlug);
+  const currentCategory = rawCategories?.find(
+    (cat) => cat.slug === categorySlug
+  );
   const categoryName = currentCategory?.name || categorySlug;
 
-  const { 
-    posts, 
-    isLoading: postsLoading, 
+  const {
+    posts,
+    isLoading: postsLoading,
     error: postsError,
     isFetching,
     total,
-    totalPages
+    totalPages,
   } = useWordPressPosts({
     page: currentPage,
     search: searchTerm,
-    category: currentCategory?.id?.toString()
+    category: currentCategory?.id?.toString(),
   });
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const getCategoryColor = (category: string) => {
@@ -45,20 +76,31 @@ const BlogCategory = () => {
       "Hiring Best Practices": "bg-green-100 text-green-800",
       "Industry Insights": "bg-purple-100 text-purple-800",
       "Company News": "bg-orange-100 text-orange-800",
-      "Background Verification": "bg-red-100 text-red-800"
+      "Background Verification": "bg-red-100 text-red-800",
     };
-    return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
+    return (
+      colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800"
+    );
   };
 
   // Error component
-  const ErrorState = ({ error, onRetry }: { error: any, onRetry: () => void }) => (
+  const ErrorState = ({
+    error,
+    onRetry,
+  }: {
+    error: Error | null;
+    onRetry: () => void;
+  }) => (
     <div className="text-center py-12">
       <div className="text-red-400 mb-4">
         <AlertCircle className="w-12 h-12 mx-auto" />
       </div>
-      <h3 className="text-xl font-semibold text-gray-600 mb-2">Failed to load blog posts</h3>
+      <h3 className="text-xl font-semibold text-gray-600 mb-2">
+        Failed to load blog posts
+      </h3>
       <p className="text-gray-500 mb-4">
-        {error?.message || "Please check your internet connection and try again."}
+        {error?.message ||
+          "Please check your internet connection and try again."}
       </p>
       <Button onClick={onRetry} variant="outline">
         <RefreshCw className="w-4 h-4 mr-2" />
@@ -83,18 +125,25 @@ const BlogCategory = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header currentPage="blog" />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-gray-900 via-black to-gray-800">
         <div className="max-w-7xl mx-auto px-6">
-          <Link to="/blog" className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors">
+          <Link
+            to="/blog"
+            className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors"
+          >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to All Posts
           </Link>
-          
+
           <div className="text-center">
             <div className="mb-4">
-              <span className={`px-4 py-2 rounded-full text-sm font-medium ${getCategoryColor(categoryName || '')}`}>
+              <span
+                className={`px-4 py-2 rounded-full text-sm font-medium ${getCategoryColor(
+                  categoryName || ""
+                )}`}
+              >
                 {categoryName}
               </span>
             </div>
@@ -102,7 +151,8 @@ const BlogCategory = () => {
               {categoryName} Articles
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Explore our latest insights and updates in {categoryName?.toLowerCase()}.
+              Explore our latest insights and updates in{" "}
+              {categoryName?.toLowerCase()}.
             </p>
           </div>
         </div>
@@ -145,9 +195,9 @@ const BlogCategory = () => {
 
           {/* Error State */}
           {postsError && !postsLoading && (
-            <ErrorState 
-              error={postsError} 
-              onRetry={() => window.location.reload()} 
+            <ErrorState
+              error={postsError}
+              onRetry={() => window.location.reload()}
             />
           )}
 
@@ -155,27 +205,37 @@ const BlogCategory = () => {
           {!postsLoading && !postsError && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               {posts.map((post) => {
-                const categorySlugForUrl = rawCategories?.find(cat => cat.name === post.category)?.slug || post.category.toLowerCase().replace(/\s+/g, '-');
-                
+                const categorySlugForUrl =
+                  rawCategories?.find((cat) => cat.name === post.category)
+                    ?.slug || post.category.toLowerCase().replace(/\s+/g, "-");
+
                 return (
-                  <Card key={post.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group overflow-hidden">
+                  <Card
+                    key={post.id}
+                    className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group overflow-hidden"
+                  >
                     <div className="relative h-48 overflow-hidden">
-                      <img 
+                      <img
                         src={post.image}
                         alt={post.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                         onError={(e) => {
-                          e.currentTarget.src = 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80';
+                          e.currentTarget.src =
+                            "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80";
                         }}
                       />
                       <div className="absolute top-4 left-4">
-                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(post.category)}`}>
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(
+                            post.category
+                          )}`}
+                        >
                           {post.category}
                         </span>
                       </div>
                     </div>
-                    
+
                     <CardHeader className="p-6">
                       <CardTitle className="text-xl font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors line-clamp-2">
                         {post.title}
@@ -183,7 +243,7 @@ const BlogCategory = () => {
                       <CardDescription className="text-gray-600 leading-relaxed line-clamp-3 mb-4">
                         {post.excerpt}
                       </CardDescription>
-                      
+
                       <div className="flex items-center space-x-4 text-sm text-gray-500">
                         <div className="flex items-center">
                           <User className="w-4 h-4 mr-1" />
@@ -195,10 +255,17 @@ const BlogCategory = () => {
                         </div>
                       </div>
                     </CardHeader>
-                    
+
                     <CardContent className="px-6 pb-6">
-                      <Link to={`/blog/${encodeURIComponent(categorySlugForUrl)}/${post.slug}`}>
-                        <Button variant="outline" className="w-full group-hover:bg-pink-500 group-hover:text-white group-hover:border-pink-500 transition-all duration-300">
+                      <Link
+                        to={`/blog/${encodeURIComponent(categorySlugForUrl)}/${
+                          post.slug
+                        }`}
+                      >
+                        <Button
+                          variant="outline"
+                          className="w-full group-hover:bg-pink-500 group-hover:text-white group-hover:border-pink-500 transition-all duration-300"
+                        >
                           Read More
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
@@ -216,7 +283,9 @@ const BlogCategory = () => {
               <div className="text-gray-400 mb-4">
                 <Search className="w-12 h-12 mx-auto" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">No articles found</h3>
+              <h3 className="text-xl font-semibold text-gray-600 mb-2">
+                No articles found
+              </h3>
               <p className="text-gray-500">Try adjusting your search terms.</p>
             </div>
           )}
@@ -227,15 +296,26 @@ const BlogCategory = () => {
               <Pagination>
                 <PaginationContent>
                   <PaginationItem>
-                    <PaginationPrevious 
-                      onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                      className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                    <PaginationPrevious
+                      onClick={() =>
+                        handlePageChange(Math.max(1, currentPage - 1))
+                      }
+                      className={
+                        currentPage === 1
+                          ? "pointer-events-none opacity-50"
+                          : "cursor-pointer"
+                      }
                     />
                   </PaginationItem>
-                  
+
                   {[...Array(totalPages)].map((_, index) => {
                     const page = index + 1;
-                    if (totalPages > 7 && (page < currentPage - 2 || page > currentPage + 2) && page !== 1 && page !== totalPages) {
+                    if (
+                      totalPages > 7 &&
+                      (page < currentPage - 2 || page > currentPage + 2) &&
+                      page !== 1 &&
+                      page !== totalPages
+                    ) {
                       return null;
                     }
                     return (
@@ -250,11 +330,17 @@ const BlogCategory = () => {
                       </PaginationItem>
                     );
                   })}
-                  
+
                   <PaginationItem>
-                    <PaginationNext 
-                      onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
-                      className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                    <PaginationNext
+                      onClick={() =>
+                        handlePageChange(Math.min(totalPages, currentPage + 1))
+                      }
+                      className={
+                        currentPage === totalPages
+                          ? "pointer-events-none opacity-50"
+                          : "cursor-pointer"
+                      }
                     />
                   </PaginationItem>
                 </PaginationContent>

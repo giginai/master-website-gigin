@@ -1,14 +1,13 @@
-
-import { useEffect } from 'react';
-import { useSEOContext } from '@/contexts/SEOContext';
-import { SEOConfig } from '@/types/seo';
+import { useEffect } from "react";
+import { useSEOContext } from "@/contexts/SEOContext";
+import { SEOConfig } from "@/types/seo";
 
 export const useSEO = (config: Partial<SEOConfig>) => {
   const { updateSEO } = useSEOContext();
 
   useEffect(() => {
     // Generate canonical URL if not provided
-    if (!config.url) {
+    if (!config.url && typeof window !== "undefined") {
       config.url = `https://master-website-gigin.lovable.app${window.location.pathname}`;
     }
 
@@ -16,7 +15,7 @@ export const useSEO = (config: Partial<SEOConfig>) => {
   }, [updateSEO, config]);
 };
 
-export const generatePageTitle = (title?: string, siteName = 'Gigin') => {
+export const generatePageTitle = (title?: string, siteName = "Gigin") => {
   if (!title) return siteName;
   return `${title} | ${siteName}`;
 };
@@ -26,7 +25,8 @@ export const generateCanonicalUrl = (path: string) => {
 };
 
 export const generateOGImage = (image?: string) => {
-  if (image && image.startsWith('http')) return image;
-  if (image && image.startsWith('/')) return `https://master-website-gigin.lovable.app${image}`;
-  return 'https://master-website-gigin.lovable.app/lovable-uploads/og-gigin.jpg';
+  if (image && image.startsWith("http")) return image;
+  if (image && image.startsWith("/"))
+    return `https://master-website-gigin.lovable.app${image}`;
+  return "https://master-website-gigin.lovable.app/lovable-uploads/og-gigin.jpg";
 };
