@@ -13,16 +13,16 @@ const HiringSolutions = () => {
     description: "Find the right candidates from millions of profiles using advanced AI matching algorithms",
     icon: "🎯"
   }, {
-    title: "Always Ready Talent Pipeline",
-    description: "A constantly updated database of active and passive job seekers",
+    title: "Real-time Job Posting",
+    description: "Post jobs instantly across multiple platforms and get qualified candidates faster",
     icon: "⚡"
   }, {
     title: "Smart Filtering",
     description: "Advanced filters to narrow down candidates based on skills, experience, and location",
     icon: "🔍"
   }, {
-    title: "Direct Recruiter-Candidate Access",
-    description: "Engage instantly via message and call through AI-powered platform",
+    title: "Candidate Analytics",
+    description: "Get detailed insights and analytics on candidate performance and engagement",
     icon: "📊"
   }];
   const atsFeatures = [{
@@ -202,7 +202,7 @@ const HiringSolutions = () => {
                 <div className="text-lg text-gray-600">Active Candidates</div>
               </div>
               <div>
-                <div className="text-4xl font-bold mb-2 text-pink-500">100K+</div>
+                <div className="text-4xl font-bold mb-2 text-pink-500">100,000+</div>
                 <div className="text-lg text-gray-600">Jobs Posted</div>
               </div>
               <div>
