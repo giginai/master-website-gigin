@@ -1,0 +1,32 @@
+# Main pages
+/about-us           /about-us.html              200
+/why-gigin          /why-gigin.html             200
+/hiring-solutions   /hiring-solutions.html      200
+/verification       /verification.html          200
+/blog               /blog.html                  200
+/find-a-job         /find-a-job.html            200
+/jobs               /find-a-job.html            200
+
+# Job location pages
+/jobs-in-mumbai     /jobs-in-mumbai.html        200
+/jobs-in-delhi      /jobs-in-delhi.html         200
+/jobs-in-bangalore  /jobs-in-bangalore.html     200
+/jobs-in-pune       /jobs-in-pune.html          200
+/jobs-in-hyderabad  /jobs-in-hyderabad.html     200
+/jobs-in-chennai    /jobs-in-chennai.html       200
+/jobs-in-kolkata    /jobs-in-kolkata.html       200
+/jobs-in-ahmedabad  /jobs-in-ahmedabad.html     200
+
+# Job role pages
+/jobs-for-software-engineer    /jobs-for-software-engineer.html   200
+/jobs-for-data-scientist       /jobs-for-data-scientist.html      200
+/jobs-for-product-manager      /jobs-for-product-manager.html     200
+/jobs-for-sales-executive      /jobs-for-sales-executive.html     200
+/jobs-for-marketing-manager    /jobs-for-marketing-manager.html   200
+/jobs-for-business-analyst     /jobs-for-business-analyst.html    200
+
+# Home page redirect
+/home               /home.html                  200
+
+# Catch-all redirect (must be last)
+/*                  /index.html                 200
