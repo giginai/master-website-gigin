@@ -79,7 +79,7 @@ const SolutionsDropdown = () => {
                       className="flex items-center p-3 rounded-lg border transition-all group w-full text-left hover:bg-pink-50 hover:border-pink-100 border-transparent"
                     >
                       <CheckCircle className="w-4 h-4 mr-3 text-gray-500 group-hover:text-pink-500" />
-                      <span className="text-sm font-medium text-gray-700 group-hover:text-pink-600">Gigin Assure Hire</span>
+                      <span className="text-sm font-medium text-gray-700 group-hover:text-pink-600">Gigin Assured Hire</span>
                     </button>
                   </div>
                 </div>
