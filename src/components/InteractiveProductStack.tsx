@@ -61,16 +61,15 @@ const InteractiveProductStack = () => {
           {/* Product Navigation Tabs */}
           <div className="lg:w-1/3">
             <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
-              {products.map((product, index) => (
+              {products.map(product => (
                 <button
                   key={product.id}
                   onClick={() => setActiveProduct(product.id)}
-                  className={`relative p-4 rounded-lg transition-all duration-500 text-left transform hover:scale-105 ${
+                  className={`relative p-4 rounded-lg transition-all duration-300 text-left ${
                     activeProduct === product.id
-                      ? "bg-pink-500 text-white shadow-lg scale-105"
-                      : "bg-white text-gray-700 border border-gray-200 hover:border-pink-300 hover:shadow-md hover:text-pink-600 animate-slide-up"
+                      ? "bg-pink-500 text-white shadow-lg transform scale-105"
+                      : "bg-white text-gray-700 border border-gray-200 hover:border-pink-300 hover:shadow-md hover:text-pink-600"
                   }`}
-                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="font-semibold text-sm md:text-base">
                     {product.name}
@@ -86,7 +85,7 @@ const InteractiveProductStack = () => {
           {/* Active Product Display */}
           <div className="lg:w-2/3 py-[8px]">
             <div className="relative group">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl animate-slide-up transition-all duration-700">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
                   src={activeProductData?.image}
                   alt={activeProductData?.name}
@@ -99,7 +98,7 @@ const InteractiveProductStack = () => {
                 {/* Content Overlay */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 py-[32px]">
                   {/* Text Background for Better Visibility */}
-                  <div className="rounded-lg p-6 mb-2 bg-inherit my-0 py-0 px-0 animate-fade-in transition-all duration-700 delay-300">
+                  <div className="rounded-lg p-6 mb-2 bg-inherit my-0 py-0 px-0">
                     <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4">
                       {activeProductData?.name}
                     </h3>
@@ -109,7 +108,7 @@ const InteractiveProductStack = () => {
                     </p>
                     
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <Button className="bg-white text-gray-900 hover:bg-gray-100 font-medium transform hover:scale-105 transition-all duration-300">
+                      <Button className="bg-white text-gray-900 hover:bg-gray-100 font-medium">
                         Learn More
                       </Button>
                     </div>
