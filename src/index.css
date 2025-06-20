@@ -201,6 +201,17 @@
     }
   }
 
+  @keyframes slide-up-smooth {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -219,6 +230,10 @@
 
   .animate-slide-up {
     animation: slide-up 0.8s ease-out forwards;
+  }
+
+  .animate-slide-up-smooth {
+    animation: slide-up-smooth 0.6s ease-out forwards;
   }
 
   .glass-morphism {

@@ -57,7 +57,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="pt-8 pb-20 bg-white py-[80px]">
+    <section className="pt-16 pb-20 bg-white py-[80px]">
       <div className="max-w-7xl mx-auto px-[48px]">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Unlock Strategic HR</h2>
@@ -70,28 +70,32 @@ const FeaturesSection = () => {
           <TabsList className="grid w-full grid-cols-3 bg-gray-100 p-1 rounded-xl mb-12 h-auto">
             <TabsTrigger 
               value="sourcing" 
-              className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=inactive]:hover:bg-gray-200 transition-all duration-300 m-1"
+              className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=inactive]:hover:bg-gray-200 transition-all duration-500 m-1 data-[state=active]:scale-105"
             >
               Sourcing
             </TabsTrigger>
             <TabsTrigger 
               value="screening" 
-              className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=inactive]:hover:bg-gray-200 transition-all duration-300 m-1"
+              className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=inactive]:hover:bg-gray-200 transition-all duration-500 m-1 data-[state=active]:scale-105"
             >
               Screening
             </TabsTrigger>
             <TabsTrigger 
               value="verification" 
-              className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=inactive]:hover:bg-gray-200 transition-all duration-300 m-1"
+              className="rounded-lg py-3 px-6 text-base font-medium data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=inactive]:hover:bg-gray-200 transition-all duration-500 m-1 data-[state=active]:scale-105"
             >
               Verification
             </TabsTrigger>
           </TabsList>
 
           {features.map((feature) => (
-            <TabsContent key={feature.id} value={feature.id} className="mt-0">
+            <TabsContent 
+              key={feature.id} 
+              value={feature.id} 
+              className="mt-0 animate-fade-in transition-all duration-700 data-[state=active]:animate-slide-up"
+            >
               <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
+                <div className="space-y-6 animate-fade-in transition-all duration-700 delay-200">
                   <div>
                     <p className="text-lg text-gray-600 leading-relaxed">
                       {feature.description}
@@ -100,7 +104,11 @@ const FeaturesSection = () => {
                   
                   <div className="flex gap-8">
                     {feature.stats.map((stat, index) => (
-                      <div key={index} className="text-left">
+                      <div 
+                        key={index} 
+                        className="text-left animate-fade-in transition-all duration-700"
+                        style={{ animationDelay: `${300 + index * 100}ms` }}
+                      >
                         <div className="text-3xl md:text-4xl font-bold text-pink-500 mb-1">
                           {stat.value}
                         </div>
@@ -112,7 +120,7 @@ const FeaturesSection = () => {
                   </div>
 
                   {/* Enhanced Sign Up Now CTA with moving hover animation */}
-                  <div className="pt-4">
+                  <div className="pt-4 animate-fade-in transition-all duration-700 delay-400">
                     <button className="text-pink-500 font-semibold text-lg hover:text-pink-600 transition-all duration-300 cursor-pointer group">
                       <span className="inline-flex items-center">
                         Sign Up Now 
@@ -122,8 +130,8 @@ const FeaturesSection = () => {
                   </div>
                 </div>
 
-                <div className="relative">
-                  <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-50 to-gray-100 p-6">
+                <div className="relative animate-fade-in transition-all duration-700 delay-300">
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-50 to-gray-100 p-6 transform hover:scale-105 transition-transform duration-500">
                     <img 
                       src={feature.image} 
                       alt={feature.title} 
