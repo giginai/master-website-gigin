@@ -61,7 +61,7 @@ const JobCard = ({ job }: JobCardProps) => {
             <Calendar className="w-3 h-3 mr-1" />
             <span>{new Date(job.publishedDate).toLocaleDateString()}</span>
           </div>
-          <Link to={`/job-detail/${job.jobPageUrl}`}>
+          <Link to={`/job-detail/${job.jobpageurl}`}>
             <Button size="sm" className="bg-pink-500 hover:bg-pink-600">
               View Details
             </Button>
