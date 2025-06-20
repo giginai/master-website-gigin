@@ -42,7 +42,7 @@ const ProofSection = () => {
         <div className="text-center mb-8">
           <h2 
             ref={titleRef} 
-            className={`text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 transition-all duration-700 ${
+            className={`text-4xl md:text-5xl font-bold text-gray-900 mb-6 transition-all duration-700 ${
               titleVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
             }`}
           >
