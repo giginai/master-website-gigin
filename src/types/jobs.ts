@@ -10,7 +10,7 @@ export interface Job {
   description: string;
   requirements?: string[];
   benefits?: string[];
-  jobPageUrl: string;
+  jobpageurl: string;
   publishedDate: string;
   applicationDeadline?: string;
   companyLogo?: string;
