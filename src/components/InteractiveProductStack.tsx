@@ -1,9 +1,20 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 const InteractiveProductStack = () => {
   const [activeProduct, setActiveProduct] = useState("jobs");
+  const [isImageVisible, setIsImageVisible] = useState(true);
+
+  const handleProductChange = (productId: string) => {
+    if (productId !== activeProduct) {
+      setIsImageVisible(false);
+      setTimeout(() => {
+        setActiveProduct(productId);
+        setIsImageVisible(true);
+      }, 200);
+    }
+  };
 
   const products = [{
     id: "jobs",
@@ -64,7 +75,7 @@ const InteractiveProductStack = () => {
               {products.map(product => (
                 <button
                   key={product.id}
-                  onClick={() => setActiveProduct(product.id)}
+                  onClick={() => handleProductChange(product.id)}
                   className={`relative p-4 rounded-lg transition-all duration-300 text-left ${
                     activeProduct === product.id
                       ? "bg-pink-500 text-white shadow-lg transform scale-105"
@@ -85,7 +96,11 @@ const InteractiveProductStack = () => {
           {/* Active Product Display */}
           <div className="lg:w-2/3 py-[8px]">
             <div className="relative group">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+              <div className={`relative overflow-hidden rounded-2xl shadow-2xl transition-all duration-500 ease-out ${
+                isImageVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-8'
+              }`}>
                 <img
                   src={activeProductData?.image}
                   alt={activeProductData?.name}

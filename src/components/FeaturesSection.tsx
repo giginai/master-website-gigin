@@ -1,9 +1,20 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const FeaturesSection = () => {
   const [activeTab, setActiveTab] = useState("sourcing");
+  const [isContentVisible, setIsContentVisible] = useState(true);
+
+  const handleTabChange = (value: string) => {
+    if (value !== activeTab) {
+      setIsContentVisible(false);
+      setTimeout(() => {
+        setActiveTab(value);
+        setIsContentVisible(true);
+      }, 150);
+    }
+  };
 
   const features = [
     {
@@ -57,7 +68,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="pt-8 pb-20 bg-white py-[80px]">
+    <section className="pt-20 pb-20 bg-white">
       <div className="max-w-7xl mx-auto px-[48px]">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Unlock Strategic HR</h2>
@@ -66,7 +77,7 @@ const FeaturesSection = () => {
           </p>
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-gray-100 p-1 rounded-xl mb-12 h-auto">
             <TabsTrigger 
               value="sourcing" 
@@ -90,7 +101,11 @@ const FeaturesSection = () => {
 
           {features.map((feature) => (
             <TabsContent key={feature.id} value={feature.id} className="mt-0">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className={`grid lg:grid-cols-2 gap-12 items-center transition-all duration-500 ease-out ${
+                isContentVisible 
+                  ? 'opacity-100 translate-x-0' 
+                  : 'opacity-0 translate-x-8'
+              }`}>
                 <div className="space-y-6">
                   <div>
                     <p className="text-lg text-gray-600 leading-relaxed">
@@ -111,7 +126,6 @@ const FeaturesSection = () => {
                     ))}
                   </div>
 
-                  {/* Enhanced Sign Up Now CTA with moving hover animation */}
                   <div className="pt-4">
                     <button className="text-pink-500 font-semibold text-lg hover:text-pink-600 transition-all duration-300 cursor-pointer group">
                       <span className="inline-flex items-center">
