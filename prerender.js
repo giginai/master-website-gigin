@@ -117,7 +117,7 @@ const generateAllRoutes = async () => {
   }
 };
 
-(async () => {
+const main = async () => {
   const allRoutes = await generateAllRoutes();
   console.log(`Pre-rendering ${allRoutes.length} routes...`);
 
@@ -165,4 +165,10 @@ const generateAllRoutes = async () => {
   }
 
   console.log("✅ SSG build completed successfully!");
-})();
+  process.exit(0);
+};
+
+main().catch((error) => {
+  console.error("❌ SSG build failed:", error);
+  process.exit(1);
+});
