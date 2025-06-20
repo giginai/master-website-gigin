@@ -52,9 +52,7 @@ const LogoCarousel = () => {
   return <section className="pt-12 pb-6 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-8">
-          <h3 className="text-lg font-semibold text-gray-600 mb-2">
-            Trusted by 100+ Leading Companies
-          </h3>
+          <h3 className="text-lg font-semibold text-gray-600 mb-2">Trusted by 200+ Leading Companies</h3>
         </div>
         
         <div ref={scrollerRef} className="scroller overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]">
